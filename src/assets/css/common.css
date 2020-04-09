@@ -1,0 +1,116 @@
+
+.clearfix{*zoom:1;}
+.clearfix:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.fl{float: left;}
+.fr{float: right;}
+.position-r{ position:relative;}
+
+i{font-style:normal; }
+textarea{outline: none;padding: 0;margin: 0;}
+.show{
+	display: block;
+}
+.hidden{
+	display: none;
+}
+.border-line{
+	border-bottom:1px solid #e6e6e6 ;
+}
+.mt-20{ margin-top: 20px;}
+.m-b{margin-bottom: 50px;}
+.j-center{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+/* 公共属性 */
+
+
+.content{
+	width:1200px;
+	margin: 0 auto;
+}
+input::-webkit-input-placeholder{
+    color: #999999;
+    font-size: 14px;
+    font-family:"微软雅黑";
+}
+
+textarea::-webkit-input-placeholder{
+    color: #999999;
+    font-size: 14px;
+    font-family:"微软雅黑";
+}
+/* nav */
+
+
+nav{
+	height: 96px;
+	line-height: 96px;
+}
+.nav-box{
+	overflow: hidden;
+	line-height: ;
+}
+.nav-box img{
+	margin-top: 20px;
+	float: left;
+}
+.nav-box img{
+	width: 120px;
+	float: left;
+}
+.nav-login{
+	width: 100px;
+	float:right;
+}
+.nav-font{
+	/* width:calc(100% - 220px); */
+	margin-right: 50px;
+	float:right;	
+}
+.nav-font li{
+	float: left;
+	padding: 0 25px;
+	cursor: pointer;
+}
+
+
+/* vue 新加 */
+
+h1{font-size: 1rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
