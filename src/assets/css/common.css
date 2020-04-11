@@ -146,8 +146,7 @@ ul,li{
 }
 .banner{
 	width: 100%;
-	background:#8b3fd4 url("/static/banner.jpg") center no-repeat;
-	background-size: auto 380px;
+	background: url("/static/banner.jpg") center no-repeat;
 	height: 380px;
 	overflow: hidden;
 }
