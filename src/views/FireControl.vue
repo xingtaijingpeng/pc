@@ -9,6 +9,13 @@
         <div class="content">
             <!-- 最新上线 -->
             <div class="title"><img src="/static/fire-title.png" alt=""></div>
+            <div class="nav-list">
+                <span>全部</span>
+                <span>消防工程师</span>
+                <span>消防工程师</span>
+                <span>消防工程师</span>
+                <span>消防工程师</span>
+            </div>
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="12" :md="6">
                     <ListFont></ListFont>

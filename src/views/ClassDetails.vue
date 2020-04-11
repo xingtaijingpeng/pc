@@ -25,7 +25,7 @@
                     <p>2019.11.12</p>
                 </a-col>
                 <a-col :xs="24" :sm="6" :md="6" style="text-align: center">
-                    <img src="/static/video-img.png" alt="">
+                    <img src="/static/head.png"  width="60%" alt="">
                     <h1 style="margin-top: 20px;">啊士大</h1>
                     <p>是打发打发</p>
                 </a-col>
@@ -143,6 +143,10 @@
         background: #fead1e;
         border-radius: 10px;
         padding: 50px 10px;
+        color:#fff;
+    }
+    .videoBox h1{
+        color: #fff;
     }
     .comment-box{
         padding: 20px 50px;
