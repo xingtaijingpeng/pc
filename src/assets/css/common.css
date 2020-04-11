@@ -225,6 +225,8 @@ ul,li{
 }
 .mobile .videoBox{
 	margin-top: 20px !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
 }
 .mobile .banner2{
 	width: 100%;
