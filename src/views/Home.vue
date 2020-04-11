@@ -15,9 +15,9 @@
             <div slot="nextArrow" slot-scope="props" class="custom-slick-arrow" style="right: 10px">
                 <a-icon type="right-circle" />
             </div>
-            <div class="FireControl-banner"></div>
-            <div class="FireControl-banner"></div>
-            <div class="FireControl-banner"></div>
+            <div class="banner"></div>
+            <div class="banner"></div>
+            <div class="banner"></div>
             <!--<div>
                 <img src="/static/banner.jpg" width="100%" alt="">
             </div>
