@@ -1,6 +1,6 @@
 <template>
     <div>
-        <logo></logo>
+        <logo choose="4"></logo>
         <!-- ddd -->
         <div>
             <img src="/static/company-button.jpg" width="100%" alt="">

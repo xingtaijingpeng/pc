@@ -14,7 +14,7 @@
         <div class="content">
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="24" :md="6">
-                    <littleNav></littleNav>
+                    <littleNav :choose="4"></littleNav>
                 </a-col>
 
                 <a-col :xs="24" :sm="24" :md="18">

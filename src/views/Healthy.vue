@@ -1,6 +1,6 @@
 <template>
     <div>
-        <logo></logo>
+        <logo choose="2"></logo>
         <!-- ddd -->
         <div>
             <img src="/static/Healthy-banner.jpg" width="100%" alt="">

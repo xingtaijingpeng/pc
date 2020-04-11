@@ -1,6 +1,6 @@
 <template>
     <div>
-        <logo></logo>
+        <logo choose="3"></logo>
         <!-- ddd -->
         <div>
             <img src="/static/FireControl-banner.jpg" width="100%" alt="">

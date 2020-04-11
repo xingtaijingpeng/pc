@@ -1,6 +1,6 @@
 <template>
     <div>
-        <logo class="nav"></logo>
+        <logo class="nav" choose="1"></logo>
 
         <!-- banner -->
         <a-carousel arrows>
@@ -131,10 +131,6 @@ export default {
 
 
 <style scoped>
-
-    .mobile .title img{
-        width: 100%;
-    }
     .mobile .list-first{
         display: none;
     }
