@@ -12,7 +12,7 @@
                 <li @click="$router.push('/CompanyTeam')">师资团队</li>
             </ul>
             <div class="company-font">
-                <a-row :gutter="[60,60]">
+                <a-row>
                     <a-col :xs="24" :sm="8" :md="8" style="text-align: center">
                         <img src="/static/company-img.png" width="80%" style="margin-top: 100px" alt="">
                     </a-col>
