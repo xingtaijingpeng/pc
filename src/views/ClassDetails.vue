@@ -5,9 +5,9 @@
 
         <div class="content2 pay">
             <a-row>
-                <a-col :xs="24" :sm="6" :md="6" class="red">￥265.00</a-col>
-                <a-col :xs="24" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
-                <a-col :xs="24" :sm="12" :md="12">
+                <a-col :xs="9" :sm="6" :md="6" class="red">￥265.00</a-col>
+                <a-col :xs="8" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
+                <a-col :xs="7" :sm="12" :md="12">
                     <div class="but">购买</div>
                 </a-col>
             </a-row>
@@ -31,7 +31,7 @@
                 </a-col>
             </a-row>
         </div>
-        <div class="title"><img src="/static/index-title.png" alt=""></div>
+        <div class="title"><img src="/static/video-title.png" alt=""></div>
         <div class="content comment-box">
 
             <a-list
