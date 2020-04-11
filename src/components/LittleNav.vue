@@ -9,22 +9,22 @@
             <ul class="list-nav">
                 <a-row>
                     <a-col :xs="6" :sm="12" :md="24">
-                        <li class="choose" @click="$router.push('/PersonalClass')">
+                        <li :class="choose == 1 ? 'choose' : ''" @click="$router.push('/PersonalClass')">
                             <i class="tab-nav tab-nav1"></i><span>我的课程</span>
                         </li>
                     </a-col>
                     <a-col :xs="6" :sm="12" :md="24" >
-                        <li @click="$router.push('/PersonalOrder')">
+                        <li :class="choose == 2 ? 'choose' : ''" @click="$router.push('/PersonalOrder')">
                             <i class="tab-nav tab-nav2"></i><span>订单管理</span>
                         </li>
                     </a-col>
                     <a-col :xs="6" :sm="12" :md="24">
-                        <li @click="$router.push('/PersonalMessage')">
+                        <li :class="choose == 3 ? 'choose' : ''" @click="$router.push('/PersonalMessage')">
                             <i class="tab-nav tab-nav3"></i><span>我的消息</span>
                         </li>
                     </a-col>
                     <a-col :xs="6" :sm="12" :md="24">
-                        <li @click="$router.push('/PersonalSetUp')">
+                        <li :class="choose == 4 ? 'choose' : ''" @click="$router.push('/PersonalSetUp')">
                             <i class="tab-nav tab-nav4"></i><span>账户管理</span>
                         </li>
                     </a-col>
@@ -42,6 +42,11 @@
 <script>
 export default {
   name: 'LittleNav',
+    props:{
+      choose:{
+          type: Number,
+      }
+    }
 }
 </script>
 

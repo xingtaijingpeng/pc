@@ -147,8 +147,6 @@ export default {
 
 <style scoped>
 
-
-
     /* banner */
     .slick-slide {
         text-align: center;
