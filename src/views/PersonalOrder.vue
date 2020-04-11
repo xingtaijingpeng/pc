@@ -21,6 +21,7 @@
                             </a-col>
                             <a-col :xs="24" :sm="18" :md="18">
                                 <h1>北京时代亿信科技股份</h1>
+                                <div class="aaaaa">&nbsp;</div>
                                 <div>
                                     <span class="">支付价格：300元</span>
                                     <span class="time">支付时间：2019-03-11</span>
@@ -58,6 +59,15 @@ export default {
 
 
 <style scoped>
+    .aaaaa{
+        line-height: 40px;
+        height:40px
+    }
 
+    .mobile .aaaaa{
+        display: none !important;
+        line-height: 0px !important;
+        height:0px !important;
+    }
 
 </style>
