@@ -1,5 +1,5 @@
 <template>
-  <div class="font">
+  <div class="font" @click="$router.push('/ClassDetails')">
     <img src="/static/index-content2-1.png" width="100%" alt="">
     <h1>特聘请交大、矿大、武警学院等院校资深导师任教</h1>
     <div>￥388.00 <span>原价：999元</span></div>
@@ -39,10 +39,10 @@ export default {
     -webkit-line-clamp: 2;
   }
 
-/*  .font div{
-    font-size: 26px;
-    color: #ed1010; !* red*!
-  }*/
+  /*  .font div{
+      font-size: 26px;
+      color: #ed1010; !* red*!
+    }*/
   .font div{
     font-size: 18px;
     color: #ed1010; /* red*/
