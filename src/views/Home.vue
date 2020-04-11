@@ -132,6 +132,12 @@ export default {
 
 <style scoped>
 
+    .mobile .title img{
+        width: 100%;
+    }
+    .mobile .list-first{
+        display: none;
+    }
     /* banner */
     .slick-slide {
         text-align: center;
@@ -176,6 +182,17 @@ export default {
         padding: 70px 50px;
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
         position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .tablet .list-first>div{
+        width:600px;
+        background: #fff;
+        padding: 15px 25px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        position: absolute;
+        font-size: 14px;
         right: 0;
         bottom: 0;
     }
