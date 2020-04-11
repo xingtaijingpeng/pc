@@ -1,7 +1,7 @@
 <template>
     <div>
         <logo></logo>
-        <div class="content Personal-banner" ></div>
+        <div class="Personal-banner" ></div>
 
         <div class="content">
             <a-row :gutter="[26,26]">
