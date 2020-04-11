@@ -8,8 +8,9 @@
         <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
         <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="choose == 4 ? 'red' : ''">公司介绍</span></a-col>
         <a-col :xs="5" :md="3" @click="$router.push('/PersonalClass')" :class="choose == 5 ? 'red' : ''">
-          <span>登录</span>/
-          <span>注册</span>
+          <!--<span>登录</span>/
+          <span>注册</span>-->
+          <span>个人中心</span>
         </a-col>
       </a-row>
     </div>
