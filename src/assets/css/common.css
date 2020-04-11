@@ -236,7 +236,7 @@ ul,li{
 }
 .mobile .banner2{
 	width: 100%;
-	background: url("/static/classDetails-banner2.jpg") center no-repeat;
+	background: url("/static/classDetails-banner.jpg") center no-repeat;
 	background-size: auto 190px;
 	height: 190px;
 	overflow: hidden;
