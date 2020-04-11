@@ -162,6 +162,12 @@ ul,li{
 	height: 380px;
 	overflow: hidden;
 }
+.FireControl-banner{
+	width: 100%;
+	background: url("/static/FireControl-banner.jpg") center no-repeat;
+	height: 380px;
+	overflow: hidden;
+}
 .nav-list{
 	overflow: hidden;
 	margin-bottom: 20px;
@@ -230,7 +236,7 @@ ul,li{
 }
 .mobile .banner2{
 	width: 100%;
-	background: url("/static/classDetails-banner2.jpg") center no-repeat;
+	background: url("/static/classDetails-banner.jpg") center no-repeat;
 	background-size: auto 190px;
 	height: 190px;
 	overflow: hidden;
@@ -260,6 +266,13 @@ ul,li{
 .mobile .company-button{
 	width: 100%;
 	background: url("/static/company-button.jpg") center no-repeat;
+	background-size: auto 190px;
+	height: 190px;
+	overflow: hidden;
+}
+.mobile .FireControl-banner{
+	width: 100%;
+	background: url("/static/FireControl-banner.jpg") center no-repeat;
 	background-size: auto 190px;
 	height: 190px;
 	overflow: hidden;

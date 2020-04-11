@@ -15,7 +15,10 @@
             <div slot="nextArrow" slot-scope="props" class="custom-slick-arrow" style="right: 10px">
                 <a-icon type="right-circle" />
             </div>
-            <div>
+            <div class="FireControl-banner"></div>
+            <div class="FireControl-banner"></div>
+            <div class="FireControl-banner"></div>
+            <!--<div>
                 <img src="/static/banner.jpg" width="100%" alt="">
             </div>
             <div>
@@ -23,7 +26,7 @@
             </div>
             <div>
                 <img src="/static/banner.jpg" width="100%" alt="">
-            </div>
+            </div>-->
         </a-carousel>
 
 
@@ -51,9 +54,9 @@
                 </a-col>
             </a-row>
             <!-- 最新上线 -->
-            <div class="title"><img src="/static/index-title.png" alt=""></div>
+            <div class="title"><img src="/static/index-title2.png" alt=""></div>
             <a-row :gutter="[26,26]">
-                <a-col :xs="24" :sm="12" :md="6"><!--{ xs: 8, sm: 16, md: 24, lg: 32 }-->
+                <a-col :xs="24" :sm="12" :md="6">
                     <ListFont ></ListFont>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="6">
@@ -79,7 +82,7 @@
                 </a-col>
             </a-row>
             <!-- 新闻咨询 -->
-            <div class="title"><img src="/static/index-title.png" alt=""></div>
+            <div class="title"><img src="/static/index-title3.png" alt=""></div>
             <div class="news">
                 <a-row :gutter="[26,26]">
                     <a-col :xs="24" :sm="24" :md="5">
