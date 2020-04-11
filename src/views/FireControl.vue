@@ -13,7 +13,7 @@
 
         <div class="content">
             <!-- 最新上线 -->
-            <div class="title"><img src="/static/index-title.png" width="100%" alt=""></div>
+            <div class="title"><img src="/static/index-title.png" alt=""></div>
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="12" :md="6">
                     <ListFont></ListFont>

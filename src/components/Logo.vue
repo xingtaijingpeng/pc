@@ -3,11 +3,11 @@
     <div class="content">
       <a-row :gutter="[8,0]">
         <a-col :xs="24" :md="9"><span>LOGO</span></a-col>
-        <a-col :xs="24" :md="3"><span>首页</span></a-col>
-        <a-col :xs="24" :md="3"><span>健康管理师</span></a-col>
-        <a-col :xs="24" :md="3"><span>消防工程师</span></a-col>
-        <a-col :xs="24" :md="3"><span>公司介绍</span></a-col>
-        <a-col :xs="24" :md="3">
+        <a-col :xs="24" :md="3" @click="$router.push('/')"><span>首页</span></a-col>
+        <a-col :xs="24" :md="3" @click="$router.push('/healthy')"><span>健康管理师</span></a-col>
+        <a-col :xs="24" :md="3" @click="$router.push('/fireControl')"><span>消防工程师</span></a-col>
+        <a-col :xs="24" :md="3" @click="$router.push('/company')"><span>公司介绍</span></a-col>
+        <a-col :xs="24" :md="3"@click="$router.push('/PersonalClass')">
           <span>登录</span>/
           <span>注册</span>
         </a-col>

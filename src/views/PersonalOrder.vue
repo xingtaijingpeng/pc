@@ -19,8 +19,8 @@
 
                 <a-col :xs="24" :sm="24" :md="18">
                     <ul class="tab-box">
-                        <li class="choose">已支付</li>
-                        <li>未支付</li>
+                        <li class="choose" @click="$router.push('/PersonalOrder')">已支付</li>
+                        <li @click="$router.push('/PersonalOrderUnpaid')" >未支付</li>
                     </ul>
                     <div class="personal">
                         <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">

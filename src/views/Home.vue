@@ -1,6 +1,6 @@
 <template>
     <div>
-        <logo></logo>
+        <logo class="nav"></logo>
 
         <!-- banner -->
         <a-carousel arrows>
@@ -15,9 +15,30 @@
             <div slot="nextArrow" slot-scope="props" class="custom-slick-arrow" style="right: 10px">
                 <a-icon type="right-circle" />
             </div>
-            <div><img src="/static/banner-1.jpg" alt=""></div>
-            <div><img src="/static/banner-1.jpg" alt=""></div>
-            <div><img src="/static/banner-1.jpg" alt=""></div>
+            <div class="banner-box">
+                <div class="content" style="position: relative">
+                    <div class="healthy-banner-font">
+                        <img src="/static/banner-1-font.png" width="100%" alt="">
+                    </div>
+                </div>
+                <img src="/static/banner-1.png" alt="">
+            </div>
+            <div class="banner-box">
+                <div class="content" style="position: relative">
+                    <div class="healthy-banner-font">
+                        <img src="/static/banner-1-font.png" width="100%" alt="">
+                    </div>
+                </div>
+                <img src="/static/banner-1.png" alt="">
+            </div>
+            <div class="banner-box">
+                <div class="content" style="position: relative">
+                    <div class="healthy-banner-font">
+                        <img src="/static/banner-1-font.png" width="100%" alt="">
+                    </div>
+                </div>
+                <img src="/static/banner-1.png" alt="">
+            </div>
         </a-carousel>
 
 
@@ -76,10 +97,10 @@
             <div class="title"><img src="/static/index-title.png" alt=""></div>
             <div class="news">
                 <a-row :gutter="[26,26]">
-                    <a-col :span="5">
+                    <a-col :xs="24" :sm="24" :md="5">
                         <img src="/static/news-1.jpg" width="100%" alt="">
                     </a-col>
-                    <a-col :span="19">
+                    <a-col :xs="24" :sm="24" :md="19">
                         <div class="time">----2020.03.17</div>
                         <h1>北京时代亿信科技股份有限公司</h1>
                         <div class="font">
@@ -89,10 +110,10 @@
                     </a-col>
                 </a-row>
                 <a-row :gutter="[26,26]">
-                    <a-col :span="5">
+                    <a-col :xs="24" :sm="24" :md="5">
                         <img src="/static/news-1.jpg" width="100%" alt="">
                     </a-col>
-                    <a-col :span="19">
+                    <a-col :xs="24" :sm="24" :md="19">
                         <div class="time">----2020.03.17</div>
                         <h1>北京时代亿信科技股份有限公司</h1>
                         <div class="font">
@@ -125,6 +146,9 @@ export default {
 
 
 <style scoped>
+
+
+
     /* banner */
     .slick-slide {
         text-align: center;
@@ -152,7 +176,10 @@ export default {
     .ant-carousel >>> .slick-slide h3 {
         color: #fff;
     }
-
+    .healthy-banner-font{
+        position: absolute;
+        top:0;
+    }
     /* 第一个 */
     .list-first{
         width: 100%;
@@ -178,7 +205,9 @@ export default {
         -webkit-line-clamp: 2;
         overflow: hidden;
     }
-
+    .list-first .font{
+        border-radius: 10px;
+    }
     .list-first .font h1{
         font-size: 22px;
         color:#07111b;

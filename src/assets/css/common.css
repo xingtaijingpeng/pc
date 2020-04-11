@@ -1,32 +1,4 @@
-/*
-.clearfix{*zoom:1;}
-.clearfix:after{
-	content:"";
-	display:block;
-	clear:both;
-}
-.fl{float: left;}
-.fr{float: right;}
-.position-r{ position:relative;}
 
-i{font-style:normal; }
-textarea{outline: none;padding: 0;margin: 0;}
-.show{
-	display: block;
-}
-.hidden{
-	display: none;
-}
-.border-line{
-	border-bottom:1px solid #e6e6e6 ;
-}
-.mt-20{ margin-top: 20px;}
-.m-b{margin-bottom: 50px;}
-.j-center{
-	display:flex;
-	justify-content: center;
-	align-items: center;
-}*/
 /* 公共属性 */
 ul,li{
 	list-style: none;
@@ -136,13 +108,35 @@ ul,li{
 	border: 1px solid #2d78f4!important;
 	color:#2d78f4!important;
 }
+.but1{
+	border: 1px solid #2d78f4;
+	color: #2d78f4;
+	text-align: center;
+	line-height: 36px;
+	height: 36px;
+	width: 100px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.but-hui-back{
+	background: #999;
+	border: none;
+	color:#fff;
+}
 
 
 
 
 
-
-
+/*
+@media(max-width:500px){
+	.nav{ display: none; }
+	.content{  width: 100%;}
+	.banner-box>img{ width:100%;}
+	.healthy-banner-font img{ margin-top: -30px; margin-left: 50px;}
+	.font{ position: static!important; width: 100%!important; padding: 10px 20px;}
+}
+*/
 
 
 

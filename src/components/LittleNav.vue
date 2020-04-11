@@ -7,10 +7,32 @@
                 <p>励志语录励志语录励志语录励</p>
             </div>
             <ul class="list-nav">
-                <li class="choose"><i class="tab-nav tab-nav1"></i><span>我的课程</span></li>
-                <li><i class="tab-nav tab-nav2"></i><span>订单管理</span></li>
+                <a-row>
+                    <a-col :xs="6" :sm="12" :md="24">
+                        <li class="choose" @click="$router.push('/PersonalClass')">
+                            <i class="tab-nav tab-nav1"></i><span>我的课程</span>
+                        </li>
+                    </a-col>
+                    <a-col :xs="6" :sm="12" :md="24" >
+                        <li @click="$router.push('/PersonalOrder')">
+                            <i class="tab-nav tab-nav2"></i><span>订单管理</span>
+                        </li>
+                    </a-col>
+                    <a-col :xs="6" :sm="12" :md="24">
+                        <li @click="$router.push('/PersonalMessage')">
+                            <i class="tab-nav tab-nav3"></i><span>我的消息</span>
+                        </li>
+                    </a-col>
+                    <a-col :xs="6" :sm="12" :md="24">
+                        <li @click="$router.push('/PersonalSetUp')">
+                            <i class="tab-nav tab-nav4"></i><span>账户管理</span>
+                        </li>
+                    </a-col>
+                </a-row>
+
+                <!--<li><i class="tab-nav tab-nav2"></i><span>订单管理</span></li>
                 <li><i class="tab-nav tab-nav3"></i><span>我的消息</span></li>
-                <li><i class="tab-nav tab-nav4"></i><span>账户管理</span></li>
+                <li><i class="tab-nav tab-nav4"></i><span>账户管理</span></li>-->
             </ul>
         </a-col>
       </a-row>
@@ -58,6 +80,7 @@ export default {
     .choose{
         color:#fff!important;
         background: url("/static/choose.png") left center no-repeat;
+        background-size: 100%;
     }
     .choose .tab-nav1{
         background: url("/static/nav1-w.png") center center no-repeat;

@@ -19,8 +19,8 @@
 
                 <a-col :xs="24" :sm="24" :md="18">
                     <ul class="tab-box">
-                        <li class="choose">我的课程</li>
-                        <li>直播目录</li>
+                        <li class="choose" @click="$router.push('/PersonalClass')">我的课程</li>
+                        <li @click="$router.push('/PersonalClassLive')">直播目录</li>
                     </ul>
                     <div class="personal">
                         <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
