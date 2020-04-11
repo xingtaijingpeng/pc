@@ -3,11 +3,6 @@
         <logo></logo>
         <!-- ddd -->
         <div>
-            <div class="content" style="position: relative">
-                <div class="healthy-banner-font">
-                    <img src="/static/Healthy-banner-font.png" width="80%" alt="">
-                </div>
-            </div>
             <img src="/static/Healthy-banner.jpg" width="100%" alt="">
         </div>
 

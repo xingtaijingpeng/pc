@@ -15,29 +15,14 @@
             <div slot="nextArrow" slot-scope="props" class="custom-slick-arrow" style="right: 10px">
                 <a-icon type="right-circle" />
             </div>
-            <div class="banner-box">
-                <div class="content" style="position: relative">
-                    <div class="healthy-banner-font">
-                        <img src="/static/banner-1-font.png" width="100%" alt="">
-                    </div>
-                </div>
-                <img src="/static/banner-1.png" alt="">
+            <div>
+                <img src="/static/banner.jpg" width="100%" alt="">
             </div>
-            <div class="banner-box">
-                <div class="content" style="position: relative">
-                    <div class="healthy-banner-font">
-                        <img src="/static/banner-1-font.png" width="100%" alt="">
-                    </div>
-                </div>
-                <img src="/static/banner-1.png" alt="">
+            <div>
+                <img src="/static/banner.jpg" width="100%" alt="">
             </div>
-            <div class="banner-box">
-                <div class="content" style="position: relative">
-                    <div class="healthy-banner-font">
-                        <img src="/static/banner-1-font.png" width="100%" alt="">
-                    </div>
-                </div>
-                <img src="/static/banner-1.png" alt="">
+            <div>
+                <img src="/static/banner.jpg" width="100%" alt="">
             </div>
         </a-carousel>
 
