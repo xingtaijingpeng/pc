@@ -41,7 +41,7 @@
             </div>
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="12" :md="8">
-                    <ListFont @click="$router.push('/ClassDetails')"></ListFont>
+                    <ListFont></ListFont>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="8">
                     <ListFont></ListFont>

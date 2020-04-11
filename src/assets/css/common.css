@@ -89,7 +89,7 @@ ul,li{
 	margin-bottom: 20px;
 }
 .tab-box li{
-	padding: 20px 50px;
+	padding: 20px 46px;
 	float: left;
 	font-size: 18px;
 	cursor: pointer;
@@ -140,11 +140,25 @@ ul,li{
 	.font{ position: static!important; width: 100%!important; padding: 10px 20px;}
 }
 */
-
-
-
-
-
+.mobile .setUp img{
+	width: 80%;
+}
+.mobile .setUp .but-red{
+	position: static;
+	margin-left: 20px;
+}
+.mobile .personal h1{
+	font-size: 18px;
+}
+.mobile .personal .but-xx{
+	width: 80px;
+	font-size: 14px;
+}
+.mobile .but2{ right: 88px;}
+.mobile .list-nav li{
+	font-size: 18px!important;
+	padding-left: 15px!important;
+}
 
 
 

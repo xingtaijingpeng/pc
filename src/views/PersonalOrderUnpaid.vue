@@ -24,10 +24,10 @@
                     </ul>
                     <div class="personal">
                     <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
-                        <a-col :xs="6" :sm="6" :md="6">
+                        <a-col :xs="24" :sm="6" :md="6">
                             <img src="/static/News-img.png" width="100%" alt="">
                         </a-col>
-                        <a-col :xs="18" :sm="18" :md="18">
+                        <a-col :xs="24" :sm="18" :md="18">
                             <h1>北京时代亿信科技股份</h1>
                             <div class="font">订单号：1567432Dg46arhj545547sdf</div>
                             <div style="margin-top: 20px">
@@ -42,10 +42,10 @@
                 </div>
                 <div class="personal">
                     <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
-                        <a-col :xs="6" :sm="6" :md="6">
+                        <a-col :xs="24" :sm="6" :md="6">
                             <img src="/static/News-img.png" width="100%" alt="">
                         </a-col>
-                        <a-col :xs="18" :sm="18" :md="18">
+                        <a-col :xs="24" :sm="18" :md="18">
                             <h1>北京时代亿信科技股份</h1>
                             <div class="font">订单号：1567432Dg46arhj545547sdf</div>
                             <div style="margin-top: 20px">
