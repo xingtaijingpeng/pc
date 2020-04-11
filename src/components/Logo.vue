@@ -21,7 +21,7 @@ export default {
   name: 'Logo',
     props:{
       choose: {
-          type: Number,
+          type: [Number,String],
           default: 5
       }
     }
