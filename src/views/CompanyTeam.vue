@@ -2,9 +2,7 @@
     <div>
         <logo choose="4"></logo>
         <!-- ddd -->
-        <div>
-            <img src="/static/company-button.jpg" width="100%" alt="">
-        </div>
+        <div class="company-button"></div>
 
         <div class="content">
             <ul class="tab-box">

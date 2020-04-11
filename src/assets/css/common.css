@@ -144,6 +144,24 @@ ul,li{
 	height: 380px;
 	overflow: hidden;
 }
+.FireControl-banner{
+	width: 100%;
+	background: url("/static/FireControl-banner.jpg") center no-repeat;
+	height: 380px;
+	overflow: hidden;
+}
+.Healthy-banner{
+	width: 100%;
+	background: url("/static/Healthy-banner.jpg") center no-repeat;
+	height: 380px;
+	overflow: hidden;
+}
+.company-button{
+	width: 100%;
+	background: url("/static/company-button.jpg") center no-repeat;
+	height: 380px;
+	overflow: hidden;
+}
 .nav-list{
 	overflow: hidden;
 	margin-bottom: 20px;
@@ -219,6 +237,27 @@ ul,li{
 .mobile .Personal-banner{
 	width: 100%;
 	background: url("/static/Personal-banner2.jpg") center no-repeat;
+	background-size: auto 190px;
+	height: 190px;
+	overflow: hidden;
+}
+.mobile .FireControl-banner{
+	width: 100%;
+	background: url("/static/FireControl-banner.jpg") center no-repeat;
+	background-size: auto 190px;
+	height: 190px;
+	overflow: hidden;
+}
+.mobile .Healthy-banner{
+	width: 100%;
+	background: url("/static/Healthy-banner.jpg") center no-repeat;
+	background-size: auto 190px;
+	height: 190px;
+	overflow: hidden;
+}
+.mobile .company-button{
+	width: 100%;
+	background: url("/static/company-button.jpg") center no-repeat;
 	background-size: auto 190px;
 	height: 190px;
 	overflow: hidden;

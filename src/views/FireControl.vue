@@ -2,9 +2,7 @@
     <div>
         <logo choose="3"></logo>
         <!-- ddd -->
-        <div>
-            <img src="/static/FireControl-banner.jpg" width="100%" alt="">
-        </div>
+        <div class="FireControl-banner"></div>
 
         <div class="content">
             <!-- 最新上线 -->
