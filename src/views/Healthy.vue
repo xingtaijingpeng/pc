@@ -5,7 +5,6 @@
         <div>
             <img src="/static/Healthy-banner.jpg" width="100%" alt="">
         </div>
-
         <div class="content">
             <!-- 最新上线 -->
             <div class="title"><img src="/static/Healthy-title.png" alt=""></div>

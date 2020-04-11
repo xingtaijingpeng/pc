@@ -41,7 +41,7 @@
             </div>
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="12" :md="8">
-                    <ListFont></ListFont>
+                    <ListFont @click="$router.push('/ClassDetails')"></ListFont>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="8">
                     <ListFont></ListFont>
@@ -54,7 +54,7 @@
             <div class="title"><img src="/static/index-title.png" alt=""></div>
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="12" :md="6"><!--{ xs: 8, sm: 16, md: 24, lg: 32 }-->
-                    <ListFont></ListFont>
+                    <ListFont ></ListFont>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="6">
                     <ListFont></ListFont>
