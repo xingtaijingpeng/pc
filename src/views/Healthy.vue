@@ -6,8 +6,16 @@
             <img src="/static/Healthy-banner.jpg" width="100%" alt="">
         </div>
         <div class="content">
-            <!-- 最新上线 -->
+
             <div class="title"><img src="/static/Healthy-title.png" alt=""></div>
+            <!-- 最新上线 -->
+            <div class="nav-list">
+                <span>全部</span>
+                <span>健康管理师</span>
+                <span>健康管理师</span>
+                <span>健康管理师</span>
+                <span>健康管理师</span>
+            </div>
             <a-row :gutter="[26,26]">
                 <a-col :xs="24" :sm="12" :md="6">
                     <ListFont></ListFont>

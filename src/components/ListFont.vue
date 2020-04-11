@@ -1,6 +1,6 @@
 <template>
   <div class="font" @click="$router.push('/ClassDetails')">
-    <img src="/static/index-content2-1.png" width="100%" alt="">
+    <img src="/static/index-content1-2.png" width="100%" alt="">
     <h1>特聘请交大、矿大、武警学院等院校资深导师任教</h1>
     <div>￥388.00 <span>原价：999元</span></div>
   </div>
