@@ -1,21 +1,13 @@
 <template>
     <div>
         <logo></logo>
-        <div>
-            <div class="content" style="position: relative;">
-                <div class="personalCassFont">
-                    <div>专为程序员设计的高等数学课</div>
-                    <span>让开发者听得懂，用得上的高等数学应用课程</span>
-                </div>
-            </div>
-            <img src="/static/classDetails-banner.jpg" width="100%" alt="">
-        </div>
+        <div class="banner2"></div>
 
         <div class="content2 pay">
             <a-row>
-                <a-col :xs="6" :sm="6" :md="6" class="red">￥265.00</a-col>
-                <a-col :xs="6" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
-                <a-col :xs="12" :sm="12" :md="12">
+                <a-col :xs="24" :sm="6" :md="6" class="red">￥265.00</a-col>
+                <a-col :xs="24" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
+                <a-col :xs="24" :sm="12" :md="12">
                     <div class="but">购买</div>
                 </a-col>
             </a-row>
@@ -23,16 +15,16 @@
 
         <div class="content videoBox">
             <a-row  type="flex" justify="space-around" align="middle">
-                <a-col :xs="6" :sm="6" :md="6" style="text-align: center">
+                <a-col :xs="24" :sm="6" :md="6" style="text-align: center">
                     <img src="/static/video-img.png" alt="">
                     <h1 style="margin-top: 20px;">观看视频</h1>
                 </a-col>
-                <a-col :xs="6" :sm="12" :md="12" class="hui">
+                <a-col :xs="24" :sm="12" :md="12" class="hui">
                     <h1>课程名称课程名称</h1>
                     <p>课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍</p>
                     <p>2019.11.12</p>
                 </a-col>
-                <a-col :xs="12" :sm="6" :md="6"  style="text-align: center">
+                <a-col :xs="24" :sm="6" :md="6" style="text-align: center">
                     <img src="/static/video-img.png" alt="">
                     <h1 style="margin-top: 20px;">啊士大</h1>
                     <p>是打发打发</p>

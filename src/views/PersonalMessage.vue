@@ -1,15 +1,7 @@
 <template>
     <div>
         <logo></logo>
-        <div>
-            <div class="content" style="position: relative;">
-                <div class="personalCassFont">
-                    <div>个人中心</div>
-                    <span>依托大数据系统、协助企业快速对接办理</span>
-                </div>
-            </div>
-            <img src="/static/Personal-banner.jpg" width="100%" alt="">
-        </div>
+        <div class="content Personal-banner" ></div>
 
         <div class="content">
             <a-row :gutter="[26,26]">

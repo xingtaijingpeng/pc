@@ -10,6 +10,7 @@ ul,li{
 	padding: 0 20px;
 	margin: 0 auto;
 }
+
 /* 标题 */
 .title{
 	width: 100%;
@@ -129,7 +130,20 @@ ul,li{
     width: 100%;
 }
 
-
+.banner2{
+	width: 100%;
+	background: url("/static/classDetails-banner.jpg") center no-repeat;
+	background-size: auto 380px;
+	height: 380px;
+	overflow: hidden;
+}
+.Personal-banner{
+	width: 100%;
+	background: url("/static/Personal-banner.jpg") center no-repeat;
+	background-size: auto 380px;
+	height: 380px;
+	overflow: hidden;
+}
 
 /*
 @media(max-width:500px){
@@ -140,6 +154,12 @@ ul,li{
 	.font{ position: static!important; width: 100%!important; padding: 10px 20px;}
 }
 */
+.mobile .content{
+	max-width:1240px;
+	padding: 0 20px;
+	/*margin: 0 20px;*/
+}
+
 .mobile .setUp img{
 	width: 80%;
 }
@@ -159,10 +179,36 @@ ul,li{
 	font-size: 18px!important;
 	padding-left: 15px!important;
 }
-
-
-
-
+.mobile .pay{
+	position: static!important;
+	left: 0;
+	top:0;
+	margin-left: 0!important;
+}
+.mobile .content2{
+	width: auto!important;
+	padding: 0 10px;
+}
+.mobile .videoBox{
+	margin-top: 20px !important;
+}
+.mobile .banner2{
+	width: 100%;
+	background: url("/static/classDetails-banner2.jpg") center no-repeat;
+	background-size: auto 190px;
+	height: 190px;
+	overflow: hidden;
+}
+.mobile .title img{
+	width: auto;
+}
+.mobile .Personal-banner{
+	width: 100%;
+	background: url("/static/Personal-banner2.jpg") center no-repeat;
+	background-size: auto 190px;
+	height: 190px;
+	overflow: hidden;
+}
 
 
 
