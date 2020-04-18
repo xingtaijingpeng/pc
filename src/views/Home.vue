@@ -15,18 +15,9 @@
             <div slot="nextArrow" slot-scope="props" class="custom-slick-arrow" style="right: 10px">
                 <a-icon type="right-circle" />
             </div>
-            <div class="banner"></div>
-            <div class="banner"></div>
-            <div class="banner"></div>
-            <!--<div>
-                <img src="/static/banner.jpg" width="100%" alt="">
-            </div>
-            <div>
-                <img src="/static/banner.jpg" width="100%" alt="">
-            </div>
-            <div>
-                <img src="/static/banner.jpg" width="100%" alt="">
-            </div>-->
+            <template v-if="base">
+                <div class="banner" v-for="item in base.banner"><img :src="item.url" style="width: 100%" /></div>
+            </template>
         </a-carousel>
 
 
@@ -124,12 +115,28 @@
     import Logo from '@/components/Logo'
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
-export default {
-  name: 'Home',
-  components: {
-        Logo,ListFont,Footer
-  }
-}
+    import { mapState } from 'vuex'
+
+    export default {
+        name: 'Home',
+        data(){
+            return {
+
+            }
+        },
+        computed: {
+            ...mapState({
+                device: state => state.app.DEVICE,
+                base: state => state.app.BASE,
+            }),
+        },
+        components: {
+            Logo,ListFont,Footer
+        },
+        mounted(){
+
+        }
+    }
 </script>
 
 
