@@ -1,14 +1,41 @@
 <template>
   <div class="font" @click="$router.push('/ClassDetails')">
-    <img src="/static/index-content1-2.png" width="100%" alt="">
-    <h1>特聘请交大、矿大、武警学院等院校资深导师任教</h1>
-    <div>￥388.00 <span>原价：999元</span></div>
+    <img :src="cover" width="100%" alt="">
+    <h1>{{title}}</h1>
+    <div>￥{{price}} <span>原价：<span style="text-decoration: line-through;">{{oldprice}}</span>元</span></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Logo',
+    props:{
+      id:{
+          type: Number,
+          required: false,
+          default: 0
+      },
+      cover: {
+          type: String,
+          required: false,
+          default: '/static/index-content1-2.png'
+      },
+      title:{
+          type: String,
+          required: false,
+          default: ''
+      },
+      price:{
+          type: String,
+          required: false,
+          default: '0.00'
+      },
+      oldprice:{
+          type: String,
+          required: false,
+          default: '0.00'
+      },
+    }
 }
 </script>
 

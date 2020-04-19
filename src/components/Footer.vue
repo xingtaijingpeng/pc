@@ -1,14 +1,26 @@
 <template>
-    <div class="footer">
-        北京时代亿信科技股份有限公司<br/>
-        京公网安备 11010802029144号copyright 2015-2016 EETRUST Technology Co,Ltd.<br/>
-        All rights reserved 京ICP备05014415号");
+    <div class="footer" style="white-space: pre-wrap;">
+        <div style="height: 100%; text-align: left; max-width: 1200px; margin: 0 auto;">
+            <template v-if="base">{{base.banquan}}</template>
+        </div>
     </div>
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
-        name: "Logo"
+        name: "Logo",
+        computed: {
+            ...mapState({
+                device: state => state.app.DEVICE,
+                base: state => state.app.BASE,
+            }),
+        },
+        methods: {
+            toBr(str){
+                return str.replace(/[\n\r]/g,"<br>")
+            }
+        }
     }
 </script>
 

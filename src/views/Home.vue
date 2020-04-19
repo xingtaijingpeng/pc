@@ -24,83 +24,52 @@
         <!-- ddd -->
         <div class="content">
             <!-- 精选课程 -->
-            <div class="title"><img src="/static/index-title.png" alt=""></div>
-            <div class="list-first">
-                <img src="/static/index-content1-1.jpg" width="100%" alt="">
-                <div class="font">
-                    <h1>特聘请交大、矿大、武警学院等院校资深导师任教特聘请交大、矿大</h1>
-                    <div class="ccc">特聘请交大、矿大、武警学院等院校资深导师任教特聘请交大、矿大特聘请交大、矿大、武警学院等院校资深导师任教特聘请交大、矿大特聘请交大、矿大、武警学院等院校资深导师任教特聘请交大、矿大</div>
-                    <div style="color: #ed1010">￥388.00 <span>原价：999元</span></div>
-                </div>
-            </div>
+            <div class="title" v-if="hot.length"><img src="/static/index-title.png" alt=""></div>
             <a-row :gutter="[26,26]">
-                <a-col :xs="24" :sm="12" :md="8">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="8">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="8">
-                    <ListFont></ListFont>
-                </a-col>
+                <template v-for="item in hot">
+                    <a-col :xs="24" :sm="12" :md="8">
+                        <list-font
+                            :id="item.id"
+                            :cover="item.cover"
+                            :title="item.title"
+                            :price="item.price"
+                            :oldprice="item.old_price"
+                        ></list-font>
+                    </a-col>
+                </template>
             </a-row>
             <!-- 最新上线 -->
-            <div class="title"><img src="/static/index-title2.png" alt=""></div>
+            <div class="title" v-if="videos.length"><img src="/static/index-title2.png" alt=""></div>
             <a-row :gutter="[26,26]">
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont ></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
+                <template v-for="item in videos">
+                    <a-col :xs="24" :sm="12" :md="6">
+                        <list-font
+                                :id="item.id"
+                                :cover="item.cover"
+                                :title="item.title"
+                                :price="item.price"
+                                :oldprice="item.old_price"
+                        ></list-font>
+                    </a-col>
+                </template>
             </a-row>
             <!-- 新闻咨询 -->
-            <div class="title"><img src="/static/index-title3.png" alt=""></div>
+            <div class="title" v-if="news.length"><img src="/static/index-title3.png" alt=""></div>
             <div class="news">
-                <a-row :gutter="[26,26]">
-                    <a-col :xs="24" :sm="24" :md="5">
-                        <img src="/static/news-1.jpg" width="100%" alt="">
-                    </a-col>
-                    <a-col :xs="24" :sm="24" :md="19">
-                        <div class="time">----2020.03.17</div>
-                        <h1>北京时代亿信科技股份有限公司</h1>
-                        <div class="font">
-                            时代亿信凭借对信息安全行业的深刻理解和丰富的实践经验，应邀多次参与了国家课题研究与信息安全标准制定
-                            工作，研发的密级标志、安全保密邮件等系列产品在国家部委和政府机关均有部署和应用。
-                        </div>
-                    </a-col>
-                </a-row>
-                <a-row :gutter="[26,26]">
-                    <a-col :xs="24" :sm="24" :md="5">
-                        <img src="/static/news-1.jpg" width="100%" alt="">
-                    </a-col>
-                    <a-col :xs="24" :sm="24" :md="19">
-                        <div class="time">----2020.03.17</div>
-                        <h1>北京时代亿信科技股份有限公司</h1>
-                        <div class="font">
-                            时代亿信凭借对信息安全行业的深刻理解和丰富的实践经验，应邀多次参与了国家课题研究与信息安全标准制定
-                            工作，研发的密级标志、安全保密邮件等系列产品在国家部委和政府机关均有部署和应用。
-                        </div>
-                    </a-col>
-                </a-row>
+                <template v-for="item in news">
+                    <a-row :gutter="[26,26]">
+                        <a-col :xs="24" :sm="24" :md="5">
+                            <img :src="item.cover" width="100%" alt="">
+                        </a-col>
+                        <a-col :xs="24" :sm="24" :md="19">
+                            <div class="time">----{{item.created_at}}</div>
+                            <h1>{{item.title}}</h1>
+                            <div class="font">
+                                {{item.description}}
+                            </div>
+                        </a-col>
+                    </a-row>
+                </template>
             </div>
         </div>
 
@@ -121,7 +90,9 @@
         name: 'Home',
         data(){
             return {
-
+                hot: [],
+                videos: [],
+                news: []
             }
         },
         computed: {
@@ -134,6 +105,44 @@
             Logo,ListFont,Footer
         },
         mounted(){
+            //精选视频
+            axios.post('article/index',{
+                guard: 'video',
+                pageSize: 3,
+                hot: 1
+            }).then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.hot = response.data;
+            });
+            //最新视频
+            axios.post('article/index',{
+                guard: 'video',
+                pageSize: 8,
+                hot: 2,
+                order: 'created_at',
+                order_type: 'DESC',
+            }).then((response) => {
+
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.videos = response.data;
+            });
+            //最新文章
+            axios.post('article/index',{
+                guard: 'article',
+                pageSize: 6,
+                order: 'created_at',
+                order_type: 'DESC',
+            }).then((response) => {
+
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.news = response.data;
+            });
 
         }
     }

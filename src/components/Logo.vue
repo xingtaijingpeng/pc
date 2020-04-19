@@ -2,7 +2,7 @@
   <div class="nav-box">
     <div class="content">
       <a-row :gutter="[8,0]">
-        <a-col :xs="4" :md="9" @click="$router.push('/')"><span>LOGO</span></a-col>
+        <a-col :xs="4" :md="9" @click="$router.push('/')"><img v-if="base" :src="base.logo" height="70px" /></a-col>
         <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="choose == 1 ? 'red' : ''">首页</span></a-col>
         <a-col :xs="5" :md="3" @click="$router.push('/healthy')"><span :class="choose == 2 ? 'red' : ''">健康管理师</span></a-col>
         <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
@@ -18,15 +18,23 @@
 </template>
 
 <script>
-export default {
-  name: 'Logo',
-    props:{
-      choose: {
-          type: [Number,String],
-          default: 5
-      }
+    import { mapState } from 'vuex'
+
+    export default {
+        name: 'Logo',
+        props:{
+          choose: {
+              type: [Number,String],
+              default: 5
+          }
+        },
+        computed: {
+            ...mapState({
+                device: state => state.app.DEVICE,
+                base: state => state.app.BASE,
+            }),
+        },
     }
-}
 </script>
 
 <style scoped>

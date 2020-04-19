@@ -12,25 +12,25 @@
             <div>
                 <a-row :gutter="[60,60]">
                     <a-col :xs="24" :sm="12" :md="12">
-                        <a-list itemLayout="horizontal" :dataSource="data" >
+                        <a-list itemLayout="horizontal" :dataSource="data1" >
                             <a-list-item slot="renderItem" slot-scope="item, index" >
                                 <a-list-item-meta
-                                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                                        :description="item.description"
                                 >
-                                    <a slot="title" href="https://www.antdv.com/">{{ item.title }}</a>
-                                    <a-avatar slot="avatar" src="/static/news-1.jpg"/>
+                                    <a slot="title">{{ item.title }}</a>
+                                    <a-avatar slot="avatar" :src="item.cover"/>
                                 </a-list-item-meta>
                             </a-list-item>
                         </a-list>
                     </a-col>
                     <a-col  :xs="24" :sm="12" :md="12">
-                        <a-list itemLayout="horizontal" :dataSource="data" >
+                        <a-list itemLayout="horizontal" :dataSource="data2" >
                             <a-list-item slot="renderItem" slot-scope="item, index" >
                                 <a-list-item-meta
-                                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                                        :description="item.description"
                                 >
-                                    <a slot="title" href="https://www.antdv.com/">{{ item.title }}</a>
-                                    <a-avatar slot="avatar" src="/static/news-1.jpg"/>
+                                    <a slot="title">{{ item.title }}</a>
+                                    <a-avatar slot="avatar" :src="item.cover"/>
                                 </a-list-item-meta>
                             </a-list-item>
                         </a-list>
@@ -50,31 +50,34 @@
     import Logo from '@/components/Logo'
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
-
-const data = [
-    {
-        title: 'Ant Design Title 1',
-    },
-    {
-        title: 'Ant Design Title 2',
-    },
-    {
-        title: 'Ant Design Title 3',
-    },
-    {
-        title: 'Ant Design Title 4',
-    },
-];
 export default {
-  name: 'Home',
+    name: 'Home',
     data() {
         return {
-            data,
+            data1: [],
+            data2: []
         };
     },
-  components: {
+    components: {
         Logo,ListFont,Footer
-  }
+    },
+    mounted(){
+        axios.post('article/index',{
+            guard: 'teacher',
+            pageSize: 20,
+        }).then((response) => {
+            if(!response.status){
+                return this.$message.error(response.message);
+            }
+            for(var i in response.data){
+                if(i%2 == 0){
+                    this.data1.push(response.data[i]);
+                }else{
+                    this.data2.push(response.data[i]);
+                }
+            }
+        });
+    }
 }
 </script>
 

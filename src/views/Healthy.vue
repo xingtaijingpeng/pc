@@ -8,34 +8,10 @@
             <div class="title"><img src="/static/Healthy-title.png" alt=""></div>
             <!-- 最新上线 -->
             <div class="nav-list">
-                <span>全部</span>
-                <span>健康管理师</span>
-                <span>健康管理师</span>
-                <span>健康管理师</span>
-                <span>健康管理师</span>
+                <span class="choose">全部</span>
+                <span v-for="item in lists" :key="item.id">{{item.name}}</span>
             </div>
             <a-row :gutter="[26,26]">
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
                 <a-col :xs="24" :sm="12" :md="6">
                     <ListFont></ListFont>
                 </a-col>
@@ -53,10 +29,44 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
 export default {
-  name: 'Home',
-  components: {
+    name: 'Home',
+    data(){
+        return {
+            lists: [],
+            videos: [],
+        };
+    },
+    components: {
         Logo,ListFont,Footer
-  }
+    },
+    mounted(){
+        axios.post('category/index',{
+            guard: 'video',
+            pageSize: 30,
+            merge: 1,
+            parent_id: 5
+        }).then((response) => {
+            if(!response.status){
+                return this.$message.error(response.message);
+            }
+            this.lists = response.data;
+        });
+        this.getlist();
+    },
+    methods: {
+        getlist(categoryid = 0){
+            axios.post('article/index',{
+                guard: 'video',
+                pageSize: 30,
+            }).then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.videos = response.data;
+            });
+        }
+    }
+
 }
 </script>
 
@@ -67,6 +77,10 @@ export default {
         top:0;
     }
 
+    .choose{
+        border: 1px solid #f31111;
+        color: #f31111;
+    }
 
 
 </style>
