@@ -1,7 +1,9 @@
 <template>
     <div>
         <logo></logo>
-        <div class="banner2"></div>
+        <div class="banner2">
+            <div class="banner2-font">专业的学习体系<br/>资深的在线讲师</div>
+        </div>
 
         <div class="content2 pay">
             <a-row>
@@ -108,9 +110,15 @@
         width: 800px;
         margin: 0 auto;
     }
+    .banner2-font{
+        font-size:36px;
+        color:#fff;
+        text-align: center;
+        margin-top: 100px;
+    }
     .pay{
         position: absolute;
-        top: 350px;
+        top: 423px;
         left: 50%;
         margin-left: -400px;
         padding:30px 30px;
