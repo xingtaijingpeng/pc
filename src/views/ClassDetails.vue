@@ -167,7 +167,6 @@
     
     /* 视频 */
     .video-box{
-        display: none;
         position:fixed;
         top:0;
         bottom:0;
@@ -179,6 +178,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        display: none;
     }
     .video{
         width: 80%;
