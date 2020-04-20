@@ -12,9 +12,17 @@
                 <span v-for="item in lists" :key="item.id">{{item.name}}</span>
             </div>
             <a-row :gutter="[26,26]">
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
+                <template v-for="item in videos">
+                    <a-col :xs="24" :sm="12" :md="6">
+                        <list-font
+                                :id="item.id"
+                                :cover="item.cover"
+                                :title="item.title"
+                                :price="item.price"
+                                :oldprice="item.old_price"
+                        ></list-font>
+                    </a-col>
+                </template>
             </a-row>
         </div>
         <Footer></Footer>
