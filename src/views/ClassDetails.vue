@@ -1,6 +1,9 @@
 <template>
     <div>
         <logo></logo>
+        <div class="video-box">
+            <video class="video" src=""></video>
+        </div>
         <div class="banner2">
             <div class="banner2-font">专业的学习体系<br/>资深的在线讲师</div>
         </div>
@@ -160,5 +163,25 @@
         padding: 20px 50px;
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* 视频 */
+    .video-box{
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        height: 100vh;
+        background:rgba(0,0,0,0.6);
+        z-index:999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .video{
+        width: 80%;
+        height: 300px;
+        background:#fff;
     }
 </style>
