@@ -264,7 +264,13 @@
         overflow: hidden;
     }
     .news .font{
+        max-height:65px;
         font-size: 20px;
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
     }
 
 
