@@ -8,8 +8,10 @@
             <div class="title"><img src="/static/Healthy-title.png" alt=""></div>
             <!-- 最新上线 -->
             <div class="nav-list">
-                <span class="choose">全部</span>
-                <span v-for="item in lists" :key="item.id">{{item.name}}</span>
+                <span :class="Gindex == 0 ? 'choose' : ''" @click="categoryByList(0)">全部</span>
+				<template v-for="item in lists">
+					<span :class="Gindex == item.id ? 'choose' : ''" :key="item.id" @click="categoryByList(item.id)">{{item.name}}</span>
+				</template>
             </div>
             <a-row :gutter="[26,26]">
                 <template v-for="item in videos">
@@ -42,6 +44,7 @@ export default {
         return {
             lists: [],
             videos: [],
+			Gindex: 0,
         };
     },
     components: {
@@ -58,14 +61,23 @@ export default {
                 return this.$message.error(response.message);
             }
             this.lists = response.data;
+            this.getlist(this.lists.map(function (item) {
+                return item.id;
+            }));
         });
-        this.getlist();
     },
     methods: {
-        getlist(categoryid = 0){
+        categoryByList(id){
+            this.Gindex = id;
+            this.getlist(id ? [id] : this.lists.map(function (item) {
+                return item.id;
+            }));
+		},
+        getlist(categoryids = []){
             axios.post('article/index',{
                 guard: 'video',
                 pageSize: 30,
+				categorys: categoryids
             }).then((response) => {
                 if(!response.status){
                     return this.$message.error(response.message);
