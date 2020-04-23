@@ -7,38 +7,24 @@
         <div class="content">
             <!-- 最新上线 -->
             <div class="title"><img src="/static/fire-title.png" alt=""></div>
-            <div class="nav-list">
-                <span>全部</span>
-                <span>消防工程师</span>
-                <span>消防工程师</span>
-                <span>消防工程师</span>
-                <span>消防工程师</span>
-            </div>
+			<div class="nav-list">
+				<span :class="Gindex == 0 ? 'choose' : ''" @click="categoryByList(0)">全部</span>
+				<template v-for="item in lists">
+					<span :class="Gindex == item.id ? 'choose' : ''" :key="item.id" @click="categoryByList(item.id)">{{item.name}}</span>
+				</template>
+			</div>
             <a-row :gutter="[26,26]">
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
-                <a-col :xs="24" :sm="12" :md="6">
-                    <ListFont></ListFont>
-                </a-col>
+				<template v-for="item in videos">
+					<a-col :xs="24" :sm="12" :md="6">
+						<list-font
+								:id="item.id"
+								:cover="item.cover"
+								:title="item.title"
+								:price="item.price"
+								:oldprice="item.old_price"
+						></list-font>
+					</a-col>
+				</template>
             </a-row>
         </div>
         <Footer></Footer>
@@ -53,10 +39,53 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
 export default {
-  name: 'Home',
-  components: {
-        Logo,ListFont,Footer
-  }
+	name: 'Home',
+	data(){
+		return {
+			lists: [],
+			videos: [],
+			Gindex: 0,
+		};
+	},
+	components: {
+		Logo,ListFont,Footer
+	},
+    mounted(){
+        axios.post('category/index',{
+            guard: 'video',
+            pageSize: 30,
+            merge: 1,
+            parent_id: 7
+        }).then((response) => {
+            if(!response.status){
+                return this.$message.error(response.message);
+            }
+            this.lists = response.data;
+            this.getlist(this.lists.map(function (item) {
+                return item.id;
+            }));
+        });
+    },
+    methods: {
+        categoryByList(id){
+            this.Gindex = id;
+            this.getlist(id ? [id] : this.lists.map(function (item) {
+                return item.id;
+            }));
+        },
+        getlist(categoryids = []){
+            axios.post('article/index',{
+                guard: 'video',
+                pageSize: 30,
+                categorys: categoryids
+            }).then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.videos = response.data;
+            });
+        }
+    }
 }
 </script>
 
@@ -69,4 +98,8 @@ export default {
 
 
 
+	.choose{
+		border: 1px solid #f31111;
+		color: #f31111;
+	}
 </style>

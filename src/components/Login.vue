@@ -14,13 +14,13 @@
         <!-- <span class="login-wang">忘记密码</span> -->
         <span class="login-zhu">去登录</span>
     </div>
-        
+
     <div class="register">
         <h1>注册</h1>
         <div class="login-inp">
             <div><input type="text"  placeholder="请输入您的手机号"></div>
             <div class="p-r">
-                
+
                 <input type="text" placeholder="请输入验证码">
                 <span class="login-yzm">获取验证码</span>
             </div>
@@ -62,7 +62,7 @@
 .login h1,.register h1{
     font-size: 24px;
     text-align: center;
-    
+
 }
 .login-inp div{
     background:rgba(236,223,254,0.5);
@@ -122,7 +122,7 @@
 
 /* 注册 */
 .register{
-    
+
 }
 
 
