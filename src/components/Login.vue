@@ -50,7 +50,6 @@
     align-items: center;
     background: rgba(0,0,0,0.6);
     z-index: 99999;
-    display: none;
 }
 .login,.register{
     width:375px;
@@ -58,7 +57,9 @@
     background: #fff;
     border-radius:10px;
 }
-.register{display: none;}
+.register{
+    display: none;
+}
 .login h1,.register h1{
     font-size: 24px;
     text-align: center;
