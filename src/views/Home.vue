@@ -2,7 +2,7 @@
     <div>
         <login></login>
         <logo class="nav" choose="1"></logo>
-        
+
         <!-- banner -->
         <a-carousel arrows>
             <div
@@ -60,7 +60,7 @@
                 <template v-for="item in news">
                     <a-row :gutter="[26,26]">
                         <a-col :xs="24" :sm="24" :md="5">
-                            <img :src="item.cover" width="100%" alt="">
+                            <img :src="item.cover" width="100%" alt="" @click="todetail(item.id)">
                         </a-col>
                         <a-col :xs="24" :sm="24" :md="19">
                             <div class="time">----{{item.created_at}}</div>
@@ -146,6 +146,11 @@
                 this.news = response.data;
             });
 
+        },
+        methods: {
+            todetail: function (id) {
+                this.$router.push('/newsDetails/'+id)
+            }
         }
     }
 </script>

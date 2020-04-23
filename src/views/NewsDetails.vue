@@ -16,14 +16,11 @@
         <div class="content2">
             <div class="newFont">
                 <div>
-                    <h1>青海省四项措施助力直销企业复工复业</h1>
-                    <span>发布时间：2020.11.12</span>
+                    <h1>{{detail.title}}</h1>
+                    <span>发布时间：{{detail.created_at}}</span>
                 </div>
 
-                <div class="newFont-con">
-                    <p>新冠肺炎疫情发生以来，青海省市场监管局认真贯彻党中央、国务院和省委、省政府决策部署，严格落实属地监管责任，采取有四项项措施助力在青直销企业复工复业。截止目前，共有12家直销企业青海分公司、43家经销商已复工复业。该省本土直销企业金诃藏药股份有限公司已于2月3日复产。</p>
-                    <img src="/static/News-img.png" alt="">
-                    <p>新冠肺炎疫情发生以来，青海省市场监管局认真贯彻党中央、国务院和省委、省政府决策部署，严格落实属地监管责任，采取有四项项措施助力在青直销企业复工复业。截止目前，共有12家直销企业青海分公司、43家经销商已复工复业。该省本土直销企业金诃藏药股份有限公司已于2月3日复产。</p>
+                <div class="newFont-con" v-html="detail.content">
                 </div>
             </div>
         </div>
@@ -40,17 +37,32 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
 export default {
-  name: 'Home',
-  components: {
+    name: 'Home',
+    data(){
+        return {
+            id: 0,
+            detail: []
+        }
+    },
+    components: {
         Logo,ListFont,Footer
-  }
+    },
+    mounted(){
+        this.id = this.$route.params.id;
+        axios.post('article/detail/'+this.id).then((response) => {
+            if(!response.status){
+                return this.$message.error(response.message);
+            }
+            this.detail = response.data;
+        });
+    }
 }
 </script>
 
 
 <style scoped>
     .content2{
-        width: 800px;
+        max-width: 1200px;
         margin: 0 auto;
     }
     .newBannerFont{
