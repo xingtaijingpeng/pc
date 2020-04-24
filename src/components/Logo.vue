@@ -7,7 +7,7 @@
         <a-col :xs="5" :md="3" @click="$router.push('/healthy')"><span :class="choose == 2 ? 'red' : ''">健康管理师</span></a-col>
         <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
         <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
-        <a-col :xs="5" :md="3" @click="$router.push('/PersonalClass')" :class="choose == 5 ? 'red' : ''">
+        <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''">
           <!--<span>登录</span>/
           <span>注册</span>-->
           <span>个人中心</span>
@@ -36,7 +36,19 @@
         },
         mounted(){
 
-        }
+        },
+		methods: {
+            tocenter(){
+
+                let _this = this;
+                axios.post('userinfo').then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    _this.$router.push('/PersonalClass');
+                });
+            }
+		}
     }
 </script>
 

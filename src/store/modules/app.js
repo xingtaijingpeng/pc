@@ -3,7 +3,8 @@ const app = {
     namespaced: true,
     state: {
         DEVICE: null,
-        BASE: null
+        BASE: null,
+        LOGIN: false
     },
     mutations: {
         setDevice(state,type){
@@ -11,7 +12,10 @@ const app = {
         },
         setBase(state,data){
             state.BASE = data;
-        }
+        },
+        setLogin(state,data){
+            state.LOGIN = data;
+        },
     },
     actions: {
 

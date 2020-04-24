@@ -1,42 +1,114 @@
 <template>
-  <div class="login-box">
-    <div class="login">
+  <div class="login-box" v-if="loginshow">
+	  <div style="width: 100%; height: 100%; position: absolute; z-index: 2;" @click="loginshow=false"></div>
+    <div class="login" v-if="type=='login'">
         <h1>登录</h1>
         <div class="login-inp">
-            <div><input type="text"  placeholder="请输入您的手机号"></div>
-            <div class="p-r">
-                <input type="text" placeholder="请输入验证码">
-                <span class="login-yzm">获取验证码</span>
-            </div>
-            <div><input type="text" placeholder="请输入您的密码"></div>
+            <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
+            <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
         </div>
-        <div class="login-but">登录</div>
-        <!-- <span class="login-wang">忘记密码</span> -->
-        <span class="login-zhu">去登录</span>
+        <div class="login-but" @click="login">登录</div>
+         <span class="login-wang" @click="type='forget'">忘记密码</span>
+        <span class="login-zhu" @click="type='register'">去注册</span>
     </div>
 
-    <div class="register">
+    <div class="register" v-if="type=='register'">
         <h1>注册</h1>
         <div class="login-inp">
-            <div><input type="text"  placeholder="请输入您的手机号"></div>
+            <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
             <div class="p-r">
 
-                <input type="text" placeholder="请输入验证码">
-                <span class="login-yzm">获取验证码</span>
+                <input type="text" v-model="code" placeholder="请输入验证码">
+                <span class="login-yzm" @click="sms">{{tips}}</span>
             </div>
-            <div><input type="text" placeholder="请输入您的密码"></div>
-            <div><input type="text" placeholder="请再次输入您的密码"></div>
+            <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
+            <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
         </div>
-        <div class="login-but">注册</div>
-    </div>
+        <div class="login-but" @click="register">注册</div>
+		<span class="login-zhu" @click="type='login'">去登录</span>
+	</div>
+
+    <div class="register" v-if="type=='forget'">
+        <h1>忘记密码</h1>
+        <div class="login-inp">
+            <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
+            <div class="p-r">
+
+                <input type="text" v-model="code" placeholder="请输入验证码">
+                <span class="login-yzm">{{tips}}</span>
+            </div>
+            <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
+            <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
+        </div>
+        <div class="login-but">找回密码</div>
+		<span class="login-zhu" @click="type='login'">去登录</span>
+	</div>
   </div>
 </template>
 
 <script>
-    import { mapState } from 'vuex'
 
     export default {
         name: 'Login',
+		data(){
+            return {
+                type: 'login',
+                code: '',
+                password: '',
+                password_confirmation: '',
+                mobile: '',
+				tips: '获取验证码',
+			}
+		},
+		props:{
+            loginshow: false
+		},
+		methods: {
+            login(){
+                axios.post('token',{
+                    mobile:this.mobile,
+                    password:this.password,
+                }).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    sessionStorage.setItem('access_token',response.data.token)
+                    window.location.reload();
+                });
+			},
+            sms(){
+                axios.post('sms',{
+                    mobile:this.mobile
+				}).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    this.tips = 60;
+                    let timer = setInterval(()=>{
+                        this.tips--
+						if(this.tips<=0){
+						    clearInterval(timer);
+                            this.tips = '获取验证码'
+                        }
+					},1000)
+
+                });
+			},
+            register(){
+                axios.post('register',{
+                    mobile:this.mobile,
+                    password:this.password,
+                    password_confirmation:this.password_confirmation,
+					code:this.code
+                }).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    sessionStorage.setItem('access_token',response.data.token)
+                    window.location.reload();
+                });
+			}
+		}
     }
 </script>
 
@@ -49,17 +121,17 @@
     justify-content: center;
     align-items: center;
     background: rgba(0,0,0,0.6);
-    z-index: 99999;
+    z-index: 1;
 }
 .login,.register{
     width:375px;
     padding:30px 20px;
     background: #fff;
     border-radius:10px;
+	position: relative;
+	z-index: 999999;
 }
-.register{
-    display: none;
-}
+
 .login h1,.register h1{
     font-size: 24px;
     text-align: center;

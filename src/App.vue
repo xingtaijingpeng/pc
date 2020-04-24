@@ -1,6 +1,7 @@
 <template>
     <div id="app" :class="[device]">
-        <a-spin :spinning="loading ? true : false" size="large" :style="{background:'#000'}">
+		<login :loginshow="$store.state.app.LOGIN"></login>
+		<a-spin :spinning="loading ? true : false" size="large" :style="{background:'#000'}">
             <a-icon slot="indicator" type="loading" spin />
             <router-view :style="{background:'#fff'}" />
         </a-spin>
@@ -9,6 +10,7 @@
 <script>
 
     import { deviceEnquire } from '@/plugins/device'
+    import Login from '@/components/Login'
 
     export default {
         name: 'app',
@@ -17,6 +19,9 @@
                 device: ''
             }
         },
+		components: {
+            Login
+		},
         mounted(){
             deviceEnquire(deviceType => {
                 this.device = deviceType;

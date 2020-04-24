@@ -90,7 +90,7 @@ function init(_axios,loading = false){
 
 let _login = function () {
     sessionStorage.clear();
-    router.push('/user/login');
+    store.commit('app/setLogin',true);
 };
 
 Plugin.install = function(Vue, options) {

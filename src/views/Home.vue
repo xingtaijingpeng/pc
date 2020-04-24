@@ -1,8 +1,6 @@
 <template>
     <div>
-        <login></login>
         <logo class="nav" choose="1"></logo>
-
         <!-- banner -->
         <a-carousel arrows>
             <div
@@ -85,7 +83,6 @@
     import Logo from '@/components/Logo'
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
-    import Login from '@/components/Login'
     import { mapState } from 'vuex'
 
     export default {
@@ -104,7 +101,7 @@
             }),
         },
         components: {
-            Logo,ListFont,Footer,Login
+            Logo,ListFont,Footer
         },
         mounted(){
             //精选视频
