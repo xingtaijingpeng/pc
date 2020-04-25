@@ -1,6 +1,8 @@
 <template>
   <div class="font" @click="$router.push('/ClassDetails')">
-    <img :src="cover" width="100%" alt="">
+    <div class="title-img">
+      <img :src="cover" width="100%" alt="">
+    </div>
     <h1>{{title}}</h1>
     <div>￥{{price}} <span>原价：<span style="text-decoration: line-through;">{{oldprice}}</span>元</span></div>
   </div>
