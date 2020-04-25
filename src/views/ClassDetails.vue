@@ -1,8 +1,12 @@
 <template>
     <div>
         <logo></logo>
-        <div class="video-box">
-            <video class="video" src=""></video>
+        <div class="video-box" v-if="videoshow">
+            <div @click="videoshow=!videoshow" style="position: absolute; width: 100%; height: 100%; z-index: 8;"></div>
+            <video class="video" controls autoplay>
+                <source :src="detail.url" type="video/mp4">
+                您的浏览器不支持 video 标签。
+            </video>
         </div>
         <div class="banner2">
             <div class="banner2-font">专业的学习体系<br/>资深的在线讲师</div>
@@ -20,7 +24,7 @@
 
         <div class="content videoBox">
             <a-row  type="flex" justify="space-around" align="middle">
-                <a-col :xs="24" :sm="6" :md="6" style="text-align: center">
+                <a-col :xs="24" :sm="6" :md="6" style="text-align: center" @click="videoshow=!videoshow">
                     <img src="/static/video-img.png" alt="">
                     <h1 style="margin-top: 20px;">观看视频</h1>
                 </a-col>
@@ -41,18 +45,16 @@
 
             <a-list
                     class="comment-list"
-                    :header="`${data.length} replies`"
+                    :header="`${data.length} 评论`"
                     itemLayout="horizontal"
                     :dataSource="data"
+                    :locale="{emptyText: '暂无评论'}"
             >
                 <a-list-item slot="renderItem" slot-scope="item, index">
-                    <a-comment :author="item.author" :avatar="item.avatar">
-                        <template slot="actions">
-                            <span v-for="action in item.actions">{{ action }}</span>
-                        </template>
-                        <p slot="content">{{ item.content }}</p>
-                        <a-tooltip slot="datetime" :title="item.datetime.format('YYYY-MM-DD HH:mm:ss')">
-                            <span>{{ item.datetime.fromNow() }}</span>
+                    <a-comment author="" :avatar="item.cover">
+                        <p slot="content">{{ item.contents }}</p>
+                        <a-tooltip slot="datetime" title="11111">
+                            <span>{{item.created_at}}</span>
                         </a-tooltip>
                     </a-comment>
                 </a-list-item>
@@ -81,25 +83,9 @@
         data() {
             return {
                 detail: [],
-                data: [
-                    {
-                        actions: ['Reply to'],
-                        author: 'Han Solo',
-                        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                        content:
-                            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-                        datetime: moment().subtract(1, 'days'),
-                    },
-                    {
-                        actions: ['Reply to'],
-                        author: 'Han Solo',
-                        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                        content:
-                            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-                        datetime: moment().subtract(2, 'days'),
-                    },
-                ],
+                data: [],
                 moment,
+                videoshow:false
             };
         },
         mounted(){
@@ -111,6 +97,17 @@
                     }
                     this.detail = response.data;
                 });
+
+                //获取评论
+                axios.post('comment/'+_this.$route.params.id,{
+                    pageSize: 9999
+                }).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    this.data = response.data;
+                });
+
             }
         }
     };
@@ -140,7 +137,7 @@
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-        z-index: 99999;
+        z-index: 5;
     }
     .red{
         font-size: 30px;
@@ -186,15 +183,14 @@
         right:0;
         height: 100vh;
         background:rgba(0,0,0,0.6);
-        z-index:999999;
+        z-index:9;
         display: flex;
         justify-content: center;
         align-items: center;
-        display: none;
     }
     .video{
         width: 80%;
-        height: 300px;
-        background:#fff;
+        position: relative;
+        z-index: 10;
     }
 </style>
