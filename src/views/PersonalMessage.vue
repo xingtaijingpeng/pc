@@ -17,12 +17,11 @@
                         <a-list itemLayout="horizontal" :dataSource="data">
                             <a-list-item slot="renderItem" slot-scope="item, index">
                                 <a-list-item-meta
-                                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                                        :description="item.content"
                                 >
                                     <a slot="title" href="https://www.antdv.com/">{{ item.title }}</a>
-                                    <a-avatar slot="avatar" src=""/>
                                 </a-list-item-meta>
-                                <div>2019-10-11</div>
+                                <div>{{item.created_at}}</div>
                             </a-list-item>
                         </a-list>
                     </div>
@@ -43,33 +42,31 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
-const data = [
-    {
-        title: 'Ant Design Title 1',
-    },
-    {
-        title: 'Ant Design Title 2',
-    },
-    {
-        title: 'Ant Design Title 3',
-    },
-    {
-        title: 'Ant Design Title 4',
-    },
-];
 
-/* 复制 */
-
-export default {
-    components: {
-        Logo,ListFont,Footer,LittleNav
-    },
-    data() {
-        return {
-            data,
-        };
-    },
-};
+    export default {
+        data(){
+            return {
+                data: []
+            }
+        },
+        components: {
+            Logo,ListFont,Footer,LittleNav
+        },
+        mounted(){
+            this.list()
+        },
+        methods: {
+            list(){
+                let _this = this;
+                axios.post('user/message').then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+                    _this.data = response.data
+                });
+            }
+        }
+    };
 
 
 
