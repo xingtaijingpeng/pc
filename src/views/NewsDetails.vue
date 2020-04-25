@@ -5,8 +5,8 @@
             <div class="content" style="position: relative;">
                 <div class="newBannerFont">
                     <!--<img src="/static/Healthy-banner-font.png" width="80%" alt="">-->
-                    <div>新闻咨询</div>
-                    <span>新闻咨询，了解行业动态</span>
+                    <!--<div>新闻咨询</div>
+                    <span>新闻咨询，了解行业动态</span>-->
                 </div>
             </div>
             <img src="/static/News-banner.png" width="100%" alt="">
