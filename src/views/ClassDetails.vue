@@ -10,8 +10,8 @@
 
         <div class="content2 pay">
             <a-row>
-                <a-col :xs="24" :sm="6" :md="6" class="red">￥265.00</a-col>
-                <a-col :xs="24" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
+                <a-col :xs="24" :sm="6" :md="6" class="red">{{detail.price}}</a-col>
+                <a-col :xs="24" :sm="6" :md="6" class="hui" style="text-decoration: line-through;">原价￥{{detail.old_price}}</a-col>
                 <a-col :xs="24" :sm="12" :md="12">
                     <div class="but">购买</div>
                 </a-col>
@@ -25,14 +25,14 @@
                     <h1 style="margin-top: 20px;">观看视频</h1>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="12" class="hui">
-                    <h1>课程名称课程名称</h1>
-                    <p class="font">课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍</p>
-                    <p>2019.11.12</p>
+                    <h1>{{detail.title}}</h1>
+                    <p class="font">{{detail.description}}</p>
+                    <p>{{detail.created_at}}</p>
                 </a-col>
                 <a-col :xs="24" :sm="6" :md="6" style="text-align: center">
-                    <img src="/static/head.png"  width="60%" alt="">
-                    <h1 style="margin-top: 20px;">啊士大</h1>
-                    <p>是打发打发</p>
+                    <img :src="detail.teacher.cover"  width="60%" alt="">
+                    <h1 style="margin-top: 20px;">{{detail.teacher.title}}</h1>
+                    <p>{{detail.teacher.description}}</p>
                 </a-col>
             </a-row>
         </div>
@@ -80,6 +80,7 @@
         },
         data() {
             return {
+                detail: [],
                 data: [
                     {
                         actions: ['Reply to'],
@@ -108,6 +109,7 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
+                    this.detail = response.data;
                 });
             }
         }
