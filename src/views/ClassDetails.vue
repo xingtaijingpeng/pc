@@ -10,9 +10,9 @@
 
         <div class="content2 pay">
             <a-row>
-                <a-col :xs="9" :sm="6" :md="6" class="red">￥265.00</a-col>
-                <a-col :xs="8" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
-                <a-col :xs="7" :sm="12" :md="12">
+                <a-col :xs="24" :sm="6" :md="6" class="red">￥265.00</a-col>
+                <a-col :xs="24" :sm="6" :md="6" class="hui">原价￥299.00</a-col>
+                <a-col :xs="24" :sm="12" :md="12">
                     <div class="but">购买</div>
                 </a-col>
             </a-row>
@@ -26,7 +26,7 @@
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="12" class="hui">
                     <h1>课程名称课程名称</h1>
-                    <p>课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍</p>
+                    <p class="font">课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍 课程介绍课程介绍课程介绍课程介绍</p>
                     <p>2019.11.12</p>
                 </a-col>
                 <a-col :xs="24" :sm="6" :md="6" style="text-align: center">

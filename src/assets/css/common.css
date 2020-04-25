@@ -128,9 +128,7 @@ ul,li{
 	color:#fff;
 }
 
-.mobile .title img{
-    width: 80%;
-}
+
 
 .banner2{
 	width: 100%;
@@ -298,5 +296,50 @@ ul,li{
 	align-items: center;
 	justify-items: center;
 }
+.newFont-con{
+	width: 75%;
+	margin: 0 auto;
+	text-align: left;
+}
+.mobile .banner2-font{
+	margin-top: 50px!important;
+	font-size:26px!important;
+}
+.mobile .hui{
+	margin-top:0;
+}
+.mobile .videoBox img{
+	width: 100px;
+}
+.mobile .videoBox h1{
+	font-size: 24px;
+}
+.mobile .videoBox .font{
+	font-size: 14px;
+}
+.mobile .footer{
+	padding: 60px 15px;
+}
+.mobile .headImg-l{
+	width: 50px;
+	height: 50px;
+}
+.mobile .title img{
+	width: 100%!important;
+}
+.mobile .head>span{
+	margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
