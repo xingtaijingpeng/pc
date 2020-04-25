@@ -1,5 +1,5 @@
 <template>
-  <div class="font" @click="$router.push('/ClassDetails')">
+  <div class="font" @click="$router.push('/ClassDetails/'+id)">
     <div class="title-img">
       <img :src="cover" width="100%" alt="">
     </div>

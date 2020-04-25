@@ -76,8 +76,8 @@
     import moment from 'moment';
     export default {
         components: {
-        Logo,ListFont,Footer,LittleNav
-    },
+            Logo,ListFont,Footer,LittleNav
+        },
         data() {
             return {
                 data: [
@@ -101,6 +101,16 @@
                 moment,
             };
         },
+        mounted(){
+            let _this = this;
+            if(_this.$route.params.id){
+                axios.post('article/detail/'+_this.$route.params.id,{}).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                });
+            }
+        }
     };
 </script>
 
@@ -164,7 +174,7 @@
         border-radius: 10px;
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
     }
-    
+
     /* 视频 */
     .video-box{
         position:fixed;

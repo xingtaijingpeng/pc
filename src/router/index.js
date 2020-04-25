@@ -65,7 +65,7 @@ const routes = [
         component: () => import('../views/PersonalClassLive.vue')
     },
     {
-        path: '/classDetails',
+        path: '/classDetails/:id',
         name: 'ClassDetails',
         component: () => import('../views/ClassDetails.vue')
     }
