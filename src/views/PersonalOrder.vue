@@ -31,6 +31,7 @@
                             </a-col>
                         </a-row>
                     </div>
+                    <a-empty v-if="!lists.length" :image="simpleImage" style="margin-top: 150px;" description="暂无数据" />
 
 
                 </a-col>
@@ -49,9 +50,13 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
+import { Empty } from 'ant-design-vue';
 
     export default {
         name: 'Home',
+        beforeCreate() {
+            this.simpleImage = Empty.PRESENTED_IMAGE_SIMPLE;
+        },
         data(){
             return {
                 lists: []
