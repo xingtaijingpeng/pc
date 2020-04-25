@@ -24,6 +24,7 @@
 		},
         mounted(){
             deviceEnquire(deviceType => {
+                this.$store.commit('app/setDevice',deviceType);
                 this.device = deviceType;
             })
 
