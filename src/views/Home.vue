@@ -23,7 +23,9 @@
         <!-- ddd -->
         <div class="content">
             <!-- 精选课程 -->
-            <div class="title" v-if="hot.length"><img src="/static/index-title.png" alt=""></div>
+            <div class="title" v-if="hot.length">
+                <img src="/static/index-title.png" alt="">
+            </div>
             <a-row :gutter="[26,26]">
                 <template v-for="item in hot">
                     <a-col :xs="24" :sm="12" :md="8">
