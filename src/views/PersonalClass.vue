@@ -14,19 +14,18 @@
                         <li class="choose" @click="$router.push('/PersonalClass')">我的课程</li>
                     </ul>
                     <div class="personal">
-                        <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
+                        <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around" v-for="item in lists">
                             <a-col :xs="24" :sm="6" :md="6">
-                                <img src="/static/News-img.png" width="100%" alt="">
+                                <img :src="item.good_info.cover" width="100%" alt="">
                             </a-col>
                             <a-col :xs="24" :sm="18" :md="18">
-                                <h1>北京时代亿信科技股份有限公司北京时代亿信科技股份有限公司北京时代亿信科技股份有限公司</h1>
+                                <h1>{{item.good_info.title}}</h1>
                                 <div class="font">
-                                    时代亿信凭借对信息安全行业的深刻理解和丰富的实践经验，应邀多次参与了国家课题研究与信息安全标准制定
-                                    工作，研发的密级标志、安全保密邮件等系列产品在国家部委和政府机关均有部署和应用。
+                                    {{item.good_info.description}}
                                 </div>
                                 <div style="margin-top: 20px">
-                                    <span class="">课程类型：健康管理师</span>
-                                    <span class="time">到期时间：2019-03-11</span>
+                                    <span class="">课程类型：{{item.good_info.category}}</span>
+                                    <span class="time">购买时间：{{item.payed_at}}</span>
                                 </div>
                                 <div class="personal-positionA but-xx but1">立即学习</div>
                                 <!--<div class="personal-positionA but-xx but2">立即学习</div>-->
@@ -56,6 +55,7 @@
         name: 'Home',
         data(){
             return {
+                lists: []
             }
         },
         components: {
@@ -66,11 +66,14 @@
         },
         methods: {
             list(){
-                axios.post('user/goods').then((response) => {
+                let _this = this;
+                axios.post('user/goods',{
+                    status: 2
+                }).then((response) => {
                     if(!response.status){
                         return _this.$message.error(response.message);
                     }
-
+                    _this.lists = response.data
                 });
             }
         }

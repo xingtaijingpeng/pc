@@ -15,12 +15,12 @@
                         <li @click="$router.push('/PersonalOrderUnpaid')" >未支付</li>
                     </ul>
                     <div class="personal">
-                        <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
+                        <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around" v-for="item in lists">
                             <a-col :xs="24" :sm="6" :md="6">
-                                <img src="/static/News-img.png" width="100%" alt="">
+                                <img :src="item.good_info.cover" width="100%" alt="">
                             </a-col>
                             <a-col :xs="24" :sm="18" :md="18">
-                                <h1>北京时代亿信科技股份</h1>
+                                <h1>{{item.good_info.title}}</h1>
                                 <div class="aaaaa">&nbsp;</div>
                                 <div>
                                     <span class="">支付价格：300元</span>
@@ -49,12 +49,34 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
-export default {
-  name: 'Home',
-  components: {
-        Logo,ListFont,Footer,LittleNav
-  }
-}
+
+    export default {
+        name: 'Home',
+        data(){
+            return {
+                lists: []
+            }
+        },
+        components: {
+            Logo,ListFont,Footer,LittleNav
+        },
+        mounted(){
+            this.list()
+        },
+        methods: {
+            list(){
+                let _this = this;
+                axios.post('user/goods',{
+                    status: 2
+                }).then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+                    _this.lists = response.data
+                });
+            }
+        }
+    }
 </script>
 
 
