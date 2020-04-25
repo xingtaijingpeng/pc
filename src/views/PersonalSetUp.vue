@@ -19,7 +19,7 @@
                                 <a-col :span="2"><img src="/static/phone.png"/></a-col>
                                 <a-col :span="22">
                                     <h1>账户绑定手机</h1>
-                                    <p>18731133002</p>
+                                    <p>{{mobile}}</p>
                                 </a-col>
                             </a-row>
                         </div>
@@ -28,12 +28,12 @@
                                 <a-col :span="2"><img src="/static/message.png"/></a-col>
                                 <a-col :span="22" style="margin-bottom: 0;">
                                     <h1>修改密码：</h1>
-                                    <div>原始密码：<input type="password" placeholder="请输入原始密码"></div>
-                                    <div>最新密码：<input type="password" placeholder="请输入最新密码"></div>
-                                    <div>再次输入：<input type="password" placeholder="请输入再次输入"></div>
+                                    <div>原始密码：<input type="password" v-model="password_old" placeholder="请输入原始密码"></div>
+                                    <div>最新密码：<input type="password" v-model="password" placeholder="请输入最新密码"></div>
+                                    <div>再次输入：<input type="password" v-model="password_confirmation" placeholder="请输入再次输入"></div>
                                 </a-col>
                             </a-row>
-                            <div class="but-red">提交</div>
+                            <div class="but-red" @click="changepwd">提交</div>
                         </div>
                     </div>
 
@@ -47,39 +47,52 @@
 </template>
 
 <script>
-// https://www.antdv.com/components/radio-cn/
+
 	import '../assets/css/common.css'
     import Logo from '@/components/Logo'
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
-const data = [
-    {
-        title: 'Ant Design Title 1',
-    },
-    {
-        title: 'Ant Design Title 2',
-    },
-    {
-        title: 'Ant Design Title 3',
-    },
-    {
-        title: 'Ant Design Title 4',
-    },
-];
 
-/* 复制 */
+    import { mapState } from 'vuex'
 
-export default {
-    components: {
-        Logo,ListFont,Footer,LittleNav
-    },
-    data() {
-        return {
-            data,
-        };
-    },
-};
+    export default {
+        components: {
+            Logo,ListFont,Footer,LittleNav
+        },
+        data() {
+            return {
+                password_old: '',
+                password: '',
+                password_confirmation: '',
+            };
+        },
+
+        computed:{
+            ...mapState({
+                mobile: state => state.user.mobile,
+                avatar: state => state.user.avatar,
+            }),
+        },
+        methods: {
+            changepwd(){
+                let _this = this;
+                axios.post('change/password',{
+                    password_old:this.password_old,
+                    password:this.password,
+                    password_confirmation:this.password_confirmation,
+                }).then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+                    _this.password_old = '';
+                    _this.password = '';
+                    _this.password_confirmation = '';
+                    return _this.$message.success('修改成功');
+                });
+            }
+        }
+    };
 
 
 

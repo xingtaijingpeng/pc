@@ -35,12 +35,12 @@
             <div class="p-r">
 
                 <input type="text" v-model="code" placeholder="请输入验证码">
-                <span class="login-yzm">{{tips}}</span>
+                <span class="login-yzm" @click="sms">{{tips}}</span>
             </div>
             <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
             <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
         </div>
-        <div class="login-but">找回密码</div>
+        <div class="login-but" @click="forget">找回密码</div>
 		<span class="login-zhu" @click="type='login'">去登录</span>
 	</div>
   </div>
@@ -107,7 +107,21 @@
                     sessionStorage.setItem('access_token',response.data.token)
                     window.location.reload();
                 });
-			}
+			},
+            forget(){
+                axios.post('forget',{
+                    mobile:this.mobile,
+                    password:this.password,
+                    password_confirmation:this.password_confirmation,
+                    code:this.code
+                }).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    sessionStorage.setItem('access_token',response.data.token)
+                    window.location.reload();
+                });
+            }
 		}
     }
 </script>

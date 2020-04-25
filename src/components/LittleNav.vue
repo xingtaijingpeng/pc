@@ -3,8 +3,24 @@
       <a-row type="flex" justify="space-around" align="middle">
         <a-col  :xs="24" :sm="24" :md="24">
             <div class="head">
-                <img src="/static/news-1.jpg" alt="">
-                <p>励志语录励志语录励志语录励</p>
+
+                <a-upload
+                        name="file"
+                        :headers="authHeader()"
+                        listType="picture-card"
+                        class="avatar-uploader"
+                        :showUploadList="false"
+                        :action="baseUrl('upload/image')"
+                        @change="handleChangeLogo"
+                        :style="{border:'none', marginBottom: '20px'}"
+                >
+                    <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
+                    <div v-else>
+                        <a-icon :type="loading ? 'loading' : 'plus'" />
+                        <div class="ant-upload-text">Upload</div>
+                    </div>
+                </a-upload>
+                <p>{{mobile}}</p>
             </div>
             <ul class="list-nav">
                 <a-row>
@@ -29,10 +45,6 @@
                         </li>
                     </a-col>
                 </a-row>
-
-                <!--<li><i class="tab-nav tab-nav2"></i><span>订单管理</span></li>
-                <li><i class="tab-nav tab-nav3"></i><span>我的消息</span></li>
-                <li><i class="tab-nav tab-nav4"></i><span>账户管理</span></li>-->
             </ul>
         </a-col>
       </a-row>
@@ -40,26 +52,81 @@
 </template>
 
 <script>
-export default {
-  name: 'LittleNav',
-    props:{
-      choose:{
-          type: Number,
-      }
+    import { mapState } from 'vuex'
+
+    export default {
+        name: 'LittleNav',
+        data(){
+            return {
+                loading: false,
+                imageUrl: '',
+            }
+        },
+        props:{
+            choose:{
+              type: Number,
+            }
+        },
+        watch: {
+
+        },
+        mounted(){
+            axios.post('userinfo').then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.$store.commit('user/SET_MOBILE',response.data.mobile);
+                this.$store.commit('user/SET_AVATAR',response.data.avatar);
+                this.imageUrl = response.data.avatar
+            });
+        },
+        computed:{
+            ...mapState({
+                mobile: state => state.user.mobile,
+                avatar: state => state.user.avatar,
+            }),
+        },
+        methods: {
+            handleChangeLogo({file}) {
+                if (file.status === 'uploading') {
+                    this.loading = true;
+                    return;
+                }
+                if (file.status === 'done') {
+                    // Get this url from response in real world.
+                    this.loading = false;
+                    this.imageUrl = file.response.data
+                    //设置头像
+                    axios.post('change/cover',{
+                        cover: this.imageUrl
+                    }).then((response) => {
+                        if(!response.status){
+                            return this.$message.error(response.message);
+                        }
+
+                    });
+                }
+            },
+        }
     }
-}
 </script>
+<style>
+    .ant-upload-select-picture-card{
+        border: none !important;
+        float: none !important;
+        margin: 0 auto !important;
+    }
+</style>
 
 <style scoped>
     .head{
         margin-top: 40px;
         text-align: center;
     }
-    .head img{
+    .head .img_cover{
         width: 110px;
         height: 110px;
         border-radius:110px;
-        margin-bottom: 20px;
         overflow: hidden;
     }
     .head p{

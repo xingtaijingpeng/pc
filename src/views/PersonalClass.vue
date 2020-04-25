@@ -12,7 +12,6 @@
                 <a-col :xs="24" :sm="24" :md="18">
                     <ul class="tab-box">
                         <li class="choose" @click="$router.push('/PersonalClass')">我的课程</li>
-                        <li @click="$router.push('/PersonalClassLive')">直播目录</li>
                     </ul>
                     <div class="personal">
                         <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
@@ -46,18 +45,36 @@
 </template>
 
 <script>
-// https://www.antdv.com/components/radio-cn/
+
 	import '../assets/css/common.css'
     import Logo from '@/components/Logo'
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
-export default {
-  name: 'Home',
-  components: {
-        Logo,ListFont,Footer,LittleNav
-  }
-}
+
+    export default {
+        name: 'Home',
+        data(){
+            return {
+            }
+        },
+        components: {
+            Logo,ListFont,Footer,LittleNav
+        },
+        mounted(){
+            this.list()
+        },
+        methods: {
+            list(){
+                axios.post('user/goods').then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+
+                });
+            }
+        }
+    }
 </script>
 
 
