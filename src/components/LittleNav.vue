@@ -59,7 +59,7 @@
         data(){
             return {
                 loading: false,
-                imageUrl: '',
+                imageUrl: 'static/head-icon.png',
             }
         },
         props:{
@@ -77,7 +77,10 @@
                 }
                 this.$store.commit('user/SET_MOBILE',response.data.mobile);
                 this.$store.commit('user/SET_AVATAR',response.data.avatar);
-                this.imageUrl = response.data.avatar
+                if(response.data.avatar)
+                {
+                    this.imageUrl = response.data.avatar
+                }
             });
         },
         computed:{
