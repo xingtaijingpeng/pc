@@ -62,7 +62,7 @@
             }),
         },
         mounted(){
-            window.console.log(this.device)
+            this.$store.commit('app/setLogin',false);
         },
 		methods: {
             tocenter(){
