@@ -26,7 +26,7 @@
                                 <span class="">支付价格：<b class="red">￥{{item.price}}</b></span>
                                 <span class="time">下单时间：{{item.created_at}}</span>
                             </div>
-                            <div class="personal-positionA but-xx but1 but-blue">支付宝支付</div>
+                            <div class="personal-positionA but-xx but1 but-blue" @click="alipay(item.id)">支付宝支付</div>
                             <div class="personal-positionA but-xx but2 but-blue">微信支付</div>
                             <div class="delete"></div>
                         </a-col>
@@ -79,7 +79,17 @@
                     }
                     _this.lists = response.data
                 });
-            }
+            },
+            alipay(orderid){
+                axios.post('order/repay',{
+                    orderid: orderid
+                }).then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+
+                });
+			}
         }
     }
 </script>
