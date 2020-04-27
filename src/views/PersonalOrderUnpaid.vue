@@ -87,7 +87,7 @@
                     if(!response.status){
                         return _this.$message.error(response.message);
                     }
-
+                    window.location.href = response.data.url;
                 });
 			}
         }
