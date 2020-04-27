@@ -17,7 +17,13 @@
                 <a-col :xs="24" :sm="6" :md="6" class="red">{{detail.price}}</a-col>
                 <a-col :xs="24" :sm="6" :md="6" class="hui" style="text-decoration: line-through;">原价￥{{detail.old_price}}</a-col>
                 <a-col :xs="24" :sm="12" :md="12">
-                    <div class="but">购买</div>
+                    <div class="but" style="float: right;">购买</div>
+                    <div style="display:inline-block; margin-top: 10px; float: right">
+                        <a-radio-group name="radioGroup" :defaultValue="1">
+                            <a-radio :value="1">支付宝</a-radio>
+                            <a-radio :value="2">微信</a-radio>
+                        </a-radio-group>
+                    </div>
                 </a-col>
             </a-row>
         </div>
