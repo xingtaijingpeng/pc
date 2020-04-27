@@ -1,7 +1,7 @@
 <template>
     <div>
         <logo></logo>
-        <div class="Personal-banner" ></div>
+
 
         <div class="content">
             <a-row :gutter="[26,26]">
@@ -10,6 +10,22 @@
                 </a-col>
 
                 <a-col :xs="24" :sm="24" :md="18">
+                    <div class="zhi">
+                        <h1>直播课表</h1>
+                        <a-row>
+                            <a-col :xs="24" :sm="2" :md="2">2020年<br/>4月</a-col>
+                            <a-col :xs="24" :sm="20" :md="20">
+                                <a-row>
+                                    <a-col :xs="24" :sm="2" :md="2">一<div>20</div></a-col>
+                                    <a-col :xs="24" :sm="2" :md="2">一<div>20</div></a-col>
+                                    <a-col :xs="24" :sm="2" :md="2">一<div>20</div></a-col>
+                                </a-row>
+                            </a-col>
+                            <a-col :xs="24" :sm="2" :md="2">111</a-col>
+                        </a-row>
+                    </div>
+
+
                     <ul class="tab-box">
                         <li class="choose" @click="$router.push('/PersonalClass')">我的课程</li>
                     </ul>
@@ -87,6 +103,9 @@
 
 
 <style scoped>
+    /* 直播 */
+    .zhi{
 
+    }
 
 </style>

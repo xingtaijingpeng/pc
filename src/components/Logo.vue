@@ -2,14 +2,13 @@
   <div class="nav-box">
     <div :class="['content']" v-if="device!='mobile'">
       <a-row :gutter="[8,0]">
-        <a-col :xs="4" :md="9" @click="$router.push('/')"><img class="headImg-l" v-if="base" :src="base.logo" height="70px" /></a-col>
+        <a-col :xs="4" :md="6" @click="$router.push('/')"><img class="headImg-l" v-if="base" :src="base.logo" height="70px" /></a-col>
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/healthy')"><span :class="choose == 2 ? 'red' : ''">健康管理师</span></a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
-          <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''">
-          <span>个人中心</span>
-        </a-col>
+          <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
+          <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span class="dl">登录</span><span class="zc">注册</span></a-col>
       </a-row>
     </div>
       <div :class="['content']" v-else>
@@ -97,6 +96,23 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
+    .dl,.zc{
+        border: 1px solid #37f;
+        font-size: 14px;
+        color:#37f;
+        height: 26px;
+        line-height: 26px;
+        border-radius: 26px;
+        width: 60px;
+        display: inline-block;
+        text-align: center;
+    }
+    .dl{
+        background: #37f;
+        font-size: 14px;
+        color:#fff;
+        height: 26px;
+    }
+    .zc{ margin-left: 10px; }
 
 </style>

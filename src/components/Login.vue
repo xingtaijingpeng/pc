@@ -33,7 +33,6 @@
         <div class="login-inp">
             <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
             <div class="p-r">
-
                 <input type="text" v-model="code" placeholder="请输入验证码">
                 <span class="login-yzm" @click="sms">{{tips}}</span>
             </div>
