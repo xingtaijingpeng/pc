@@ -8,25 +8,15 @@
 			</a-col>
 			<a-col span="1"></a-col>
 			<a-col :xs="24" :sm="9" :md="9">
-				<h3 style="font-weight: bolder; line-height: 40px;">每日签到</h3>
-				<a-row>
-					<a-col span="18" style="color: #ccc;line-height: 40px;">已连续签到{{signdays*1+Gindex}}天</a-col>
-					<a-col span="6">
-						<a-button :type="btype" :loading="loading" :disabled="bdisabled" icon="edit" @click="qiandaoa">
-							{{words}}
-						</a-button>
-					</a-col>
-				</a-row>
-				<a-row style="margin-top: 10px;">
-					<a-col span="24">
-						<a-steps :current="bcurrent">
-							<a-step title="登录成功" />
-							<a-step :title="btitle" />
-						</a-steps>
-					</a-col>
-				</a-row>
+				<div class="diandao" style="font-weight: bolder; line-height: 40px;">
+                    <img src="../../public/static/qiandao1.png" width="50%" alt=""> <!-- 签到 -->
+                    <!--<img src="../../public/static/qiandao2.png" width="50%" alt="">--> <!-- 已签到 -->
+                </div>
 			</a-col>
 		</a-row>
+		<a-modal :title="false" :footer="false" v-model="visible" @ok="handleOk">
+			777777
+		</a-modal>
 	</div>
 </template>
 
@@ -38,6 +28,7 @@
         name: "aaaa",
 		data(){
             return {
+                visible: true,
                 loading: false,
 				btype: 'primary',
 				words: '签到',
@@ -105,5 +96,13 @@
 </script>
 
 <style scoped>
-
+    .diandao{
+        width: 100%;
+        height: 200px;
+        background:url("../../public/static/qiandao-back.png") no-repeat;
+        padding-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
