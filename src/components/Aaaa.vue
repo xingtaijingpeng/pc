@@ -16,8 +16,8 @@
 		</a-row>
 		<a-modal :title="false" :footer="false" v-model="visible" @ok="handleOk">
 			<div class="alertDao">
-				<img src="../../public/static/qiandao.png" width="50%" alt="">
-				<div>您已连续签到2天</div>
+				<!--<img src="../../public/static/qiandao.png" width="50%" alt="">-->
+				<div>您已连续签到&nbsp;<span>2</span>&nbsp;天</div>
 			</div>
 		</a-modal>
 	</div>
@@ -108,16 +108,24 @@
         justify-content: center;
         align-items: center;
     }
+	.diandao img{cursor:pointer;}
 	.alertDao{
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		width: 100%;
 	}
-	.alertDao img{
-		width: 150px;
+	.alertDao div{
+		width: 100%;
+		background: url("../../public/static/qiandao.png") no-repeat;
+		background-size: 70%;
+		background-position: center top;
+		padding-top: 170px;
+		padding-bottom: 50px;
+		font-size: 18px;
+		text-align: center;
+		color:#666;
 	}
-	.alertDao img{
-		font-size: 14px;
-		color:#ccc;
+	.alertDao span{
+		font-size: 30px;
+		font-weight: bold;
+		color:#738cd3;
 	}
 </style>
