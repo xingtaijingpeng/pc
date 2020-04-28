@@ -8,7 +8,7 @@
           <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
           <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
-          <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span class="dl">登录</span><span class="zc">注册</span></a-col>
+          <a-col :xs="5" :md="3" @click="tocenter"><span class="dl">登录</span><span class="zc">注册</span></a-col>
       </a-row>
     </div>
       <div :class="['content']" v-else>
@@ -60,7 +60,7 @@
                 base: state => state.app.BASE,
             }),
         },
-        mounted(){
+        created(){
             this.$store.commit('app/setLogin',false);
         },
 		methods: {

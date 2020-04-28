@@ -16,7 +16,10 @@
             <a-row>
                 <a-col :xs="24" :sm="6" :md="6" class="red">{{detail.price}}</a-col>
                 <a-col :xs="24" :sm="6" :md="6" class="hui" style="text-decoration: line-through;">原价￥{{detail.old_price}}</a-col>
-                <a-col :xs="24" :sm="12" :md="12">
+                <a-col :xs="24" :sm="12" :md="12" v-if="buyed">
+                    <div class="but" style="float: right;">已购买</div>
+                </a-col>
+                <a-col :xs="24" :sm="12" :md="12" v-else>
                     <div class="but" style="float: right;" @click="userbuy">购买</div>
                     <div style="display:inline-block; margin-top: 10px; float: right">
                         <a-radio-group name="radioGroup" v-model="paytype">
@@ -30,7 +33,7 @@
 
         <div class="content videoBox">
             <a-row  type="flex" justify="space-around" align="middle">
-                <a-col :xs="24" :sm="6" :md="6" style="text-align: center" @click="videoshow=!videoshow">
+                <a-col :xs="24" :sm="6" :md="6" style="text-align: center" @click="showvideo">
                     <img src="/static/video-img.png" alt="">
                     <h1 style="margin-top: 20px;">观看视频</h1>
                 </a-col>
@@ -68,6 +71,16 @@
         </div>
 
         <Footer></Footer>
+
+		<a-modal title="微信扫码支付" v-model="visible" style="text-align: center;" :footer="null">
+			<vue-qr
+				:logoSrc="config.logo"
+				:text="config.value"
+				:size="250"
+				:margin="0"
+			></vue-qr>
+		</a-modal>
+
     </div>
 
 </template>
@@ -82,15 +95,23 @@
 
 
     import moment from 'moment';
+	import VueQr from 'vue-qr';
+
     export default {
         components: {
-            Logo,ListFont,Footer,LittleNav
+            Logo,ListFont,Footer,LittleNav,VueQr
         },
         data() {
             return {
+                visible:true,
+				config:{
+                    value: 'http://www3.ftcy.fun/storage/images/2020/04/18/5e9aa2bac7d53.png',
+					logo: 'http://www3.ftcy.fun/storage/images/2020/04/18/5e9aa2bac7d53.png'
+				},
                 paytype:2,
                 detail: [],
                 data: [],
+				buyed: false,
                 moment,
                 videoshow:false
             };
@@ -115,12 +136,54 @@
                     this.data = response.data;
                 });
 
+                this.checkbuy((response)=>{
+                    if(response.data.isbuy){
+                        this.buyed = true;
+                    }
+				});
+
             }
         },
         methods: {
             userbuy(){
-                window.console.log(this.paytype)
-            }
+                this.checkbuy((response)=>{
+					if(this.paytype == 2){
+					    //微信
+                        axios.post('order/make',{
+                            type: 1,
+							good_id: this.$route.params.id
+                        }).then((response) => {
+							//弹框扫码
+
+							//开定时器
+                        });
+					}else{
+					    //支付宝
+                        axios.post('order/make',{
+                            type: 2,
+                            good_id: this.$route.params.id
+                        }).then((response) => {
+							//页面跳转
+                        });
+					}
+				});
+            },
+			showvideo(){
+                this.checkbuy((response)=>{
+					if(response.data.isbuy){
+                        this.videoshow=!this.videoshow
+                    }else{
+                        return this.$message.error('请先购买本视频');
+                    }
+                });
+			},
+			checkbuy(fun){
+                //判断是否购买
+                let _this = this;
+                axios.post('hasbuy/'+_this.$route.params.id).then((response) => {
+                    fun(response);
+				});
+			}
         }
     };
 </script>
@@ -149,7 +212,7 @@
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-        z-index: 5;
+        z-index: 0;
     }
     .red{
         font-size: 30px;
