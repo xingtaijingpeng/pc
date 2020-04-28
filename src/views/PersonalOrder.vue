@@ -27,7 +27,7 @@
                                     <span class="">支付价格：300元</span>
                                     <span class="time">支付时间：2019-03-11</span>
                                 </div>
-                                <div class="personal-positionA but-xx but1">立即学习</div>
+                                <div class="personal-positionA but-xx but1" @click="$router.push('/ClassDetails/'+item.good_id)">立即学习</div>
                                 <div class="personal-positionA but-xx but2 but-hui">已支付</div>
                             </a-col>
                         </a-row>

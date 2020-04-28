@@ -28,8 +28,15 @@
                                 <span class="time">下单时间：{{item.created_at}}</span>
                             </div>
                             <div class="personal-positionA but-xx but1 but-blue" @click="alipay(item.id)">支付宝支付</div>
-                            <div class="personal-positionA but-xx but2 but-blue">微信支付</div>
-                            <div class="delete"></div>
+                            <div class="personal-positionA but-xx but2 but-blue" @click="wxpay(item.id)">微信支付</div>
+							<a-popconfirm
+									title="确定删除该订单吗?"
+									cancelText="取消"
+									okText="确定"
+									@confirm="() => onDelete(item.id)"
+							>
+								<div class="delete"></div>
+							</a-popconfirm>
                         </a-col>
                     </a-row>
                         <a-empty v-if="!lists.length" :image="simpleImage" style="margin-top: 150px;" description="暂无数据" />
@@ -40,6 +47,15 @@
         </div>
 
         <Footer></Footer>
+
+		<a-modal title="微信扫码支付" v-model="visible" style="text-align: center;" :footer="null" @cancel="zhifucancel">
+			<vue-qr
+					:logoSrc="config.logo"
+					:text="config.value"
+					:size="250"
+					:margin="0"
+			></vue-qr>
+		</a-modal>
     </div>
 
 </template>
@@ -52,7 +68,9 @@
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
     import { Empty } from 'ant-design-vue';
-import Aaaa from '@/components/Aaaa'
+	import Aaaa from '@/components/Aaaa'
+	import VueQr from 'vue-qr';
+
 
     export default {
         name: 'Home',
@@ -61,16 +79,35 @@ import Aaaa from '@/components/Aaaa'
         },
         data(){
             return {
-                lists: []
+                lists: [],
+                visible:false,
+                config:{
+                    value: '',
+                    logo: 'http://www.tubojiaoyu.com/static/logo.png'
+                },
+                timer: null,
             }
         },
         components: {
-            Logo,ListFont,Footer,LittleNav,Aaaa
+            Logo,ListFont,Footer,LittleNav,Aaaa,VueQr
         },
         mounted(){
             this.list()
         },
         methods: {
+            zhifucancel(){
+                clearInterval(this.timer);
+            },
+            onDelete(id){
+                axios.post('order/delete',{
+                    id: id
+                }).then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+                    this.list();
+                });
+			},
             list(){
                 let _this = this;
                 axios.post('user/goods',{
@@ -84,12 +121,42 @@ import Aaaa from '@/components/Aaaa'
             },
             alipay(orderid){
                 axios.post('order/repay',{
-                    orderid: orderid
+                    orderid: orderid,
+					type: 2
                 }).then((response) => {
                     if(!response.status){
                         return _this.$message.error(response.message);
                     }
                     window.location.href = response.data.url;
+                });
+			},
+            wxpay(orderid){
+                let _this = this;
+                axios.post('order/repay',{
+                    orderid: orderid,
+                    type: 1
+                }).then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+					//弹框扫码
+                    this.visible = true;
+                    this.config.value=response.data.url
+
+                    //开定时器
+                    this.timer = setInterval(()=>{
+                        axios.post('order/check',{
+                            serial: response.data.ordTransLog.serial
+                        }).then((response) => {
+                            if(response.status==1){
+                                _this.$message.success('支付成功');
+                                setTimeout(()=>{
+                                    window.location.reload();
+
+                                },1500)
+                            }
+                        });
+                    },2000)
                 });
 			}
         }

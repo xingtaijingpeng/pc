@@ -30,7 +30,7 @@
                                     <span class="">课程类型：{{item.good_info.category}}</span>
                                     <span class="time">购买时间：{{item.payed_at}}</span>
                                 </div>
-                                <div class="personal-positionA but-xx but1">立即学习</div>
+                                <div class="personal-positionA but-xx but1" @click="$router.push('/ClassDetails/'+item.good_id)">立即学习</div>
                                 <!--<div class="personal-positionA but-xx but2">立即学习</div>-->
                             </a-col>
                         </a-row>
