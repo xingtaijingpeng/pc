@@ -85,8 +85,10 @@
             ...mapState({
                 device: state => state.app.DEVICE,
                 base: state => state.app.BASE,
-                islogin: state => state.user.mobile
             }),
+            islogin(){
+                return sessionStorage.getItem('user_mobile')
+            }
         },
         created(){
             this.$store.commit('app/setLogin',false);

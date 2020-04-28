@@ -9,15 +9,15 @@
 			<a-col span="1"></a-col>
 			<a-col :xs="24" :sm="9" :md="9">
 				<div class="diandao" style="font-weight: bolder; line-height: 40px;">
-                    <img src="../../public/static/qiandao1.png" width="50%" alt=""> <!-- 签到 -->
-                    <!--<img src="../../public/static/qiandao2.png" width="50%" alt="">--> <!-- 已签到 -->
+                    <img v-if="bcurrent == 1" src="../../public/static/qiandao1.png" width="50%" alt="" @click="qiandaoa">
+                    <img v-else src="../../public/static/qiandao2.png" width="50%" alt="">
                 </div>
 			</a-col>
 		</a-row>
-		<a-modal :title="false" :footer="false" v-model="visible" @ok="handleOk">
+		<a-modal :title="false" :footer="false" v-model="visible">
 			<div class="alertDao">
 				<img src="../../public/static/qiandao.png" width="50%" alt="">
-				<div>您已连续签到2天</div>
+				<div>您已连续签到{{signdays*1+Gindex}}天</div>
 			</div>
 		</a-modal>
 	</div>
@@ -31,7 +31,7 @@
         name: "aaaa",
 		data(){
             return {
-                visible: true,
+                visible: false,
                 loading: false,
 				btype: 'primary',
 				words: '签到',
@@ -82,6 +82,7 @@
                     this.btitle = '已签到'
                     this.bcurrent = 2
                     this.Gindex = 1
+                    this.visible = true
 
                     //判断是否签到
                     var now = new Date();
@@ -90,9 +91,9 @@
                     var date = now.getDate();//得到日期
 
                     sessionStorage.setItem('qiandao:'+year+month+date,1)
-                    sessionStorage.setItem('signdays',(this.signdays+1))
+                    sessionStorage.setItem('signdays',(this.signdays*1+1))
 
-                },2000)
+                },0)
 			}
 		}
     }

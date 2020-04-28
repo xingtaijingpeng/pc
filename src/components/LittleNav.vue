@@ -21,7 +21,7 @@
                     </div>
                 </a-upload>
                 <p>{{mobile}}</p>
-                <div class="dao">距离考试还有 <span>199</span> 天</div>
+                <div class="dao">距离考试还有 <span>{{needay}}</span> 天</div>
             </div>
             <ul class="list-nav">
                 <a-row>
@@ -60,6 +60,7 @@
         data(){
             return {
                 loading: false,
+                needay: 0,
                 imageUrl: 'static/head-icon.png',
             }
         },
@@ -82,6 +83,7 @@
                 {
                     this.imageUrl = response.data.avatar
                 }
+                this.needay = response.data.needay
             });
         },
         computed:{
