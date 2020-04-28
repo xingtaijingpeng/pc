@@ -72,7 +72,7 @@
 
         <Footer></Footer>
 
-		<a-modal title="微信扫码支付" v-model="visible" style="text-align: center;" :footer="null">
+		<a-modal title="微信扫码支付" v-model="visible" style="text-align: center;" :footer="null" @cancel="zhifucancel">
 			<vue-qr
 				:logoSrc="config.logo"
 				:text="config.value"
@@ -103,11 +103,12 @@
         },
         data() {
             return {
-                visible:true,
+                visible:false,
 				config:{
-                    value: 'http://www3.ftcy.fun/storage/images/2020/04/18/5e9aa2bac7d53.png',
-					logo: 'http://www3.ftcy.fun/storage/images/2020/04/18/5e9aa2bac7d53.png'
+                    value: '',
+					logo: 'http://www.tubojiaoyu.com/static/logo.png'
 				},
+				timer: null,
                 paytype:2,
                 detail: [],
                 data: [],
@@ -145,6 +146,9 @@
             }
         },
         methods: {
+            zhifucancel(){
+                clearInterval(this.timer);
+			},
             userbuy(){
                 this.checkbuy((response)=>{
 					if(this.paytype == 2){
@@ -154,8 +158,19 @@
 							good_id: this.$route.params.id
                         }).then((response) => {
 							//弹框扫码
+							this.visible = true;
+							this.config.value=response.data.url
 
 							//开定时器
+							this.timer = setInterval(()=>{
+                                axios.post('order/check',{
+                                    serial: response.data.ordTransLog.serial
+                                }).then((response) => {
+									if(response.status==1){
+									    window.location.reload();
+									}
+                                });
+							},2000)
                         });
 					}else{
 					    //支付宝
