@@ -4,7 +4,8 @@ const app = {
     state: {
         DEVICE: null,
         BASE: null,
-        LOGIN: false
+        LOGIN: false,
+        LOGINTYPE: 'login',
     },
     mutations: {
         setDevice(state,type){
@@ -15,6 +16,9 @@ const app = {
         },
         setLogin(state,data){
             state.LOGIN = data;
+        },
+        setLoginType(state,data){
+            state.LOGINTYPE = data;
         },
     },
     actions: {

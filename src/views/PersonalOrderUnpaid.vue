@@ -10,7 +10,8 @@
                 </a-col>
 
                 <a-col :xs="24" :sm="24" :md="18">
-                    <ul class="tab-box">
+					<aaaa></aaaa>
+					<ul class="tab-box" style="margin-top: 0px;">
                         <li @click="$router.push('/PersonalOrder')">已支付</li>
                         <li class="choose" @click="$router.push('/PersonalOrderUnpaid')" >未支付</li>
                     </ul>
@@ -51,6 +52,7 @@
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
     import { Empty } from 'ant-design-vue';
+import Aaaa from '@/components/Aaaa'
 
     export default {
         name: 'Home',
@@ -63,7 +65,7 @@
             }
         },
         components: {
-            Logo,ListFont,Footer,LittleNav
+            Logo,ListFont,Footer,LittleNav,Aaaa
         },
         mounted(){
             this.list()

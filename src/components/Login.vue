@@ -1,18 +1,18 @@
 <template>
   <div class="login-box" v-if="loginshow">
-	  <div style="width: 100%; height: 100%; position: absolute; z-index: 2;" @click="loginshow=false"></div>
-    <div class="login" v-if="type=='login'">
+	  <div style="width: 100%; height: 100%; position: absolute; z-index: 2;" @click="guanbishow"></div>
+    <div class="login" v-if="$store.state.app.LOGINTYPE=='login'">
         <h1>登录</h1>
         <div class="login-inp">
             <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
             <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
         </div>
         <div class="login-but" @click="login">登录</div>
-         <span class="login-wang" @click="type='forget'">忘记密码</span>
-        <span class="login-zhu" @click="type='register'">去注册</span>
+         <span class="login-wang" @click="typeshow('forget')">忘记密码</span>
+        <span class="login-zhu" id="login-zhu" @click="typeshow('register')">去注册</span>
     </div>
 
-    <div class="register" v-if="type=='register'">
+    <div class="register" v-if="$store.state.app.LOGINTYPE=='register'">
         <h1>注册</h1>
         <div class="login-inp">
             <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
@@ -25,10 +25,10 @@
             <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
         </div>
         <div class="login-but" @click="register">注册</div>
-		<span class="login-zhu" @click="type='login'">去登录</span>
+		<span class="login-zhu" @click="typeshow('login')">去登录</span>
 	</div>
 
-    <div class="register" v-if="type=='forget'">
+    <div class="register" v-if="$store.state.app.LOGINTYPE=='forget'">
         <h1>忘记密码</h1>
         <div class="login-inp">
             <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
@@ -40,7 +40,7 @@
             <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
         </div>
         <div class="login-but" @click="forget">找回密码</div>
-		<span class="login-zhu" @click="type='login'">去登录</span>
+		<span class="login-zhu" @click="typeshow('login')">去登录</span>
 	</div>
   </div>
 </template>
@@ -51,7 +51,6 @@
         name: 'Login',
 		data(){
             return {
-                type: 'login',
                 code: '',
                 password: '',
                 password_confirmation: '',
@@ -60,9 +59,15 @@
 			}
 		},
 		props:{
-            loginshow: false
+            loginshow: false,
 		},
 		methods: {
+            guanbishow(){
+                this.$store.commit('app/setLogin',false);
+            },
+            typeshow(type){
+                this.$store.commit('app/setLoginType',type);
+            },
             login(){
                 axios.post('token',{
                     mobile:this.mobile,

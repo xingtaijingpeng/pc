@@ -10,23 +10,10 @@
                 </a-col>
 
                 <a-col :xs="24" :sm="24" :md="18">
-                    <div class="zhi">
-                        <h1>直播课表</h1>
-                        <a-row>
-                            <a-col :xs="24" :sm="2" :md="2">2020年<br/>4月</a-col>
-                            <a-col :xs="24" :sm="20" :md="20">
-                                <a-row>
-                                    <a-col :xs="24" :sm="2" :md="2">一<div>20</div></a-col>
-                                    <a-col :xs="24" :sm="2" :md="2">一<div>20</div></a-col>
-                                    <a-col :xs="24" :sm="2" :md="2">一<div>20</div></a-col>
-                                </a-row>
-                            </a-col>
-                            <a-col :xs="24" :sm="2" :md="2">111</a-col>
-                        </a-row>
-                    </div>
 
+					<aaaa></aaaa>
 
-                    <ul class="tab-box">
+                    <ul class="tab-box" style="margin-top: 0px;">
                         <li class="choose" @click="$router.push('/PersonalClass')">我的课程</li>
                     </ul>
                     <div class="personal">
@@ -67,6 +54,7 @@
     import ListFont from '@/components/ListFont'
     import Footer from '@/components/Footer'
     import LittleNav from '@/components/LittleNav'
+    import Aaaa from '@/components/Aaaa'
     import { Empty } from 'ant-design-vue';
 
     export default {
@@ -80,7 +68,7 @@
             }
         },
         components: {
-            Logo,ListFont,Footer,LittleNav
+            Logo,ListFont,Footer,LittleNav,Aaaa
         },
         mounted(){
             this.list()

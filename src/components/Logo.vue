@@ -8,7 +8,8 @@
           <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
           <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
-          <a-col :xs="5" :md="3" @click="tocenter"><span class="dl">登录</span><span class="zc">注册</span></a-col>
+          <a-col :xs="5" :md="3" v-if="!islogin"><span class="dl" @click="tozhuce('login')">登录</span><span class="zc" @click="tozhuce('register')">注册</span></a-col>
+          <a-col :xs="5" :md="3" v-else><span>{{islogin}}</span></a-col>
       </a-row>
     </div>
       <div :class="['content']" v-else>
@@ -58,11 +59,15 @@
             ...mapState({
                 device: state => state.app.DEVICE,
                 base: state => state.app.BASE,
+                islogin: state => state.user.mobile
             }),
         },
         created(){
             this.$store.commit('app/setLogin',false);
         },
+		mounted(){
+
+		},
 		methods: {
             tocenter(){
 
@@ -73,6 +78,10 @@
                     }
                     _this.$router.push('/PersonalClass');
                 });
+            },
+            tozhuce(type='login'){
+                this.$store.commit('app/setLogin',true);
+                this.$store.commit('app/setLoginType',type);
             }
 		}
     }

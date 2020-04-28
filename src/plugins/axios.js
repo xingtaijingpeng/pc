@@ -91,6 +91,7 @@ function init(_axios,loading = false){
 let _login = function () {
     sessionStorage.clear();
     store.commit('app/setLogin',true);
+    store.commit('app/setLoginType','login');
 };
 
 Plugin.install = function(Vue, options) {

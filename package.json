@@ -14,6 +14,7 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "vue": "^2.6.11",
+    "vue-horizontal-calendar": "^0.7.11",
     "vue-qr": "^2.2.1",
     "vue-router": "^3.1.6",
     "vuex": "^3.3.0"
