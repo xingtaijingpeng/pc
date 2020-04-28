@@ -15,7 +15,10 @@
 			</a-col>
 		</a-row>
 		<a-modal :title="false" :footer="false" v-model="visible" @ok="handleOk">
-			777777
+			<div class="alertDao">
+				<img src="../../public/static/qiandao.png" width="50%" alt="">
+				<div>您已连续签到2天</div>
+			</div>
 		</a-modal>
 	</div>
 </template>
@@ -105,4 +108,16 @@
         justify-content: center;
         align-items: center;
     }
+	.alertDao{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.alertDao img{
+		width: 150px;
+	}
+	.alertDao img{
+		font-size: 14px;
+		color:#ccc;
+	}
 </style>
