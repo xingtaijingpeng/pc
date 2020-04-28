@@ -104,7 +104,7 @@
     .setUp{
         padding: 20px 20px;
         border-radius: 10px;
-        box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
         color: #666666;
         margin-bottom: 20px;
     }

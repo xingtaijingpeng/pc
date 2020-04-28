@@ -136,6 +136,18 @@
     #nav_list input::placeholder{
         color:#888;
     }
+
+
+    .ant-cascader-menu .ant-cascader-menu-item-expand{
+        min-width:180px;
+    }
+    .ant-cascader-menu-item{
+        padding: 10px 12px;
+    }
+    .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled), .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover{
+        color:#1d79c2!important;
+    }
+    .ant-cascader-menu-item{}
 </style>
 <style scoped>
 
@@ -173,5 +185,6 @@
         height: 26px;
     }
     .zc{ margin-left: 10px; }
+
 
 </style>

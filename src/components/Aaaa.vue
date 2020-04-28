@@ -103,6 +103,7 @@
         width: 100%;
         height: 200px;
         background:url("../../public/static/qiandao-back.png") no-repeat;
+		background-size: 100%;
         padding-top: 40px;
         display: flex;
         justify-content: center;
