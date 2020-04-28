@@ -178,7 +178,7 @@
                             type: 2,
                             good_id: this.$route.params.id
                         }).then((response) => {
-							//页面跳转
+							window.location.href=response.data.url;
                         });
 					}
 				});
