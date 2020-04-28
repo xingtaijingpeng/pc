@@ -2,7 +2,7 @@
     <div>
         <logo class="nav" choose="1"></logo>
         <!-- banner -->
-        <a-carousel arrows>
+        <a-carousel arrows :autoplay="true">
             <div
                     slot="prevArrow"
                     slot-scope="props"

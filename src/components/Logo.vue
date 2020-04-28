@@ -4,12 +4,22 @@
       <a-row :gutter="[8,0]">
         <a-col :xs="4" :md="6" @click="$router.push('/')"><img class="headImg-l" v-if="base" :src="base.logo" height="70px" /></a-col>
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
-          <a-col :xs="5" :md="3" @click="$router.push('/healthy')"><span :class="choose == 2 ? 'red' : ''">健康管理师</span></a-col>
-          <a-col :xs="5" :md="3" @click="$router.push('/fireControl')"><span :class="choose == 3 ? 'red' : ''">消防工程师</span></a-col>
+          <a-col :xs="6" :md="4" id="nav_list">
+              <a-cascader
+                      ref="categorys"
+                      :options="options"
+                      :displayRender="displayRender"
+                      :fieldNames="{ label: 'name', value: 'id', children: 'children' }"
+                      expandTrigger="hover"
+                      @change="onChange"
+                      placeholder="课程分类"
+                      style="width: 80%;"
+              />
+          </a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
-          <a-col :xs="5" :md="3" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
-          <a-col :xs="5" :md="3" v-if="!islogin"><span class="dl" @click="tozhuce('login')">登录</span><span class="zc" @click="tozhuce('register')">注册</span></a-col>
-          <a-col :xs="5" :md="3" v-else><span>{{islogin}}</span></a-col>
+          <a-col :xs="5" :md="4" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
+          <a-col :xs="5" :md="4" v-if="!islogin"><span class="dl" @click="tozhuce('login')">登录</span><span class="zc" @click="tozhuce('register')">注册</span></a-col>
+          <a-col :xs="5" :md="4" v-else><span>{{islogin}}</span></a-col>
       </a-row>
     </div>
       <div :class="['content']" v-else>
@@ -49,6 +59,22 @@
 
     export default {
         name: 'Logo',
+        data(){
+            return {
+                options: [
+                    {
+                        value: '1',
+                        label: ' 健康管理师 ',
+                        children: [
+                            {
+                                value: 'nanjing',
+                                label: 'Nanjing',
+                            },
+                        ],
+                    },
+                ],
+            }
+        },
         props:{
           choose: {
               type: [Number,String],
@@ -66,9 +92,21 @@
             this.$store.commit('app/setLogin',false);
         },
 		mounted(){
-
+            //获取分类
+            axios.post('category/index',{
+                guard: 'video',
+                pageSize: 30,
+            }).then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.options = response.data
+            });
 		},
 		methods: {
+            displayRender({ labels }) {
+                return labels[labels.length - 1];
+            },
             tocenter(){
 
                 let _this = this;
@@ -82,11 +120,23 @@
             tozhuce(type='login'){
                 this.$store.commit('app/setLogin',true);
                 this.$store.commit('app/setLoginType',type);
+            },
+            onChange(value, selectedOptions){
+                window.location.href = '/?q='+Math.ceil(Math.random()*10000)+'#/healthy/'+value[0]
             }
 		}
     }
 </script>
+<style>
+    #nav_list input{
+        border: none !important;
+        box-shadow: none !important;
+    }
 
+    #nav_list input::placeholder{
+        color:#888;
+    }
+</style>
 <style scoped>
 
   .nav-box{

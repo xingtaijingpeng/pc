@@ -2,10 +2,12 @@
     <div>
         <logo choose="2"></logo>
         <!-- ddd -->
-        <div class="Healthy-banner" ></div>
+        <div v-if="$route.params.id==5" class="Healthy-banner" ></div>
+        <div v-else class="FireControl-banner" ></div>
         <div class="content">
 
-            <div class="title"><img src="/static/Healthy-title.png" alt=""></div>
+            <div class="title" v-if="$route.params.id==5"><img src="/static/Healthy-title.png" alt=""></div>
+            <div class="title" v-else><img src="/static/fire-title.png" alt=""></div>
             <!-- 最新上线 -->
             <div class="nav-list">
                 <span :class="Gindex == 0 ? 'choose' : ''" @click="categoryByList(0)">全部</span>
@@ -55,7 +57,7 @@ export default {
             guard: 'video',
             pageSize: 30,
             merge: 1,
-            parent_id: 5
+            parent_id: this.$route.params.id
         }).then((response) => {
             if(!response.status){
                 return this.$message.error(response.message);
