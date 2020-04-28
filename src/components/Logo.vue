@@ -85,10 +85,8 @@
             ...mapState({
                 device: state => state.app.DEVICE,
                 base: state => state.app.BASE,
+                islogin: state => state.user.mobile
             }),
-            islogin(){
-                return sessionStorage.getItem('user_mobile')
-            }
         },
         created(){
             this.$store.commit('app/setLogin',false);
@@ -149,7 +147,9 @@
     .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled), .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover{
         color:#1d79c2!important;
     }
-    .ant-cascader-menu-item{}
+    .ant-cascader-menu-item{
+        min-width:180px;
+    }
 </style>
 <style scoped>
 
