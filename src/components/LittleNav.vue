@@ -12,7 +12,7 @@
                         :showUploadList="false"
                         :action="baseUrl('upload/image')"
                         @change="handleChangeLogo"
-                        :style="{border:'none', marginBottom: '20px'}"
+                        :style="{border:'none'}"
                 >
                     <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
                     <div v-else>
@@ -21,6 +21,7 @@
                     </div>
                 </a-upload>
                 <p>{{mobile}}</p>
+                <div class="dao">距离考试还有 <span>199</span> 天</div>
             </div>
             <ul class="list-nav">
                 <a-row>
@@ -133,7 +134,17 @@
         overflow: hidden;
     }
     .head p{
-        margin-bottom: 30px;
+        margin-bottom: 0px;
+    }
+    .dao{
+        font-size: 14px;
+        color:#b5bfce;
+        margin-bottom: 20px;
+    }
+    .dao span{
+        font-size: 22px;
+        color:#ff8e25;
+        font-weight: bold;
     }
     .list-nav li{
         height: 66px;
