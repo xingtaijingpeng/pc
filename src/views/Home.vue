@@ -276,7 +276,9 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
     }
-
+    .mobile .news h1{font-size: 20px;}
+    .mobile .news .time{font-size: 20px;}
+    .mobile .news .font{font-size: 16px;}
 
 
 </style>

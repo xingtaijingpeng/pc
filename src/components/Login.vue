@@ -169,8 +169,7 @@
 }
 .login input,.register input{
     width: 100%;
-    height: 26px;
-    margin-top: 10px;
+    height: 46px;
     background: none;
     border:none;
     outline:none;
