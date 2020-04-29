@@ -4,7 +4,7 @@
       <a-row :gutter="[8,0]">
         <a-col :xs="4" :md="6" @click="$router.push('/')"><img class="headImg-l" v-if="base" :src="base.logo" height="70px" /></a-col>
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
-          <a-col :xs="6" :md="4" id="nav_list">
+          <a-col :xs="6" :md="4" id="nav_list" @mouseover="selectStyle">
               <a-cascader
                       ref="categorys"
                       :options="options"
@@ -18,8 +18,7 @@
           </a-col>
           <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
           <a-col :xs="5" :md="4" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
-          <a-col :xs="5" :md="4" v-if="!islogin"><span class="dl" @click="tozhuce('login')">登录</span><span class="zc" @click="tozhuce('register')">注册</span></a-col>
-          <a-col :xs="5" :md="4" v-else><span>{{islogin}}</span></a-col>
+          <a-col :xs="5" :md="4">服务热线：1111111111</a-col>
       </a-row>
     </div>
       <div :class="['content']" v-else>
@@ -104,6 +103,11 @@
             });
 		},
 		methods: {
+            selectStyle(){
+                if(document.getElementsByClassName('ant-cascader-menus').length == 0 || document.getElementsByClassName('ant-cascader-menus')[0].style.display == 'none'){
+                    document.getElementById('nav_list').getElementsByClassName('ant-cascader-picker')[0].click()
+                }
+            },
             displayRender({ labels }) {
                 return labels[labels.length - 1];
             },

@@ -14,8 +14,8 @@
                         @change="handleChangeLogo"
                         :style="{border:'none'}"
                 >
-                    <div>
-                        <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
+                    <div v-if="imageUrl">
+                        <img :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
                     </div>
 
                     <div v-else>
