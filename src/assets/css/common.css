@@ -205,6 +205,7 @@ ul,li{
 .mobile .setUp .but-red{
 	position: static;
 	margin-left: 20px;
+	font-size: 15px;
 }
 .mobile .personal h1{
 	font-size: 18px;
@@ -215,7 +216,7 @@ ul,li{
 }
 .mobile .but2{ right: 88px;}
 .mobile .list-nav li{
-	font-size: 18px!important;
+	font-size: 16px!important;
 	padding-left: 15px!important;
 }
 .mobile .pay{
@@ -330,6 +331,19 @@ ul,li{
 .mobile .head>span{
 	margin-bottom: 0;
 }
+.mobile .tab-box li{
+	font-size: 16px;
+}
+.mobile .company-title{
+	background-size: 100% auto!important;
+	padding-top: 20px!important;
+}
+.mobile .personal .font{
+	font-size: 14px!important;
+}
+
+
+
 
 
 

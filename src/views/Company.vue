@@ -12,7 +12,7 @@
             <div class="company-font">
                 <a-row>
                     <a-col :xs="24" :sm="8" :md="8" style="text-align: center">
-                        <img src="/static/company-img.png" width="80%" style="margin-top: 100px" alt="">
+                        <img class="cImg" src="/static/company-img.png" width="80%" style="margin-top: 100px" alt="">
                     </a-col>
                     <a-col  :xs="24" :sm="16" :md="16">
                         <div class="company-title">
@@ -73,5 +73,7 @@ import { mapState } from 'vuex'
         font-size: 16px;
         text-indent: 2rem;
     }
-
+    .mobile .cImg{ margin-top: 0!important; width: 50%;}
+    .mobile h1{ font-size: 18px!important;}
+    .mobile p{ font-size: 14px!important;}
 </style>

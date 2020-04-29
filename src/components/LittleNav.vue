@@ -14,7 +14,10 @@
                         @change="handleChangeLogo"
                         :style="{border:'none'}"
                 >
-                    <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
+                    <div>
+                        <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
+                    </div>
+
                     <div v-else>
                         <a-icon :type="loading ? 'loading' : 'plus'" />
                         <div class="ant-upload-text">Upload</div>
@@ -121,6 +124,7 @@
         border: none !important;
         float: none !important;
         margin: 0 auto !important;
+        background:none!important;
     }
 </style>
 
@@ -202,6 +206,38 @@
         background: url("/static/nav4.png") center center no-repeat;
         background-size: auto 30px;
     }
-
+/*-------------------*/
+    .mobile .choose .tab-nav1{
+        background: url("/static/nav1-w.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .choose .tab-nav2{
+        background: url("/static/nav2-w.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .choose .tab-nav3{
+        background: url("/static/nav3-w.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .choose .tab-nav4{
+        background: url("/static/nav4-w.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .tab-nav1{
+        background: url("/static/nav1.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .tab-nav2{
+        background: url("/static/nav2.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .tab-nav3{
+        background: url("/static/nav3.png") center center no-repeat;
+        background-size: auto 25px;
+    }
+    .mobile .tab-nav4{
+        background: url("/static/nav4.png") center center no-repeat;
+        background-size: auto 25px;
+    }
 
 </style>

@@ -137,4 +137,7 @@
         color:#fff;
         font-size: 18px;
     }
+    .mobile .setUp h1{font-size: 18px;}
+    .mobile .setUp p{font-size: 16px;}
+    .mobile .setUp input{font-size: 14px;}
 </style>
