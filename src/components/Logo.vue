@@ -4,21 +4,24 @@
       <a-row :gutter="[8,0]">
         <a-col :xs="4" :md="6" @click="$router.push('/')"><img class="headImg-l" v-if="base" :src="base.logo" height="70px" /></a-col>
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
-          <a-col :xs="6" :md="4" id="nav_list" @mouseover="selectStyle">
-              <a-cascader
-                      ref="categorys"
-                      :options="options"
-                      :displayRender="displayRender"
-                      :fieldNames="{ label: 'name', value: 'id', children: 'children' }"
-                      expandTrigger="hover"
-                      @change="onChange"
-                      placeholder="课程分类"
-                      style="width: 80%;"
-              />
+          <a-col :xs="5" :md="4" id="nav_list" @mouseover="selectStyle">
+              <span>课程分类</span>
+              <div class="navDown">
+                  <div>
+                      <h1>建筑aaa</h1>
+                      <div class="navList">
+                          <span>啊啊1</span>
+                          <span>啊啊啊啊2</span>
+                          <span>啊啊啊3</span>
+                          <span>啊啊啊啊4</span>
+                          <span>啊啊啊5</span>
+                      </div>
+                  </div>
+              </div>
           </a-col>
-          <a-col :xs="5" :md="3" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
+          <a-col :xs="5" :md="4" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
           <a-col :xs="5" :md="4" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
-          <a-col :xs="5" :md="4">服务热线：1111111111</a-col>
+          <a-col :xs="5" :md="3">服务热线：1111111111</a-col>
       </a-row>
     </div>
       <div :class="['content']" v-else>
@@ -156,8 +159,43 @@
     }
 </style>
 <style scoped>
+    /* 导航下拉 */
+    .navDown {
+        position: absolute;
+        top:98px;
+        width: 250px;
+        z-index: 9999999;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
+        padding:10px 15px;
+        font-weight: normal;
+    }
+    .navDown>h1{
+        font-size: 16px;
+        line-height: 26px;
+        cursor: pointer;
+    }
+    .navDown>div{
+        overflow: hidden;
+    }
+    .navDown .navList{
 
+    }
+    .navDown span{
+        font-weight: normal;
+        font-size: 14px;
+        display: inline-block;
+        width: 33%;
+        line-height: 26px;
+        margin-bottom: 10px;
+        float: left;
+    }
+    .navDown span:hover{
+        color: #f31111;
+    }
+    /* 导航下拉 结束 */
   .nav-box{
+      position: relative;
    /* position: fixed;
     top:0;*/
     background: #fff;
@@ -169,7 +207,7 @@
     cursor:pointer;
   }
   .nav-box .ant-col{
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
     white-space: nowrap;
   }
