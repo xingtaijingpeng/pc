@@ -9,7 +9,7 @@
             <ul>
                 <li class="active">
                     <a href="#">
-                        <img class="footImg1" src="/static/foo.png" >
+                        <img class="footImg1" src="/static/foot1.png" >
                         <img class="footImg2" src="/static/foot1_1.png" >
                         <p>首页</p>
                     </a>
@@ -59,7 +59,10 @@
 </script>
 
 <style scoped>
-    .footer2{
+
+    .footer2 { display: none;}
+    .mobile .footer2{
+        display: block;
         position: fixed;
         bottom: 0;
         left: 0;
@@ -67,7 +70,7 @@
         height: 60px;
         border-top: 1px solid #CCCCCC;
         background: #FFFFFF;
-        z-index: 99;
+        z-index: 9;
     }
     .footer2 li{
         width: 24%;
