@@ -29,7 +29,7 @@
                 </template>
             </a-row>
         </div>
-        <Footer></Footer>
+        <Footer :choose="2"></Footer>
     </div>
 
 </template>
@@ -52,6 +52,24 @@ export default {
     components: {
         Logo,ListFont,Footer
     },
+	watch:{
+        '$route': function (newVal) {
+            axios.post('category/index',{
+                guard: 'video',
+                pageSize: 30,
+                merge: 1,
+                parent_id: this.$route.params.id
+            }).then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.lists = response.data;
+                this.getlist(this.lists.map(function (item) {
+                    return item.id;
+                }));
+            });
+        },
+	},
     mounted(){
         axios.post('category/index',{
             guard: 'video',

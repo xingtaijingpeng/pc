@@ -4,17 +4,13 @@
       <a-row :gutter="[8,0]">
         <a-col :xs="4" :md="6" @click="$router.push('/')"><img class="headImg-l" v-if="base" :src="base.logo" height="70px" /></a-col>
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
-          <a-col :xs="5" :md="4" id="nav_list" @mouseover="selectStyle">
+          <a-col :xs="5" :md="4" id="nav_list" @mouseover="selectStyle" @mouseleave="aaaaaa">
               <span>课程分类</span>
-              <div class="navDown" v-if="true">
-                  <div>
-                      <h1>建筑aaa</h1>
+              <div class="navDown" v-if="navDown">
+                  <div v-for="item in options">
+                      <h1 @click="aaadd(item.id)">{{item.name}}</h1>
                       <div class="navList">
-                          <span>啊啊1</span>
-                          <span>啊啊啊啊2</span>
-                          <span>啊啊啊3</span>
-                          <span>啊啊啊啊4</span>
-                          <span>啊啊啊5</span>
+                          <span v-for="ite in item.children" @click="aaadd(item.id)">{{ite.name}}</span>
                       </div>
                   </div>
               </div>
@@ -36,11 +32,8 @@
                           <a-menu-item key="111">
                               <a @click="$router.push('/')">首页</a>
                           </a-menu-item>
-                          <a-menu-item key="222">
-                              <a @click="$router.push('/healthy')">健康管理师</a>
-                          </a-menu-item>
-                          <a-menu-item key="333">
-                              <a @click="$router.push('/fireControl')">消防工程师</a>
+                          <a-menu-item :key="item.id" v-for="item in options">
+                              <a @click="$router.push('/healthy/'+item.id)">{{item.name}}</a>
                           </a-menu-item>
                           <a-menu-item key="444">
                               <a @click="$router.push('/company')">公司介绍</a>
@@ -63,6 +56,7 @@
         name: 'Logo',
         data(){
             return {
+                navDown: false,
                 options: [
                     {
                         value: '1',
@@ -106,7 +100,14 @@
             });
 		},
 		methods: {
+            aaadd(id){
+                window.location.href='/index.html#/healthy/'+id
+			},
+            aaaaaa(){
+                this.navDown = false;
+            },
             selectStyle(){
+                this.navDown = true;
                 // if(document.getElementsByClassName('ant-cascader-menus').length == 0 || document.getElementsByClassName('ant-cascader-menus')[0].style.display == 'none'){
                 //     document.getElementById('nav_list').getElementsByClassName('ant-cascader-picker')[0].click()
                 // }
@@ -163,20 +164,23 @@
     .navDown {
         position: absolute;
         top:98px;
-        width: 250px;
+        width: 300px;
         z-index: 1;
-        background: rgba(255,255,255,0.9);
+        background: rgba(0,0,0,0.5);
         box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
         padding:10px 15px;
         font-weight: normal;
+		color: #fff;
     }
-    .navDown>h1{
+    .navDown h1{
         font-size: 16px;
         line-height: 26px;
         cursor: pointer;
-    }
+		color: #fff;
+	}
     .navDown>div{
         overflow: hidden;
+		margin-bottom: 20px;
     }
     .navDown .navList{
 

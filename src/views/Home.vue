@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <Footer></Footer>
+        <Footer :choose="1"></Footer>
     </div>
 
 </template>

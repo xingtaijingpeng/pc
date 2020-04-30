@@ -25,7 +25,7 @@
                 </a-row>
             </div>
         </div>
-        <Footer></Footer>
+        <Footer :choose="3"></Footer>
     </div>
 
 </template>
