@@ -67,7 +67,7 @@
         height: 60px;
         border-top: 1px solid #CCCCCC;
         background: #FFFFFF;
-        z-index: 99;
+        z-index: 1;
     }
     .footer2 li{
         width: 24%;
