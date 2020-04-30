@@ -1,6 +1,21 @@
 <template>
     <div>
         <logo class="nav" choose="1"></logo>
+        <div class="dl">
+            <!-- 登录 -->
+            <div class="left"></div>
+            <div class="right">
+                <h1>登录</h1>
+                <p><input type="text" placeholder="请输入手机号"></p>
+                <p><input type="password" placeholder="请输入密码"></p>
+                <div class="dlMore">
+                    还没有账号？<span class="zc">立即注册</span> <span class="wj">忘记密码</span>
+                </div>
+                <div class="but">登录</div>
+            </div>
+            <!-- 结束 -->
+        </div>
+
         <!-- banner -->
         <a-carousel arrows :autoplay="true">
             <div
@@ -156,6 +171,62 @@
 
 
 <style scoped>
+    .dl{
+        position: absolute;
+        top:230px;
+        right:180px;
+        width: 390px;
+        background: #fff;
+        z-index: 999;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .dl .left{
+        width: 40%;
+        height: 260px;
+        background: url("/static/dl-left.png") no-repeat;
+        background-size: 100% 100%;
+        overflow: hidden;
+    }
+    .dl .right{
+        width: 60%;
+        padding: 0 15px;
+    }
+    .dl .right h1{
+        font-size: 22px;
+    }
+    .dl .right p{
+        padding:5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .dl .right p input{
+        border: none;
+        outline: none
+    }
+    .dlMore{
+        font-size: 12px;
+    }
+    .dlMore .zc{
+        color: #009aff;
+        cursor: pointer;
+    }
+    .dlMore .wj{
+        color: #ef1010;
+        float: right;
+        cursor: pointer;
+    }
+    .right .but{
+        color: #fff;
+        background: #ef1010;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
     .mobile .list-first{
         display: none;
     }

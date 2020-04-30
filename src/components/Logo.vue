@@ -145,7 +145,6 @@
         color:#888;
     }
 
-
     .ant-cascader-menu .ant-cascader-menu-item-expand{
         min-width:180px;
     }
@@ -166,17 +165,20 @@
         top:98px;
         width: 300px;
         z-index: 1;
-        background: rgba(0,0,0,0.5);
-        box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
+        background: rgba(0,154,255,0.6);
+        box-shadow: 0 0 10px 2px rgba(0,154,255,0.2);
         padding:10px 15px;
         font-weight: normal;
 		color: #fff;
+        border-radius:0 0 5px 5px;
     }
     .navDown h1{
         font-size: 16px;
         line-height: 26px;
         cursor: pointer;
 		color: #fff;
+        background: url("/static/right.png") right center no-repeat;
+        background-size: 20px auto;
 	}
     .navDown>div{
         overflow: hidden;
@@ -195,7 +197,8 @@
         float: left;
     }
     .navDown span:hover{
-        color: #f31111;
+        color: #fff;
+        font-weight: bold;
     }
     /* 导航下拉 结束 */
   .nav-box{

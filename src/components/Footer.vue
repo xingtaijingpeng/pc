@@ -96,8 +96,11 @@
         position: relative;
         height: 60px;
     }
+    .footer2 li a{
+        color:#8a8a8a!important;
+    }
     .footer2 li:first-child img{
-        width: 17px;
+        width: 20px;
         height: auto;
         top: 8px;
     }
@@ -115,7 +118,7 @@
         display: block;
     }
     .active p{
-        color: #517698;
+        color: #ef1010;
     }
     .footer2 li p{
         width: 100%;
