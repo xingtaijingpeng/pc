@@ -142,7 +142,7 @@
     justify-content: center;
     align-items: center;
     background: rgba(0,0,0,0.6);
-    z-index: 1;
+    z-index: 2;
 }
 .login,.register{
     width:375px;
