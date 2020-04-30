@@ -7,12 +7,12 @@
 		<div style="right:-230px;" class="contactusdiyou">
 			<div class="hoverbtn">
 				<span>联</span><span>系</span><span>我</span><span>们</span>
-				<img class="hoverimg" src="images/hoverbtnbg.gif" height="9" width="13">
+				<img class="hoverimg" src="/static/images/hoverbtnbg.gif" height="9" width="13">
 			</div>
 			<div class="conter">
 				<div class="con1">
 					<dl class="fn_cle">
-						<dt><img src="images/tel.png" height="31" width="31"></dt>
+						<dt><img src="/static/images/tel.png" height="31" width="31"></dt>
 						<dd class="f1">咨询热线：</dd>
 						<dd class="f2"><span class="ph_num">188-9999-8888</span></dd>
 					</dl>
@@ -20,13 +20,11 @@
 				<div class="blank0"></div>
 				<div class="qqcall">
 					<dl class="fn_cle">
-						<dt><img src="images/zxkfqq.png" height="31" width="31"></dt>
+						<dt><img src="/static/images/zxkfqq.png" height="31" width="31"></dt>
 						<dd class="f1 f_s14">在线客服：</dd>
 						<dd class="f2 kefuQQ">
-							<span>客服一</span>
+							<span>金牌客服</span>
 							<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1111111111&amp;site=qq&amp;menu=yes"></a>
-							<span>客服二</span>
-							<a target="_blank" href="http://sc.chinaz.com/jiaoben/"></a>
 						</dd>
 					</dl>
 					<div class="blank0"></div>
@@ -34,15 +32,15 @@
 				<div class="blank0"></div>
 				<div class="weixincall">
 					<dl class="fn_cle">
-						<dt><img src="images/weixin.png" height="31" width="31"></dt>
+						<dt><img src="/static/images/weixin.png" height="31" width="31"></dt>
 						<dd class="f1">官方微信站：</dd>
-						<dd class="f3"><img src="images/wechat_code.png" height="73" width="73"></dd>
+						<dd class="f3"><img src="/static/images/wechat_code.png" height="73" width="73"></dd>
 					</dl>
 				</div>
 				<div class="blank0"></div>
 				<div class="dytimer">
 					<span style="font-weight: bold;">公司官网：</span>
-					<span><a href="">sc.chinaz.com</a></span>
+					<span><a href="http://www.tubojiaoyu.com" style="color: #fff;">http://www.tubojiaoyu.com</a></span>
 				</div>
 			</div>
 		</div>
