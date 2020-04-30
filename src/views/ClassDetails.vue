@@ -16,7 +16,10 @@
             <a-row>
                 <a-col :xs="24" :sm="6" :md="6" class="red">{{detail.price}}</a-col>
                 <a-col :xs="24" :sm="6" :md="6" class="hui" style="text-decoration: line-through;">原价￥{{detail.old_price}}</a-col>
-                <a-col :xs="24" :sm="12" :md="12" v-if="buyed">
+                <a-col :xs="24" :sm="12" :md="12" v-if="!(detail.price > 0)">
+                    <div class="but" style="float: right;">免费观看</div>
+                </a-col>
+                <a-col :xs="24" :sm="12" :md="12" v-else-if="buyed">
                     <div class="but" style="float: right;">已购买</div>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="12" v-else>
@@ -216,7 +219,7 @@
             },
 			showvideo(){
                 this.checkbuy((response)=>{
-					if(response.data.isbuy){
+					if(response.data.isbuy || !(this.detail.price > 0)){
                         this.videoshow=!this.videoshow
                     }else{
                         return this.$message.error('请先购买本视频');
