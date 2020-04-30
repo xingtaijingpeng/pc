@@ -6,7 +6,7 @@
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
           <a-col :xs="5" :md="4" id="nav_list" @mouseover="selectStyle">
               <span>课程分类</span>
-              <div class="navDown" v-if="false">
+              <div class="navDown" v-if="true">
                   <div>
                       <h1>建筑aaa</h1>
                       <div class="navList">
