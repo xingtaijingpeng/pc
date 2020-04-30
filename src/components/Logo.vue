@@ -6,7 +6,7 @@
           <a-col :xs="0" :md="3" @click="$router.push('/')"><span :class="$route.path == '/' ? 'red' : ''">首页</span></a-col>
           <a-col :xs="5" :md="4" id="nav_list" @mouseover="selectStyle">
               <span>课程分类</span>
-              <div class="navDown">
+              <div class="navDown" v-if="false">
                   <div>
                       <h1>建筑aaa</h1>
                       <div class="navList">
@@ -107,9 +107,9 @@
 		},
 		methods: {
             selectStyle(){
-                if(document.getElementsByClassName('ant-cascader-menus').length == 0 || document.getElementsByClassName('ant-cascader-menus')[0].style.display == 'none'){
-                    document.getElementById('nav_list').getElementsByClassName('ant-cascader-picker')[0].click()
-                }
+                // if(document.getElementsByClassName('ant-cascader-menus').length == 0 || document.getElementsByClassName('ant-cascader-menus')[0].style.display == 'none'){
+                //     document.getElementById('nav_list').getElementsByClassName('ant-cascader-picker')[0].click()
+                // }
             },
             displayRender({ labels }) {
                 return labels[labels.length - 1];
