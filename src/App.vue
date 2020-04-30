@@ -5,12 +5,14 @@
             <a-icon slot="indicator" type="loading" spin />
             <router-view :style="{background:'#fff'}" />
         </a-spin>
+		<qq></qq>
     </div>
 </template>
 <script>
 
     import { deviceEnquire } from '@/plugins/device'
     import Login from '@/components/Login'
+    import Qq from '@/components/Qq'
     import wx from 'weixin-js-sdk'
 
     export default {
@@ -21,7 +23,7 @@
             }
         },
 		components: {
-            Login
+            Login,Qq
 		},
         created(){
             let open = localStorage.getItem('openid');
