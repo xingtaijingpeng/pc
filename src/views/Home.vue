@@ -52,7 +52,7 @@
                 <a-icon type="right-circle" />
             </div>
             <template v-if="base">
-                <div class="banner" v-for="item in base.banner"><img :src="item.url" style="width: 100%" /></div>
+                <div class="banner" v-for="item in base.banner"><img :src="item.url" style="height: 100%" /></div>
             </template>
         </a-carousel>
 
@@ -267,8 +267,15 @@
         margin-top: 5px;
         display: block;
     }
-
-
+    .banner{
+        display: flex !important;
+        max-height: 620px;
+        justify-content: center;
+        align-items: center;
+    }
+   /* .mobile .banner{
+        height: auto !important;
+    }*/
 
 
     .mobile .list-first{
