@@ -3,16 +3,32 @@
         <logo class="nav" choose="1"></logo>
         <div class="dl">
             <!-- 登录 -->
-            <div class="left"></div>
-            <div class="right">
-                <h1>登录</h1>
-                <p><input type="text" placeholder="请输入手机号"></p>
-                <p><input type="password" placeholder="请输入密码"></p>
-                <div class="dlMore">
-                    还没有账号？<span class="zc">立即注册</span> <span class="wj">忘记密码</span>
-                </div>
-                <div class="but">登录</div>
+            <div class="dlHead">
+                <img src="/static/head.png" width="100%"  alt="">
             </div>
+            <div class="font">欢迎来到图博教育！</div>
+            <div class="but2">学员登录</div>
+            <div class="but">免费注册</div>
+            <ul>
+                <li>
+                    <span>
+                        <img src="/static/dl-img1.png" width="28"  alt="">
+                    </span>
+                    <span>订单</span>
+                </li>
+                <li>
+                    <span>
+                        <img src="/static/dl-img2.png" width="25"  alt="">
+                    </span>
+                    <span>课程</span>
+                </li>
+                <li>
+                    <span>
+                        <img src="/static/dl-img3.png" width="30"  alt="">
+                    </span>
+                    <span>消息</span>
+                </li>
+            </ul>
             <!-- 结束 -->
         </div>
 
@@ -175,58 +191,59 @@
         position: absolute;
         top:230px;
         right:180px;
-        width: 390px;
+        width: 260px;
         background: #fff;
         z-index: 999;
         border-radius: 5px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 20px 25px;
     }
-    .dl .left{
-        width: 40%;
-        height: 260px;
-        background: url("/static/dl-left.png") no-repeat;
-        background-size: 100% 100%;
-        overflow: hidden;
+    .dl>.font{
+        margin-top: 5px;
+        text-align: center!important;
     }
-    .dl .right{
-        width: 60%;
-        padding: 0 15px;
+    .dlHead{
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
     }
-    .dl .right h1{
-        font-size: 22px;
-    }
-    .dl .right p{
-        padding:5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    .dl .right p input{
-        border: none;
-        outline: none
-    }
-    .dlMore{
-        font-size: 12px;
-    }
-    .dlMore .zc{
-        color: #009aff;
-        cursor: pointer;
-    }
-    .dlMore .wj{
-        color: #ef1010;
-        float: right;
-        cursor: pointer;
-    }
-    .right .but{
+    .but{
         color: #fff;
         background: #ef1010;
-        padding: 5px;
+        padding: 6px;
         text-align: center;
         border-radius: 5px;
         margin-top: 10px;
+        cursor: pointer;
     }
+    .but2{
+        color: #ef1010;
+        border:1px solid #ef1010;
+        padding: 6px;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    .dl ul{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    .dl li{
+        text-align: center;
+        cursor: pointer;
+    }
+    .dl span:first-child{
+        height: 30px;
+    }
+    .dl span:last-child{
+        margin-top: 5px;
+        display: block;
+    }
+
+
+
+
     .mobile .list-first{
         display: none;
     }
