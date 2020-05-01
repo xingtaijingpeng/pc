@@ -1,15 +1,7 @@
 <template>
     <div>
         <logo></logo>
-        <div>
-            <div class="content" style="position: relative;">
-                <div class="newBannerFont">
-                    <!--<img src="/static/Healthy-banner-font.png" width="80%" alt="">-->
-                    <!--<div>新闻咨询</div>
-                    <span>新闻咨询，了解行业动态</span>-->
-                </div>
-            </div>
-            <img src="/static/News-banner.png" width="100%" alt="">
+        <div class="newBannerFont">
         </div>
 
 
@@ -66,14 +58,16 @@ export default {
         margin: 0 auto;
     }
     .newBannerFont{
-        position: absolute;
-        top:0;
-        font-size: 36px;
-        margin-top: 100px;
-        color:#fff;
+        width: 100%;
+        height: 380px;
+        background: url("/static/News-banner.png") center no-repeat;
+        background-size: auto 380px;
     }
-    .newBannerFont span{
-        font-size: 20px;
+    .mobile .newBannerFont{
+        width: 100%;
+        height: 190px;
+        background: url("/static/News-banner.png") center no-repeat;
+        background-size: auto 190px;
     }
     .newFont{
         text-align: center;
