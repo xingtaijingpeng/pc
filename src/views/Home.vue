@@ -9,7 +9,7 @@
             <div class="font">欢迎来到图博教育！</div>
             <template v-if="mobile">
                 <div class="but2" style="border: none;">{{mobile}}</div>
-                <div class="but">退出登录</div>
+                <div class="but" @click="tututu">退出登录</div>
             </template>
             <template v-else>
                 <div class="but2" @click="tozhuce('login')">学员登录</div>
@@ -194,6 +194,10 @@
 
         },
         methods: {
+            tututu(){
+                sessionStorage.clear();
+                window.location.reload();
+            },
             todetail: function (id) {
                 this.$router.push('/newsDetails/'+id)
             },

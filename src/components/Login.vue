@@ -144,6 +144,14 @@
     background: rgba(0,0,0,0.6);
     z-index: 2;
 }
+ .login, .register{
+    width:350px;
+    padding:30px 20px;
+    background: #fff;
+    border-radius:10px;
+	position: relative;
+	z-index: 999999;
+}
 .mobile .login,.mobile .register{
     width:80%;
     padding:30px 20px;
