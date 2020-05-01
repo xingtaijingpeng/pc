@@ -74,7 +74,7 @@ function init(_axios,loading = false){
                             });
                         });
                     }else{
-                        return _login();
+                        return _login(error.config.url);
                     }
                 }
             }
@@ -88,10 +88,12 @@ function init(_axios,loading = false){
     );
 }
 
-let _login = function () {
-    sessionStorage.clear();
-    store.commit('app/setLogin',true);
-    store.commit('app/setLoginType','login');
+let _login = function (url = '') {
+    if(url != 'userinfo2'){
+        sessionStorage.clear();
+        store.commit('app/setLogin',true);
+        store.commit('app/setLoginType','login');
+    }
 };
 
 Plugin.install = function(Vue, options) {

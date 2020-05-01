@@ -1,28 +1,34 @@
 <template>
     <div>
         <logo class="nav" choose="1"></logo>
-        <div class="dl">
+        <div class="dl" v-if="device != 'mobile'">
             <!-- 登录 -->
             <div class="dlHead">
-                <img src="/static/head.png" width="100%"  alt="">
+                <img :src="imageUrl" width="100%"  alt="">
             </div>
             <div class="font">欢迎来到图博教育！</div>
-            <div class="but2">学员登录</div>
-            <div class="but">免费注册</div>
+            <template v-if="mobile">
+                <div class="but2" style="border: none;">{{mobile}}</div>
+                <div class="but">退出登录</div>
+            </template>
+            <template v-else>
+                <div class="but2" @click="tozhuce('login')">学员登录</div>
+                <div class="but" @click="tozhuce('register')">免费注册</div>
+            </template>
             <ul>
-                <li>
+                <li @click="$router.push('/PersonalOrder')">
                     <span>
                         <img src="/static/dl-img1.png" width="28"  alt="">
                     </span>
                     <span>订单</span>
                 </li>
-                <li>
+                <li @click="$router.push('/PersonalClass')">
                     <span>
                         <img src="/static/dl-img2.png" width="25"  alt="">
                     </span>
                     <span>课程</span>
                 </li>
-                <li>
+                <li @click="$router.push('/PersonalMessage')">
                     <span>
                         <img src="/static/dl-img3.png" width="30"  alt="">
                     </span>
@@ -124,7 +130,9 @@
             return {
                 hot: [],
                 videos: [],
-                news: []
+                news: [],
+                imageUrl: 'static/head-icon.png',
+                mobile:''
             }
         },
         computed: {
@@ -176,11 +184,23 @@
                 this.news = response.data;
             });
 
+            axios.post('userinfo2').then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.mobile = response.data.mobile
+                this.imageUrl = response.data.avatar
+            });
+
         },
         methods: {
             todetail: function (id) {
                 this.$router.push('/newsDetails/'+id)
-            }
+            },
+            tozhuce(type='login'){
+                this.$store.commit('app/setLogin',true);
+                this.$store.commit('app/setLoginType',type);
+            },
         }
     }
 </script>
@@ -193,7 +213,7 @@
         right:180px;
         width: 260px;
         background: #fff;
-        z-index: 999;
+        z-index: 1;
         border-radius: 5px;
         padding: 20px 25px;
     }
@@ -205,6 +225,8 @@
         width: 100px;
         height: 100px;
         margin: 0 auto;
+        overflow: hidden;
+        border-radius: 50%;
     }
     .but{
         color: #fff;
@@ -235,6 +257,7 @@
     }
     .dl span:first-child{
         height: 30px;
+
     }
     .dl span:last-child{
         margin-top: 5px;
