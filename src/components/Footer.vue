@@ -81,7 +81,7 @@
     .mobile .footer2{
         display: block;
         position: fixed;
-        bottom: 0;
+        bottom: -1px;
         left: 0;
         right: 0;
         height: 60px;

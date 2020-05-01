@@ -165,8 +165,8 @@
         top:98px;
         width: 300px;
         z-index: 1;
-        background: rgba(0,154,255,0.6);
-        box-shadow: 0 0 10px 2px rgba(0,154,255,0.2);
+        background: rgba(0,0,0,0.6); /* rgba(0,154,255,0.2) */
+        box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
         padding:10px 15px;
         font-weight: normal;
 		color: #fff;
