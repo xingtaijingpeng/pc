@@ -377,3 +377,6 @@ ul,li{
 	padding: 5px 10px !important;
 	font-size: 14px;
 }
+.mobile .teach .ant-row{
+	margin: 0 !important;
+}

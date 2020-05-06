@@ -9,7 +9,7 @@
                 <li @click="$router.push('/company')">公司介绍</li>
                 <li class="choose" @click="$router.push('/CompanyTeam')">师资团队</li>
             </ul>
-            <div>
+            <div class="teach">
                 <a-row :gutter="[60,60]">
                     <a-col :xs="24" :sm="12" :md="12">
                         <a-list itemLayout="horizontal" :dataSource="data1" >
@@ -94,7 +94,6 @@ export default {
         position: absolute;
         top:0;
     }
-
 
 
 </style>
