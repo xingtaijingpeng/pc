@@ -8,7 +8,7 @@
                 <span>加入我们</span>
                 <span>联系我们</span>
                 <span>教师合作</span>
-                <span>退款声明</span>
+                <span @click="jump('/newsDetails/27')">退款声明</span>
             </div>
         </div>
     </div>
