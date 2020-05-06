@@ -44,8 +44,8 @@
                         </li>
                     </a-col>
                     <a-col :xs="12" :sm="12" :md="24">
-                        <li :class="choose == 4 ? 'choose' : ''" @click="$router.push('/PersonalSetUp')">
-                            <i class="tab-nav tab-nav4"></i><span>账户管理</span>
+                        <li :class="choose == 4 ? 'choose' : ''" @click="$router.push('/PersonalSetCenter')">
+                            <i class="tab-nav tab-nav4"></i><span>个人中心</span>
                         </li>
                     </a-col>
                 </a-row>

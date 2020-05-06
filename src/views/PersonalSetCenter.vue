@@ -12,7 +12,7 @@
                 <a-col :xs="24" :sm="24" :md="18">
                     <ul class="tab-box">
                         <li class="choose">个人中心</li>
-                        <li>账号设置</li>
+                        <li @click="jump('/personalSetUp')">账号设置</li>
                     </ul>
                     <div class="personalSetCenter">
                         <!-- 昵称 -->
@@ -46,7 +46,7 @@
                             </a-form-model-item>
                             <!-- 单选 -->
                             <a-form-model-item label="性别">
-                                <a-radio-group v-model="form.resource">
+                                <a-radio-group v-model="form.sex">
                                     <a-radio value="1">男</a-radio>
                                     <a-radio value="2">女</a-radio>
                                 </a-radio-group>
@@ -54,23 +54,20 @@
 
 
                             <a-form-model-item label="个性签名">
-                                <a-input placeholder="请输入您的签名"  v-model="form.desc" type="textarea" />
-                            </a-form-model-item>
-                            <a-form-model-item label="身份信息">
-                                12345678925487
+                                <a-input placeholder="请输入您的签名"  v-model="form.qianming" type="textarea" />
                             </a-form-model-item>
                             <a-form-model-item label="真实姓名">
-                                <a-input placeholder="请输入您的真实姓名" v-model="form.name" />
+                                <a-input placeholder="请输入您的真实姓名" v-model="form.real_name" />
                             </a-form-model-item>
                             <a-form-model-item label="身份证">
-                                <a-input placeholder="请输入您的身份证" v-model="form.name" />
+                                <a-input placeholder="请输入您的身份证" v-model="form.real_num" />
                             </a-form-model-item>
                             <a-form-model-item label="收货地址">
-                                <a-input placeholder="请输入您的收货地址" v-model="form.name" />
+                                <a-input placeholder="请输入您的收货地址" v-model="form.address" />
                             </a-form-model-item>
                             <!-- 按钮 -->
                             <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-                                <a-button type="primary" ><!--@click="onSubmit"-->
+                                <a-button type="primary" @click="onsubmittt" ><!--@click="onSubmit"-->
                                     提交
                                 </a-button>
                             </a-form-model-item>
@@ -108,16 +105,35 @@
                 wrapperCol: { span: 14 },
                 form: {
                     name: '',
-                    region: undefined,
-                    date1: undefined,
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: '',
+                    sex: 1,
+                    qianming: '',
+                    real_name: '',
+                    real_num: '',
+                    address: '',
                 },
             };
         },
-
+        mounted(){
+            axios.post('userinfo').then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.$store.commit('user/SET_MOBILE',response.data.mobile);
+                this.$store.commit('user/SET_AVATAR',response.data.avatar);
+                if(response.data.avatar)
+                {
+                    this.imageUrl = response.data.avatar
+                    this.form = {
+                        name: response.data.name,
+                        sex:response.data.sex,
+                        qianming: response.data.qianming,
+                        real_name: response.data.real_name,
+                        real_num: response.data.real_num,
+                        address: response.data.address,
+                    };
+                }
+            });
+        },
         computed:{
             ...mapState({
                 mobile: state => state.user.mobile,
@@ -125,8 +141,16 @@
             }),
         },
         methods: {
-            onSubmit() {
-                console.log('submit!', this.form);
+            onsubmittt() {
+                axios.post('userinfo/save',{
+                    from: this.form
+                }).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    return this.$message.success('保存成功');
+
+                });
             },
             handleChangeLogo({file}) {
                 if (file.status === 'uploading') {
