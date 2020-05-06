@@ -167,7 +167,7 @@
     .navDown {
         position: absolute;
         top:98px;
-        width: 300px;
+        width: 380px;
         z-index: 1;
         background: rgba(0,0,0,0.6); /* rgba(0,154,255,0.2) */
         box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
@@ -181,8 +181,8 @@
         line-height: 26px;
         cursor: pointer;
 		color: #fff;
-        background: url("/static/right.png") right center no-repeat;
-        background-size: 20px auto;
+       /* background: url("/static/right.png") right center no-repeat;
+        background-size: 20px auto;*/
 	}
     .navDown>div{
         overflow: hidden;
@@ -199,6 +199,9 @@
         line-height: 26px;
         margin-bottom: 10px;
         float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .navDown span:hover{
         color: #fff;
