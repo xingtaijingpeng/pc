@@ -50,6 +50,11 @@ const routes = [
         component: () => import('../views/PersonalSetUp.vue')
     },
     {
+        path: '/PersonalSetCenter',
+        name: 'PersonalSetCenter',
+        component: () => import('../views/PersonalSetCenter.vue')
+    },
+    {
         path: '/company',
         name: 'Company',
         component: () => import('../views/Company.vue')
