@@ -8,20 +8,19 @@
                 <li class="choose" @click="$router.push('/PersonalClass')">课程购买</li>
             </ul>
             <div class="personal">
-                <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around" v-for="item in lists">
+                <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around">
                     <a-col :xs="24" :sm="6" :md="6">
-                        <img :src="item.good_info.cover" width="100%" alt="">
+                        <img :src="detail.cover" width="100%" alt="">
                     </a-col>
                     <a-col :xs="24" :sm="18" :md="18">
-                        <h1>{{item.good_info.title}}</h1>
+                        <h1>{{detail.title}}</h1>
                         <div class="font">
-                            {{item.good_info.description}}
+                            {{detail.description}}
                         </div>
                         <div style="margin-top: 20px">
-                            <span class="">课程类型：{{item.good_info.category}}</span>
-                            <span class="time">购买时间：{{item.payed_at}}</span>
+                            <span class="">课程类型：{{detail.category}}</span>
                         </div>
-                        <div class="personal-positionA payBut">实付：<br/><span>￥123456</span></div>
+                        <div class="personal-positionA payBut">实付：<br/><span>￥{{detail.price}}</span></div>
                         <!--<div class="personal-positionA but-xx but2">立即学习</div>-->
                     </a-col>
                 </a-row>
@@ -36,14 +35,19 @@
                             </a-select-option>
                         </a-select>
                     </a-form-model-item>
-                    <a-empty v-if="!lists.length" :image="simpleImage" style="margin-top: 150px;" description="暂无数据" />
                 </a-form-model>
             </div>
-            <div>共1件商品，商品总额：优惠折扣：应付：</div>
-            <div class="pay">￥<span>123456</span></div>
+            <div>共1件商品，商品总额：￥{{detail.price}}优惠折扣：￥0应付：￥{{detail.price}}</div>
+            <div class="pay">￥<span>{{detail.price}}</span></div>
+
             <div style="overflow: hidden">
-                <div class="payBut2">支付宝支付</div>
-                <div class="payBut2">微信支付</div>
+                <template v-if="$store.state.app.DEVICE == 'mobile'">
+                    <div class="payBut2" @click="userbuy2">微信支付</div>
+                </template>
+                <template v-else>
+                    <div class="payBut2" @click="userbuy(1)">支付宝支付</div>
+                    <div class="payBut2" @click="userbuy(2)">微信支付</div>
+                </template>
             </div>
 
 
@@ -51,6 +55,17 @@
         </div>
 
         <Footer></Footer>
+
+
+        <a-modal title="微信扫码支付" v-model="visible" style="text-align: center;" :footer="null" @cancel="zhifucancel">
+            <vue-qr
+                    :logoSrc="config.logo"
+                    :text="config.value"
+                    :size="250"
+                    :margin="0"
+            ></vue-qr>
+        </a-modal>
+
     </div>
 
 </template>
@@ -65,6 +80,11 @@
     import Aaaa from '@/components/Aaaa'
     import { Empty } from 'ant-design-vue';
 
+
+    import moment from 'moment';
+    import VueQr from 'vue-qr';
+    import wx from 'weixin-js-sdk'
+
     export default {
         name: 'Home',
         beforeCreate() {
@@ -72,7 +92,8 @@
         },
         data(){
             return {
-                lists: [],
+                detail: [],
+                moment,
                 /* 组件  */
                 labelCol: { span: 4 },
                 wrapperCol: { span: 14 },
@@ -84,29 +105,61 @@
                     real_num: '',
                     address: '',
                 },
+                visible:false,
+                config:{
+                    value: '',
+                    logo: 'http://www.tubojiaoyu.com/static/logo.png'
+                },
+                timer: null,
+                paytype:2,
             }
         },
         components: {
-            Logo,ListFont,Footer,LittleNav
+            Logo,ListFont,Footer,LittleNav,VueQr
         },
         mounted(){
-            this.list()
+            let _this = this;
+            if(_this.$route.params.id){
+                axios.post('article/detail/'+_this.$route.params.id,{}).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    this.detail = response.data;
+                });
+            }
         },
         methods: {
-            list(){
-                let _this = this;
-                axios.post('user/goods',{
-                    status: 2
+            zhifucancel(){
+                clearInterval(this.timer);
+            },
+            userbuy2(){
+                axios.post('order/make2',{
+                    type: 1,
+                    openid: localStorage.getItem('openid'),
+                    good_id: this.$route.params.id
                 }).then((response) => {
-                    if(!response.status){
-                        return _this.$message.error(response.message);
-                    }
-                    _this.lists = response.data
+                    let data = response.data.config;
+                    //调取微信支付
+                    WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest', {
+                            appId:data.appId,
+                            timeStamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                            nonceStr: data.nonceStr, // 支付签名随机串，不长于 32
+                            package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                            signType: data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                            paySign: data.paySign, // 支付签名
+                        },
+                        function(res){
+                            if(res.err_msg == "get_brand_wcpay_request:ok" ){
+                                window.history.go(-1);
+                            }
+                        }
+                    );
                 });
             },
-            userbuy(){
+            userbuy(paytype = 1){
                 this.checkbuy((response)=>{
-                    if(this.paytype == 2){
+                    if(paytype == 2){
                         //微信
                         axios.post('order/make',{
                             type: 1,
@@ -122,7 +175,8 @@
                                     serial: response.data.ordTransLog.serial
                                 }).then((response) => {
                                     if(response.status==1){
-                                        window.location.reload();
+                                        this.zhifucancel();
+                                        window.history.go(-1);
                                     }
                                 });
                             },2000)
@@ -138,6 +192,13 @@
                     }
                 });
             },
+            checkbuy(fun){
+                //判断是否购买
+                let _this = this;
+                axios.post('hasbuy/'+_this.$route.params.id).then((response) => {
+                    fun(response);
+                });
+            }
         }
     }
 </script>

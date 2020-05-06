@@ -50,7 +50,7 @@ const routes = [
         component: () => import('../views/PersonalSetUp.vue')
     },
     {
-        path: '/classPay',
+        path: '/classPay/:id',
         name: 'classPay',
         component: () => import('../views/classPay.vue')
     },

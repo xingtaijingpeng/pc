@@ -23,10 +23,7 @@
                     <div class="but" style="float: right;">已购买</div>
                 </a-col>
                 <a-col :xs="24" :sm="12" :md="12" v-else>
-                    <template v-if="$store.state.app.DEVICE == 'mobile'">
-                        <div class="but" style="float: right;" @click="userbuy2">购买</div>
-                    </template>
-                    <template v-else>
+                    <template>
                         <div class="but" style="float: right;" @click="userbuy">购买</div>
                     </template>
                 </a-col>
@@ -74,14 +71,6 @@
 
         <Footer></Footer>
 
-		<a-modal title="微信扫码支付" v-model="visible" style="text-align: center;" :footer="null" @cancel="zhifucancel">
-			<vue-qr
-				:logoSrc="config.logo"
-				:text="config.value"
-				:size="250"
-				:margin="0"
-			></vue-qr>
-		</a-modal>
 
     </div>
 
@@ -106,13 +95,6 @@
         },
         data() {
             return {
-                visible:false,
-				config:{
-                    value: '',
-					logo: 'http://www.tubojiaoyu.com/static/logo.png'
-				},
-				timer: null,
-                paytype:2,
                 detail: [],
                 data: [],
 				buyed: false,
@@ -149,36 +131,9 @@
             }
         },
         methods: {
-            zhifucancel(){
-                clearInterval(this.timer);
-			},
-            userbuy2(){
-                axios.post('order/make2',{
-                    type: 1,
-                    openid: localStorage.getItem('openid'),
-                    good_id: this.$route.params.id
-                }).then((response) => {
-                    let data = response.data.config;
-                    //调取微信支付
-                    WeixinJSBridge.invoke(
-                        'getBrandWCPayRequest', {
-                            appId:data.appId,
-                            timeStamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
-                            nonceStr: data.nonceStr, // 支付签名随机串，不长于 32
-                            package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
-                            signType: data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-                            paySign: data.paySign, // 支付签名
-                        },
-                        function(res){
-                            if(res.err_msg == "get_brand_wcpay_request:ok" ){
-                                window.location.reload();
-                            }
-                        }
-                    );
-                });
-            },
+
             userbuy(){
-                this.jump('/classPay');
+                this.jump('/classPay/'+this.$route.params.id);
             },
 			showvideo(){
                 this.checkbuy((response)=>{
