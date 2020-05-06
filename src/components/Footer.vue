@@ -1,6 +1,6 @@
 <template>
     <div class="footer" style="white-space: pre-wrap;" v-if="device!='mobile'">
-        <div class="content">
+        <div class="content footer-box">
             <div class="xue"><img src="/static/logo.png"  alt="">•&nbsp;&nbsp;&nbsp;学习永不晚</div>
             <div>关于我们：</div>
             <div class="xuan">
@@ -8,8 +8,9 @@
                 <!--<span @click="jump('')">加入我们</span>
                 <span @click="jump('')">联系我们</span>-->
                 <span @click="jump('/CompanyTeam')">教师合作</span>
-                <span @click="jump('/newsDetails/30')">退款声明</span>
+                <!--<span @click="jump('/newsDetails/30')">退款声明</span>-->
             </div>
+            <div class="rwm"><img src="/static/rwm.png" width="100" alt=""></div>
         </div>
     </div>
     <div v-else>
@@ -102,6 +103,9 @@
     .xuan span:hover{
         font-weight: bold;
     }
+    .footer-box{
+        position: relative;
+    }
     .footer2 { display: none;}
     .mobile .footer2{
         display: block;
@@ -150,6 +154,11 @@
         position: absolute;
         bottom: -9px;
         font-size: 14px;
+    }
+    .rwm{
+        position: absolute;
+        right: 0px;
+        top: 0px;
     }
 </style>
 

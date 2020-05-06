@@ -18,7 +18,7 @@
                         <!-- 昵称 -->
                         <a-form-model :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
                             <!-- 头像 -->
-                            <a-form-model-item label="基本信息">自我介绍一下，我叫图博教育，你呢？</a-form-model-item>
+                            <!--<a-form-model-item label="基本信息">自我介绍一下，我叫图博教育，你呢？</a-form-model-item>-->
                             <a-form-model-item label="头像">
                                 <a-upload
                                         name="file"
@@ -41,17 +41,16 @@
                                 </a-upload>
                             </a-form-model-item>
                             <!-- 输入框 -->
-                            <a-form-model-item label="昵称">
-                                <a-input placeholder="请输入您的昵称" v-model="form.name" />
+                            <a-form-model-item label="*昵称">
+                                <a-input v-decorator="['note', { rules: [{ required: true, message: 'Please input your note!' }] }]" placeholder="请输入您的昵称" v-model="form.name" />
                             </a-form-model-item>
                             <!-- 单选 -->
-                            <a-form-model-item label="性别">
+                            <a-form-model-item label="*性别">
                                 <a-radio-group v-model="form.sex">
                                     <a-radio value="1">男</a-radio>
                                     <a-radio value="2">女</a-radio>
                                 </a-radio-group>
                             </a-form-model-item>
-
 
                             <a-form-model-item label="个性签名">
                                 <a-input placeholder="请输入您的签名"  v-model="form.qianming" type="textarea" />
