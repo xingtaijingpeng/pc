@@ -50,6 +50,11 @@ const routes = [
         component: () => import('../views/PersonalSetUp.vue')
     },
     {
+        path: '/classPay',
+        name: 'classPay',
+        component: () => import('../views/classPay.vue')
+    },
+    {
         path: '/PersonalSetCenter',
         name: 'PersonalSetCenter',
         component: () => import('../views/PersonalSetCenter.vue')
