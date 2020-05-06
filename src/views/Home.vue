@@ -190,6 +190,9 @@
                 }
                 this.mobile = response.data.mobile
                 this.imageUrl = response.data.avatar
+                if(!response.data.name || !response.data.address){
+                    this.jump('/PersonalSetCenter');
+                }
             });
 
         },

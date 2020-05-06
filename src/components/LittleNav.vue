@@ -87,6 +87,9 @@
                     this.imageUrl = response.data.avatar
                 }
                 this.needay = response.data.needay
+                if(!response.data.name || !response.data.address){
+                    this.jump('/PersonalSetCenter');
+                }
             });
         },
         computed:{
