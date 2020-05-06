@@ -17,8 +17,8 @@
                             </div>
                         </div>
                     </a-col>
-                    <a-col :xs="5" :md="4" @click="$router.push('/company')"><span :class="$route.path == '/company' ? 'red' : ''">公司介绍</span></a-col>
-                    <a-col :xs="5" :md="4" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>个人中心</span></a-col>
+                    <a-col :xs="5" :md="4" @click="tocenter"><span :class="$route.path == '/company' ? 'red' : ''">学习中心</span></a-col>
+                    <a-col :xs="5" :md="4" @click="tocenter" :class="choose == 5 ? 'red' : ''"><span>我的课程</span></a-col>
                     <a-col :xs="5" :md="3">服务热线：1111111111</a-col>
                 </a-row>
             </div>
