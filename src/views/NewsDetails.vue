@@ -5,7 +5,7 @@
         </div>
 
 
-        <div class="content2">
+        <div class="content2 center-box">
             <div class="newFont">
                 <div>
                     <h1>{{detail.title}}</h1>

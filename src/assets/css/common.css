@@ -343,3 +343,7 @@ ul,li{
 .mobile .personal .font{
 	font-size: 14px!important;
 }
+/* 最小高度 */
+.center-box{
+	min-height: 720px;
+}
