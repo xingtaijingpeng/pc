@@ -133,12 +133,12 @@
         height: 40px;
         line-height: 40px;
         text-align: center;
-        background: #f31111;
+        background: #1890ff;
         border-radius: 10px;
         color:#fff;
         font-size: 18px;
+        cursor: pointer;
     }
-    .mobile .setUp h1{font-size: 18px;}
-    .mobile .setUp p{font-size: 16px;}
-    .mobile .setUp input{font-size: 14px;}
+    .mobile .setUp h1{font-size: 16px;}
+    .mobile .setUp div,.mobile .setUp p,.mobile .setUp input{font-size: 14px;}
 </style>

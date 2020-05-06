@@ -202,10 +202,5 @@
         padding: 5px 10px;
         display: inline-block;
     }
-    .mobile .ant-form-item-control{
-        line-height: 10px !important;
-    }
-    .mobile .ant-form-item-control-wrapper{
-        line-height: 10px !important;
-    }
+
 </style>

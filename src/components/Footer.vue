@@ -4,16 +4,16 @@
             <div class="xue"><img src="/static/logo.png"  alt="">•&nbsp;&nbsp;&nbsp;学习永不晚</div>
             <div>关于我们：</div>
             <div class="xuan">
-                <span>公司简介</span>
-                <span>加入我们</span>
-                <span>联系我们</span>
-                <span>教师合作</span>
-                <span @click="jump('/newsDetails/27')">退款声明</span>
+                <span @click="jump('/Company')">公司简介</span>
+                <!--<span @click="jump('')">加入我们</span>
+                <span @click="jump('')">联系我们</span>-->
+                <span @click="jump('/CompanyTeam')">教师合作</span>
+                <span @click="jump('/newsDetails/30')">退款声明</span>
             </div>
         </div>
     </div>
     <div v-else>
-		<div style="height: 60px;"></div>
+		<div style="height: 80px;"></div>
         <div class="footer2">
             <ul>
                 <li @click="$router.push('/')" :class="$route.path == '/' ? 'active' : ''">

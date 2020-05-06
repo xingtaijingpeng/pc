@@ -65,8 +65,8 @@ ul,li{
 	text-align: center;
 	font-size: 16px;
 	height: 38px;
-	color: #f31111;
-	border: 1px solid #f31111;
+	color: #00cd8a;
+	border: 1px solid #00cd8a;/*#f31111*/
 	border-radius: 10px;
 	line-height: 36px;
 	background: #fff;
@@ -98,8 +98,8 @@ ul,li{
 	cursor: pointer;
 }
 .tab-box .choose{
-	color:#f31111;
-	border-bottom: 3px solid #f31111;
+	color:#00cd8a;
+	border-bottom: 3px solid #00cd8a;
 }
 .tab-box{
 	margin-top: 50px;
@@ -206,6 +206,9 @@ ul,li{
 }
 .mobile .setUp .but-red{
 	position: static;
+	width: 64px;
+	height: 32px;
+	line-height: 32px;
 	margin-left: 20px;
 	font-size: 15px;
 }
@@ -346,4 +349,31 @@ ul,li{
 /* 最小高度 */
 .center-box{
 	min-height: 600px;
+}
+
+.xueXi{
+	background: #00cd8a !important;
+	color: #fff !important;
+}
+.mobile .personal .font{
+	height: 0px;
+}
+.mobile .personal h1{
+	margin-bottom: 0;
+}
+.mobile .ant-form-item-control{
+	line-height: 26px !important;
+}
+.mobile .ant-form-item-control-wrapper{
+	line-height: 26px !important;
+}
+.mobile .personalSetCenter .ant-col-4{
+	width: 20% !important;
+}
+.mobile .personalSetCenter .ant-col-offset-4{
+	margin-left: 20% !important;
+}
+.mobile .setUp input{
+	padding: 5px 10px !important;
+	font-size: 14px;
 }
