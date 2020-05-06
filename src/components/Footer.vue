@@ -1,9 +1,9 @@
 <template>
     <div class="footer" style="white-space: pre-wrap;" v-if="device!='mobile'">
         <div class="content">
-            <div class="xue">学习永不晚</div>
+            <div class="xue"><img src="/static/logo.png"  alt="">•&nbsp;&nbsp;&nbsp;学习永不晚</div>
+            <div>关于我们：</div>
             <div class="xuan">
-                <span>关于我们</span>
                 <span>公司简介</span>
                 <span>加入我们</span>
                 <span>联系我们</span>
@@ -86,6 +86,13 @@
 <style scoped>
     .xue{
         font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .xue img{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin-right: 20px;
     }
     .xuan span{
         width: 90px;

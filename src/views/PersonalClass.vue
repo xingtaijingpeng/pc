@@ -3,8 +3,8 @@
         <logo></logo>
 
 
-        <div class="content">
-            <a-row :gutter="[26,26]">
+        <div class="content center-box">
+            <a-row :gutter="[26,0]">
                 <a-col :xs="24" :sm="24" :md="6">
                     <littleNav :choose="1"></littleNav>
                 </a-col>

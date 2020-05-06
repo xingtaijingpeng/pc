@@ -3,8 +3,8 @@
         <logo></logo>
 
 
-        <div class="content">
-            <ul class="tab-box" style="margin-top: 0px;">
+        <div class="content center-box">
+            <ul class="tab-box tab-box-top">
                 <li class="choose" @click="$router.push('/PersonalClass')">课程购买</li>
             </ul>
             <div class="personal">
@@ -110,6 +110,12 @@
 
 
 <style scoped>
+    .tab-box-top{
+        margin-top: 50px;
+    }
+    .mobile .tab-box-top{
+        margin-top: 10px;
+    }
     .payBut{
         width: 100px;
         right: 0;
