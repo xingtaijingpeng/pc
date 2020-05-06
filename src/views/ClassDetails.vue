@@ -28,12 +28,6 @@
                     </template>
                     <template v-else>
                         <div class="but" style="float: right;" @click="userbuy">购买</div>
-                        <div style="display:inline-block; margin-top: 10px; float: right">
-                            <a-radio-group name="radioGroup" v-model="paytype">
-                                <a-radio :value="2">微信</a-radio>
-                                <a-radio :value="1">支付宝</a-radio>
-                            </a-radio-group>
-                        </div>
                     </template>
                 </a-col>
             </a-row>
@@ -184,38 +178,7 @@
                 });
             },
             userbuy(){
-                this.checkbuy((response)=>{
-					if(this.paytype == 2){
-					    //微信
-                        axios.post('order/make',{
-                            type: 1,
-							good_id: this.$route.params.id
-                        }).then((response) => {
-							//弹框扫码
-							this.visible = true;
-							this.config.value=response.data.url
-
-							//开定时器
-							this.timer = setInterval(()=>{
-                                axios.post('order/check',{
-                                    serial: response.data.ordTransLog.serial
-                                }).then((response) => {
-									if(response.status==1){
-									    window.location.reload();
-									}
-                                });
-							},2000)
-                        });
-					}else{
-					    //支付宝
-                        axios.post('order/make',{
-                            type: 2,
-                            good_id: this.$route.params.id
-                        }).then((response) => {
-							window.location.href=response.data.url;
-                        });
-					}
-				});
+                this.jump('/classPay');
             },
 			showvideo(){
                 this.checkbuy((response)=>{
