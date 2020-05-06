@@ -15,34 +15,31 @@
                         <li>账号设置</li>
                     </ul>
                     <div class="personalSetCenter">
-                        <div>
-                            <b>基本信息：</b>自我介绍一下，我叫图博教育，你呢？
-                        </div>
-                        <!-- 头像 -->
-                        <div>
-                            <b>头像：</b>
-                            <a-upload
-                                    name="file"
-                                    :headers="authHeader()"
-                                    listType="picture-card"
-                                    class="avatar-uploader"
-                                    :showUploadList="false"
-                                    :action="baseUrl('upload/image')"
-                                    @change="handleChangeLogo"
-                                    :style="{border:'none'}"
-                            >
-                                <div v-if="imageUrl">
-                                    <img :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
-                                </div>
-
-                                <div v-else>
-                                    <a-icon :type="loading ? 'loading' : 'plus'" />
-                                    <div class="ant-upload-text">Upload</div>
-                                </div>
-                            </a-upload>
-                        </div>
                         <!-- 昵称 -->
                         <a-form-model :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
+                            <!-- 头像 -->
+                            <a-form-model-item label="基本信息">自我介绍一下，我叫图博教育，你呢？</a-form-model-item>
+                            <a-form-model-item label="头像">
+                                <a-upload
+                                        name="file"
+                                        :headers="authHeader()"
+                                        listType="picture-card"
+                                        class="avatar-uploader"
+                                        :showUploadList="false"
+                                        :action="baseUrl('upload/image')"
+                                        @change="handleChangeLogo"
+                                        :style="{border:'none'}"
+                                >
+                                    <div v-if="imageUrl">
+                                        <img :src="imageUrl" alt="avatar" class="img_cover" width="100%" />
+                                    </div>
+
+                                    <div v-else>
+                                        <a-icon :type="loading ? 'loading' : 'plus'" />
+                                        <div class="ant-upload-text">Upload</div>
+                                    </div>
+                                </a-upload>
+                            </a-form-model-item>
                             <!-- 输入框 -->
                             <a-form-model-item label="昵称">
                                 <a-input placeholder="请输入您的昵称" v-model="form.name" />
@@ -68,22 +65,16 @@
                             <a-form-model-item label="身份证">
                                 <a-input placeholder="请输入您的身份证" v-model="form.name" />
                             </a-form-model-item>
+                            <a-form-model-item label="收货地址">
+                                <a-input placeholder="请输入您的收货地址" v-model="form.name" />
+                            </a-form-model-item>
                             <!-- 按钮 -->
                             <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
                                 <a-button type="primary" ><!--@click="onSubmit"-->
-                                    Create
-                                </a-button>
-                                <a-button style="margin-left: 10px;">
-                                    Cancel
+                                    提交
                                 </a-button>
                             </a-form-model-item>
                         </a-form-model>
-                        <!--<div><b>昵称：</b><input type="text" placeholder="请输入您的昵称"></div>
-                        <div><b>性别：</b><input type="radio"></div>
-                        <div><b>个性签名：</b><input type="text" placeholder="请输入您的签名"></div>
-                        <div><b>身份信息：</b>身份信息身份信息身份信息身份信息</div>
-                        <div><b>真实姓名：</b>1872154651356893</div>
-                        <div><b>身份证：</b><input type="text" placeholder="请输入您的身份证"></div>-->
                     </div>
 
                 </a-col>
@@ -134,6 +125,9 @@
             }),
         },
         methods: {
+            onSubmit() {
+                console.log('submit!', this.form);
+            },
             handleChangeLogo({file}) {
                 if (file.status === 'uploading') {
                     this.loading = true;
@@ -165,7 +159,7 @@
 
 <style scoped>
     .personalSetCenter{
-        text-align: left;
+
     }
     .ant-upload-picture-card-wrapper{
         width: 88px;
@@ -185,9 +179,9 @@
         display: inline-block;
     }
     .mobile .ant-form-item-control{
-        line-height: 0!important;
+        line-height: 10px !important;
     }
     .mobile .ant-form-item-control-wrapper{
-        line-height: 0!important;
+        line-height: 10px !important;
     }
 </style>
