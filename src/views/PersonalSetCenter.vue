@@ -16,9 +16,9 @@
                     </ul>
                     <div class="personalSetCenter">
                         <!-- 昵称 -->
-                        <a-form-model :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
+                        <a-form-model :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules" ref="ruleForm">
                             <!-- 头像 -->
-                            <!--<a-form-model-item label="基本信息">自我介绍一下，我叫图博教育，你呢？</a-form-model-item>-->
+                            <a-form-model-item><h2 style="display: inline-block; margin-right: 10px;"><b>基本信息</b></h2>自我介绍一下，我叫图博教育，你呢？</a-form-model-item>
                             <a-form-model-item label="头像">
                                 <a-upload
                                         name="file"
@@ -41,17 +41,18 @@
                                 </a-upload>
                             </a-form-model-item>
                             <!-- 输入框 -->
-                            <a-form-model-item label="*昵称">
-                                <a-input v-decorator="['note', { rules: [{ required: true, message: 'Please input your note!' }] }]" placeholder="请输入您的昵称" v-model="form.name" />
+                            <a-form-model-item label="昵称" prop="name">
+                                <a-input placeholder="请输入您的昵称" v-model="form.name" />
                             </a-form-model-item>
                             <!-- 单选 -->
-                            <a-form-model-item label="*性别">
+                            <a-form-model-item label="性别">
                                 <a-radio-group v-model="form.sex">
                                     <a-radio value="1">男</a-radio>
                                     <a-radio value="2">女</a-radio>
                                 </a-radio-group>
                             </a-form-model-item>
 
+                            <a-form-model-item><h2><b>身份信息</b></h2></a-form-model-item>
                             <a-form-model-item label="个性签名">
                                 <a-input placeholder="请输入您的签名"  v-model="form.qianming" type="textarea" />
                             </a-form-model-item>
@@ -61,7 +62,7 @@
                             <a-form-model-item label="身份证">
                                 <a-input placeholder="请输入您的身份证" v-model="form.real_num" />
                             </a-form-model-item>
-                            <a-form-model-item label="收货地址">
+                            <a-form-model-item label="收货地址" prop="address">
                                 <a-input placeholder="请输入您的收货地址" v-model="form.address" />
                             </a-form-model-item>
                             <!-- 按钮 -->
@@ -98,6 +99,10 @@
         },
         data() {
             return {
+                rules: {
+                    name: [{ required: true, message: '请输入昵称', trigger: 'blur' }],
+                    address: [{ required: true, message: '请输入地址', trigger: 'blur' }],
+                },
                 imageUrl: 'static/head-icon.png',
                 /* 组件  */
                 labelCol: { span: 4 },
@@ -141,15 +146,20 @@
         },
         methods: {
             onsubmittt() {
-                axios.post('userinfo/save',{
-                    from: this.form
-                }).then((response) => {
-                    if(!response.status){
-                        return this.$message.error(response.message);
-                    }
-                    return this.$message.success('保存成功');
+                this.$refs.ruleForm.validate((valid,error) => {
+                    if(Object.keys(error).length==0){
+                        axios.post('userinfo/save',{
+                            from: this.form
+                        }).then((response) => {
+                            if(!response.status){
+                                return this.$message.error(response.message);
+                            }
+                            return this.$message.success('保存成功');
 
+                        });
+                    }
                 });
+
             },
             handleChangeLogo({file}) {
                 if (file.status === 'uploading') {

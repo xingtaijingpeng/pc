@@ -15,12 +15,20 @@
                     <a-col :xs="24" :sm="18" :md="18">
                         <h1>{{detail.title}}</h1>
                         <div class="font">
-                            {{detail.description}}
+                            <!--{{detail.description}}-->
                         </div>
                         <div style="margin-top: 20px">
                             <span class="">课程类型：{{detail.category}}</span>
                         </div>
-                        <div class="personal-positionA payBut">实付：<br/><span>￥{{detail.price}}</span></div>
+                        <div class="personal-positionA payBut">
+                            <div>
+                                实付：<span>￥{{detail.price}}</span>
+                            </div>
+                            <div class="hui">
+                                原价：￥{{detail.old_price}}
+                            </div>
+
+                        </div>
                         <!--<div class="personal-positionA but-xx but2">立即学习</div>-->
                     </a-col>
                 </a-row>
@@ -212,16 +220,20 @@
         margin-top: 10px;
     }
     .payBut{
-        width: 100px;
+        width: 200px;
         right: 0;
         bottom: 0;
         color:#f31111;
-        font-weight: bold;
      }
     .payBut span{
+        display: inline;
         right: 0;
         font-weight: normal;
         font-size: 22px;
+     }
+    .payBut .hui{
+        color: #999;
+        text-decoration:line-through;
      }
     .yhq{
         width: 50%;

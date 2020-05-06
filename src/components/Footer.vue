@@ -5,12 +5,12 @@
             <div>关于我们：</div>
             <div class="xuan">
                 <span @click="jump('/Company')">公司简介</span>
-                <!--<span @click="jump('')">加入我们</span>
-                <span @click="jump('')">联系我们</span>-->
+                <span @click="jump('')">加入我们</span>
+                <span @click="jump('')">联系我们</span>
                 <span @click="jump('/CompanyTeam')">教师合作</span>
                 <!--<span @click="jump('/newsDetails/30')">退款声明</span>-->
             </div>
-            <div class="rwm"><img src="/static/rwm.png" width="100" alt=""></div>
+            <div class="rwm"><img src="/static/images/wechat_code.png" width="100" alt=""></div>
         </div>
     </div>
     <div v-else>
