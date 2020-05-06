@@ -1,7 +1,15 @@
 <template>
     <div class="footer" style="white-space: pre-wrap;" v-if="device!='mobile'">
-        <div style="height: 100%; text-align: left; max-width: 1200px; margin: 0 auto;">
-            <template v-if="base">{{base.banquan}}</template>
+        <div class="content">
+            <div class="xue">学习永不晚</div>
+            <div class="xuan">
+                <span>关于我们</span>
+                <span>公司简介</span>
+                <span>加入我们</span>
+                <span>联系我们</span>
+                <span>教师合作</span>
+                <span>退款声明</span>
+            </div>
         </div>
     </div>
     <div v-else>
@@ -76,7 +84,17 @@
 </script>
 
 <style scoped>
-
+    .xue{
+        font-size: 20px;
+    }
+    .xuan span{
+        width: 90px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .xuan span:hover{
+        font-weight: bold;
+    }
     .footer2 { display: none;}
     .mobile .footer2{
         display: block;
