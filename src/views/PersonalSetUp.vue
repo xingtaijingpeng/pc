@@ -11,6 +11,7 @@
 
                 <a-col :xs="24" :sm="24" :md="18">
                     <ul class="tab-box">
+                        <li>个人中心</li>
                         <li class="choose">账号设置</li>
                     </ul>
                     <div>
