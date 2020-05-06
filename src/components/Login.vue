@@ -5,7 +5,7 @@
         <h1>登录</h1>
         <div class="login-inp">
             <div><input type="text" v-model="mobile" placeholder="请输入您的手机号"></div>
-            <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
+            <div><input type="password" v-model="password" placeholder="请输入您的密码"></div>
         </div>
         <div class="login-but" @click="login">登录</div>
          <span class="login-wang" @click="typeshow('forget')">忘记密码</span>
@@ -21,8 +21,8 @@
                 <input type="text" v-model="code" placeholder="请输入验证码">
                 <span class="login-yzm" @click="sms">{{tips}}</span>
             </div>
-            <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
-            <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
+            <div><input type="password" v-model="password" placeholder="请输入您的密码"></div>
+            <div><input type="password" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
         </div>
         <div class="login-but" @click="register">注册</div>
 		<span class="login-zhu" @click="typeshow('login')">去登录</span>
@@ -36,8 +36,8 @@
                 <input type="text" v-model="code" placeholder="请输入验证码">
                 <span class="login-yzm" @click="sms">{{tips}}</span>
             </div>
-            <div><input type="text" v-model="password" placeholder="请输入您的密码"></div>
-            <div><input type="text" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
+            <div><input type="password" v-model="password" placeholder="请输入您的密码"></div>
+            <div><input type="password" v-model="password_confirmation" placeholder="请再次输入您的密码"></div>
         </div>
         <div class="login-but" @click="forget">找回密码</div>
 		<span class="login-zhu" @click="typeshow('login')">去登录</span>
