@@ -166,7 +166,7 @@
     /* 导航下拉 */
     .navDown {
         position: absolute;
-        top:98px;
+        top:93px;
         width: 380px;
         z-index: 1;
         background: rgba(0,0,0,0.6); /* rgba(0,154,255,0.2) */
