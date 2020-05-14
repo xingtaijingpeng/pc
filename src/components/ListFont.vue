@@ -4,7 +4,7 @@
       <img :src="cover" width="100%" alt="">
     </div>
     <h1>{{title}}</h1>
-    <div>￥{{price}} <span>原价：<span style="text-decoration: line-through;">{{oldprice}}</span>元</span></div>
+	  <div><span style="font-size: 12px; color: #2e3033; margin-right: 20px;">{{1500+id*6}}人在学习</span>￥{{price}} <span>原价：<span style="text-decoration: line-through;">{{oldprice}}</span>元</span></div>
   </div>
 </template>
 
