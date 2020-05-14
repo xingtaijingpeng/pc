@@ -14,7 +14,7 @@
 
         <div class="content2 pay">
             <a-row>
-                <a-col :xs="24" :sm="6" :md="6" class="red">{{detail.price}}</a-col>
+                <a-col :xs="24" :sm="6" :md="6" class="red">现价￥{{detail.price}}</a-col>
                 <a-col :xs="24" :sm="6" :md="6" class="hui" style="text-decoration: line-through;">原价￥{{detail.old_price}}</a-col>
                 <a-col :xs="24" :sm="12" :md="12" v-if="!(detail.price > 0)">
                     <div class="but" style="float: right;">免费观看</div>
@@ -44,7 +44,7 @@
                 <a-col :xs="24" :sm="6" :md="6" style="text-align: center">
                     <img :src="detail.teacher.cover"  width="60%" alt="">
                     <h1 style="margin-top: 20px;">{{detail.teacher.title}}</h1>
-                    <p>{{detail.teacher.description}}</p>
+                    <p style="text-align: left; text-indent: 2em;">{{detail.teacher.description}}</p>
                 </a-col>
             </a-row>
         </div>

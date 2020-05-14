@@ -24,8 +24,8 @@
                                 <h1>{{item.good_info.title}}</h1>
                                 <div class="aaaaa">&nbsp;</div>
                                 <div>
-                                    <span class="">支付价格：300元</span>
-                                    <span class="time">支付时间：2019-03-11</span>
+                                    <span class="">支付价格：{{item.price}}元</span>
+                                    <span class="time">支付时间：{{item.payed_at}}</span>
                                 </div>
                                 <div class="personal-positionA but-xx but1 xueXi" @click="$router.push('/ClassDetails/'+item.good_id)">立即学习</div>
                                 <div class="personal-positionA but-xx but2 but-hui">已支付</div>
