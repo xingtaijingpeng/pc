@@ -1,12 +1,29 @@
 <template>
     <div>
         <logo></logo>
-        <div class="video-box" v-if="videoshow">
-            <div @click="videoshow=!videoshow" style="position: absolute; width: 100%; height: 100%; z-index: 8;"></div>
-            <video class="video" controls autoplay>
-                <source :src="detail.url" type="video/mp4">
-                您的浏览器不支持 video 标签。
-            </video>
+        <div class="video-box" v-if="!videoshow">
+            <div style="position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
+            <div class="video-navBox">
+                <video class="video" controls autoplay>
+                    <source :src="detail.url" type="video/mp4">
+                    您的浏览器不支持 video 标签。
+                </video>
+                <div class="video-right">
+                    <div class="video-nav-box">
+                        <p class="video-nav1 choose"><a-icon type="caret-right" /><span>法国发过梵蒂冈谁发个顺丰大概岁的法国岁的法国岁的法国是否</span></p>
+                        <ul class="video-navBox2">
+                            <li>
+                                <p class="video-nav2"><a-icon type="caret-right" /><span>法国发过梵蒂冈谁发个顺丰大概岁的法国岁的法国岁的法国是否</span></p>
+                                <ul class="video-navBox3">
+                                    <li>
+                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>法国发过梵蒂冈谁发个顺丰大概岁的法国岁的法国岁的法国是否</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="banner2">
             <div class="banner2-font">专业的学习体系<br/>资深的在线讲师</div>
@@ -99,7 +116,8 @@
                 data: [],
 				buyed: false,
                 moment,
-                videoshow:false
+                videoshow:false,
+
             };
         },
         mounted(){
@@ -131,7 +149,14 @@
             }
         },
         methods: {
-
+            onOpenChange(openKeys) { // video 右边导航
+                const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
+                if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+                    this.openKeys = openKeys;
+                } else {
+                    this.openKeys = latestOpenKey ? [latestOpenKey] : [];
+                }
+            },
             userbuy(){
                 this.jump('/classPay/'+this.$route.params.id);
             },
@@ -157,6 +182,7 @@
 
 
 <style scoped>
+    p{margin-bottom: 0}
     .personalCassFont{
         text-align: center!important;
     }
@@ -229,10 +255,68 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
     }
     .video{
-        width: 80%;
+        width:calc(100% - 220px);
         position: relative;
         z-index: 10;
+        float:left;
+    }
+    .video-right{
+        width: 200px;
+        float: left;
+    }
+    .video-navBox{
+        background:#2F3133 ;
+        color: #fff;
+        padding:10px 15px;
+        border-radius: 15px;
+        position: relative;
+        z-index: 10;
+    }
+    .video-nav-box{
+        margin-left: 10px;
+    }
+    .video-nav-box .video-nav1{
+        cursor: pointer;
+        margin-left: 10px;
+        line-height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .video-navBox2 li{
+        line-height: 40px;
+        cursor: pointer;
+    }
+    .video-nav2{
+        padding-left: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .video-navBox3 li{
+        line-height: 40px;
+        cursor: pointer;
+    }
+    .video-nav3{
+        padding-left: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .video-nav1:hover,.video-nav2:hover,.video-nav3:hover{
+        background: rgba(0,0,0,0.5);
+    }
+    .video-nav1 span,.video-nav2 span,.video-nav3 span{
+        padding-left: 5px;
+
+    }
+    .video-nav-box .choose{
+        color: #00cd8a;
+    }
+    .video-nav-box .choose:hover{
+        background: none;
     }
 </style>

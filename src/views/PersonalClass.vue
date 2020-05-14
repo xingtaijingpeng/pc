@@ -19,15 +19,15 @@
                     <div class="personal">
                         <a-row :gutter="[10,30]" type="flex" align="middle" justify="space-around" v-for="item in lists">
                             <a-col :xs="24" :sm="6" :md="6">
-                                <img :src="item.good_info.cover" width="100%" alt="">
+                                <img v-if="item.good_info" :src="item.good_info.cover" width="100%" alt="">
                             </a-col>
                             <a-col :xs="24" :sm="18" :md="18">
-                                <h1>{{item.good_info.title}}</h1>
-                                <div class="font">
+                                <h1 v-if="item.good_info">{{item.good_info.title}}</h1>
+                                <div class="font" v-if="item.good_info">
                                     {{item.good_info.description}}
                                 </div>
                                 <div style="margin-top: 20px">
-                                    <span class="">课程类型：{{item.good_info.category}}</span>
+                                    <span class="" v-if="item.good_info">课程类型：{{item.good_info.category}}</span>
                                     <span class="time">购买时间：{{item.payed_at}}</span>
                                 </div>
                                 <div class="personal-positionA but-xx but1 xueXi" @click="$router.push('/ClassDetails/'+item.good_id)">立即学习</div>
