@@ -10,13 +10,17 @@
                 </video>
                 <div class="video-right">
                     <div class="video-nav-box">
-                        <p class="video-nav1 choose"><a-icon type="caret-right" /><span>法国发过梵蒂冈谁发个顺丰大概岁的法国岁的法国岁的法国是否</span></p>
+                        <p class="video-nav1 choose"><a-icon type="caret-right" /><span>分类一</span></p>
                         <ul class="video-navBox2">
                             <li>
-                                <p class="video-nav2"><a-icon type="caret-right" /><span>法国发过梵蒂冈谁发个顺丰大概岁的法国岁的法国岁的法国是否</span></p>
+                                <p class="video-nav2"><a-icon type="caret-right" /><span>分类二</span></p>
                                 <ul class="video-navBox3">
                                     <li>
-                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>法国发过梵蒂冈谁发个顺丰大概岁的法国岁的法国岁的法国是否</span></p>
+                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第一节</span></p>
+                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第二节</span></p>
+                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第三节</span></p>
+                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第四节</span></p>
+                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第五节</span></p>
                                     </li>
                                 </ul>
                             </li>
@@ -145,6 +149,16 @@
                         this.buyed = true;
                     }
 				});
+
+                //获取同级分类
+                axios.post('good/category',{
+                    id: _this.$route.params.id
+				}).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+
+                });
 
             }
         },
