@@ -109,11 +109,16 @@
                     </a-row>
                 </template>
             </div>
-			<br/>
-			<br/>
-			<br/>
-			<img src="/static/11111111.jpg" width="100%" />
         </div>
+		<br/>
+		<br/>
+		<br/>
+		<img src="/static/22222222.jpg" width="100%" />
+		<img src="/static/33333333.png" width="100%" />
+		<br/>
+		<br/>
+		<br/>
+		<img src="/static/11111111.jpg" width="1200px" style="display: block; margin: 0 auto;" />
 
         <Footer :choose="1"></Footer>
     </div>

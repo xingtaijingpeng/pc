@@ -8,19 +8,15 @@
                     <source :src="detail.url" type="video/mp4">
                     您的浏览器不支持 video 标签。
                 </video>
-                <div class="video-right">
+                <div class="video-right" style="max-height: 400px; overflow-y: scroll;">
                     <div class="video-nav-box">
-                        <p class="video-nav1 choose"><a-icon type="caret-right" /><span>分类一</span></p>
+                        <p class="video-nav1 choose"><a-icon type="caret-right" /><span>{{categorygoods.name}}</span></p>
                         <ul class="video-navBox2">
-                            <li>
-                                <p class="video-nav2"><a-icon type="caret-right" /><span>分类二</span></p>
+                            <li v-for="s in categorygoods.sons" v-if="detail.category_id == s.id">
+                                <p class="video-nav2"><a-icon type="caret-right" /><span>{{s.name}}</span></p>
                                 <ul class="video-navBox3">
                                     <li>
-                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第一节</span></p>
-                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第二节</span></p>
-                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第三节</span></p>
-                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第四节</span></p>
-                                        <p class="video-nav3"><a-icon type="play-circle" /> <span>第五节</span></p>
+                                        <p @click="jjjjj(g.id)" v-for="g in s.article" :class="'video-nav3 ' + (g.id == detail.id ? 'choose' : '')"><a-icon type="play-circle" /> <span>{{g.title}}</span></p>
                                     </li>
                                 </ul>
                             </li>
@@ -121,7 +117,7 @@
 				buyed: false,
                 moment,
                 videoshow:false,
-
+				categorygoods: []
             };
         },
         mounted(){
@@ -157,12 +153,16 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-
+                    this.categorygoods = response.data;
                 });
 
             }
         },
         methods: {
+            jjjjj(id){
+                this.jump('/ClassDetails/'+id);
+                window.location.reload()
+			},
             onOpenChange(openKeys) { // video 右边导航
                 const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
                 if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -278,7 +278,7 @@
         float:left;
     }
     .video-right{
-        width: 200px;
+        width: 220px;
         float: left;
     }
     .video-navBox{
