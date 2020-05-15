@@ -56,10 +56,10 @@
                             <a-form-model-item label="个性签名">
                                 <a-input placeholder="请输入您的签名"  v-model="form.qianming" type="textarea" />
                             </a-form-model-item>
-                            <a-form-model-item label="真实姓名">
+                            <a-form-model-item label="真实姓名" prop="real_name">
                                 <a-input placeholder="请输入您的真实姓名" v-model="form.real_name" />
                             </a-form-model-item>
-                            <a-form-model-item label="身份证">
+                            <a-form-model-item label="身份证" prop="real_num">
                                 <a-input placeholder="请输入您的身份证" v-model="form.real_num" />
                             </a-form-model-item>
                             <a-form-model-item label="收货地址" prop="address">
@@ -101,7 +101,9 @@
             return {
                 rules: {
                     name: [{ required: true, message: '请输入昵称', trigger: 'blur' }],
+                    real_name: [{ required: true, message: '请输入真实名称', trigger: 'blur' }],
                     address: [{ required: true, message: '请输入地址', trigger: 'blur' }],
+                    real_num: [{ required: true, message: '请输入身份证', trigger: 'blur' }],
                 },
                 imageUrl: 'static/head-icon.png',
                 /* 组件  */

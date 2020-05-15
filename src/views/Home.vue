@@ -109,6 +109,10 @@
                     </a-row>
                 </template>
             </div>
+			<br/>
+			<br/>
+			<br/>
+			<img src="/static/11111111.jpg" width="100%" />
         </div>
 
         <Footer :choose="1"></Footer>
