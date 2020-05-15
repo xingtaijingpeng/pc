@@ -1,8 +1,8 @@
 <template>
     <div>
         <logo></logo>
-        <div class="video-box" v-if="!videoshow">
-            <div style="position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
+        <div class="video-box" v-if="videoshow">
+            <div @click="videoshow = !videoshow" style="position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
             <div class="video-navBox">
                 <video class="video" controls autoplay>
                     <source :src="detail.url" type="video/mp4">
