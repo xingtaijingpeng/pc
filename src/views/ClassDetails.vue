@@ -8,7 +8,7 @@
                     <source :src="detail.url" type="video/mp4">
                     您的浏览器不支持 video 标签。
                 </video>
-                <div class="video-right" style="max-height: 400px; overflow-y: scroll;">
+                <div class="video-right" style="max-height: 400px; overflow-y: auto;">
                     <div class="video-nav-box">
                         <p class="video-nav1 choose"><a-icon type="caret-right" /><span>{{categorygoods.name}}</span></p>
                         <ul class="video-navBox2">
