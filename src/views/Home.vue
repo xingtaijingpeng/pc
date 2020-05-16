@@ -118,7 +118,7 @@
 		<br/>
 		<br/>
 		<br/>
-		<img src="/static/11111111.jpg" width="1200px" style="display: block; margin: 0 auto;" />
+		<img src="/static/11111111.jpg" style="display: block; margin: 0 auto;max-width: 1200px; width: 100%;" />
 
         <Footer :choose="1"></Footer>
     </div>

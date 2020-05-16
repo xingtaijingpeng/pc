@@ -167,7 +167,7 @@
     .navDown {
         position: absolute;
         top:98px;
-        width: 380px;
+        width: 480px;
         z-index: 1;
         background: rgba(0,0,0,0.6); /* rgba(0,154,255,0.2) */
         box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
