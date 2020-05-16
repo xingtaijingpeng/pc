@@ -76,7 +76,7 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    sessionStorage.setItem('access_token',response.data.token)
+                    localStorage.setItem('access_token',response.data.token)
                     sessionStorage.setItem('user_mobile',response.data.user.mobile)
                     window.location.reload();
                 });
@@ -109,7 +109,7 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    sessionStorage.setItem('access_token',response.data.token)
+                    localStorage.setItem('access_token',response.data.token)
                     sessionStorage.setItem('user_mobile',response.data.user.mobile)
                     window.location.reload();
                 });
@@ -124,7 +124,7 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    sessionStorage.setItem('access_token',response.data.token)
+                    localStorage.setItem('access_token',response.data.token)
                     sessionStorage.setItem('user_mobile',response.data.user.mobile)
                     window.location.reload();
                 });

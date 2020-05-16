@@ -16,7 +16,7 @@ Helper.install = function (Vue, options) {
     }
 
     Vue.prototype.authHeader = function (headers = {}) {
-        let token = sessionStorage.getItem('access_token');
+        let token = localStorage.getItem('access_token');
         return {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + token,

@@ -27,7 +27,7 @@ function init(_axios,loading = false){
         function(config) {
             // Do something before request is sent
             loading && store.commit('loading/increment');
-            let token = sessionStorage.getItem('access_token');
+            let token = localStorage.getItem('access_token');
             config.headers = {
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + token,
@@ -54,14 +54,14 @@ function init(_axios,loading = false){
             loading && store.commit('loading/decrement');
             if(error.response){
                 if(error.response.status == 401){
-                    if(sessionStorage.getItem('access_token')){
+                    if(localStorage.getItem('access_token')){
                         //个人理解重新返回一个 Promise 替代原有的 再次发送请求后调用 当前的 resolve
                         return new Promise((resolve,reject) => {
                             // 等待refresh_token
                             _axios.post('refresh').then((response) => {
                                 if(response.status && response.data.token){
                                     //写入新的token重新发送请求
-                                    sessionStorage.setItem('access_token',response.data.token)
+                                    localStorage.setItem('access_token',response.data.token)
                                     _axios(error.config).then((response) => {
                                         resolve(response);
                                     });
