@@ -207,6 +207,7 @@
         },
         methods: {
             tututu(){
+                localStorage.clear();
                 sessionStorage.clear();
                 window.location.reload();
             },
