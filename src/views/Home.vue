@@ -100,8 +100,8 @@
                             <img :src="item.cover" width="100%" alt="" @click="todetail(item.id)">
                         </a-col>
                         <a-col :xs="24" :sm="24" :md="19">
-                            <div class="time">----{{item.created_at}}</div>
                             <h1>{{item.title}}</h1>
+                            <div class="time" style="visibility: hidden;">----{{item.created_at}}</div>
                             <div class="font">
                                 {{item.description}}
                             </div>
