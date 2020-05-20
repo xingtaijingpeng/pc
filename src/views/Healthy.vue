@@ -2,11 +2,11 @@
     <div>
         <logo choose="2"></logo>
         <!-- ddd -->
-        <div v-if="$route.params.id==5" class="Healthy-banner" ></div>
+        <div v-if="$route.params.id==35" class="Healthy-banner" ></div>
         <div v-else class="FireControl-banner" ></div>
         <div class="content">
 
-            <div class="title" v-if="$route.params.id==5"><img src="/static/Healthy-title.png" alt=""></div>
+            <div class="title" v-if="$route.params.id==35"><img src="/static/Healthy-title.png" alt=""></div>
             <div class="title" v-else><img src="/static/fire-title.png" alt=""></div>
             <!-- 最新上线 -->
             <div class="nav-list">

@@ -69,7 +69,7 @@
                         <list-font
                             :id="item.id"
                             :cover="item.cover"
-                            :title="item.title"
+                            :title="item.category"
                             :price="item.price"
                             :oldprice="item.old_price"
                         ></list-font>
