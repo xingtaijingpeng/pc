@@ -84,7 +84,7 @@
                         <list-font
                                 :id="item.id"
                                 :cover="item.cover"
-                                :title="item.title"
+                                :title="item.category"
                                 :price="item.price"
                                 :oldprice="item.old_price"
                         ></list-font>
@@ -168,8 +168,7 @@
             //最新视频
             axios.post('article/index',{
                 guard: 'video',
-                pageSize: 8,
-                hot: 2,
+                pageSize: 999,
                 order: 'created_at',
                 order_type: 'DESC',
             }).then((response) => {
@@ -177,7 +176,13 @@
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
-                this.videos = response.data;
+                let cateids = [];
+                for(var i in response.data){
+                    if(cateids.indexOf(response.data[i].category_id) == -1 && cateids.length <= 6){
+                        cateids.push(response.data[i].category_id)
+                        this.videos.push(response.data[i])
+					}
+				}
             });
             //最新文章
             axios.post('article/index',{

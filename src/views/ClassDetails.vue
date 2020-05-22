@@ -4,7 +4,7 @@
         <div class="video-box" v-if="videoshow">
             <div @click="videoshow = !videoshow" style="position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
             <div class="video-navBox">
-                <video class="video" controls autoplay controlslist="nodownload">
+                <video id="vvvvv" class="video" controls autoplay controlslist="nodownload">
                     <source :src="detail.url" type="video/mp4">
                     您的浏览器不支持 video 标签。
                 </video>
@@ -16,7 +16,7 @@
                                 <p class="video-nav2"><a-icon type="caret-right" /><span>{{s.name}}</span></p>
                                 <ul class="video-navBox3">
                                     <li>
-                                        <p @click="jjjjj(g.id)" v-for="g in s.article" :class="'video-nav3 ' + (g.id == detail.id ? 'choose' : '')"><a-icon type="play-circle" /> <span>{{g.title}}</span></p>
+                                        <p @click="jjjjj(g)" v-for="g in s.article" :class="'video-nav3 ' + (g.id == detail.id ? 'choose' : '')"><a-icon type="play-circle" /> <span>{{g.title}}</span></p>
                                     </li>
                                 </ul>
                             </li>
@@ -159,9 +159,12 @@
             }
         },
         methods: {
-            jjjjj(id){
-                this.jump('/ClassDetails/'+id);
-                window.location.reload()
+            jjjjj(info){
+                this.detail.id = info.id;
+                this.detail.url = info.url;
+                document.getElementById('vvvvv').src = info.url;
+                // this.jump('/ClassDetails/'+id);
+                // window.location.reload()
 			},
             onOpenChange(openKeys) { // video 右边导航
                 const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
