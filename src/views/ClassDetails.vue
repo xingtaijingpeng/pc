@@ -9,14 +9,15 @@
                     您的浏览器不支持 video 标签。
                 </video>
                 <div class="video-right" style="max-height: 400px; overflow-y: auto;">
-                    <div class="video-nav-box">
-                        <p class="video-nav1 choose"><a-icon type="caret-right" /><span>{{categorygoods.name}}</span></p>
+                    <h3 style=" padding-left: 10px; color: #fff;">{{categorygoods.name}}</h3>
+                    <div class="video-nav-box" v-for="s in categorygoods.sons" v-if="detail.category_id == s.id">
+                        <p class="video-nav1"><a-icon type="caret-right" /><span>{{s.name}}</span></p>
                         <ul class="video-navBox2">
-                            <li v-for="s in categorygoods.sons" v-if="detail.category_id == s.id">
-                                <p class="video-nav2"><a-icon type="caret-right" /><span>{{s.name}}</span></p>
+                            <li v-for="(g,i) in s.article">
+                                <p class="video-nav2"><a-icon type="caret-right" /><span>{{i ? i : '其他章节' }}</span></p>
                                 <ul class="video-navBox3">
                                     <li>
-                                        <p @click="jjjjj(g)" v-for="g in s.article" :class="'video-nav3 ' + (g.id == detail.id ? 'choose' : '')"><a-icon type="play-circle" /> <span>{{g.title}}</span></p>
+                                        <p @click="jjjjj(gg)" v-for="gg in g" :class="'video-nav3 ' + (gg.id == detail.id ? 'choose' : '')"><a-icon type="play-circle" /> <span>{{gg.title}}</span></p>
                                     </li>
                                 </ul>
                             </li>
