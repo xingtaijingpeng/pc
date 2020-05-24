@@ -126,7 +126,7 @@
                 }
                 this.$store.commit('user/SET_MOBILE',response.data.mobile);
                 this.$store.commit('user/SET_AVATAR',response.data.avatar);
-                if(response.data.avatar)
+                if(response.data)
                 {
                     this.imageUrl = response.data.avatar
                     this.form = {

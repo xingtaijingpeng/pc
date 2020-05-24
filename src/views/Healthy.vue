@@ -8,21 +8,15 @@
 
             <div class="title" v-if="$route.params.id==35"><img src="/static/Healthy-title.png" alt=""></div>
             <div class="title" v-else><img src="/static/fire-title.png" alt=""></div>
-            <!-- 最新上线 -->
-            <div class="nav-list">
-                <span :class="Gindex == 0 ? 'choose' : ''" @click="categoryByList(0)">全部</span>
-				<template v-for="item in lists">
-					<span :class="Gindex == item.id ? 'choose' : ''" :key="item.id" @click="categoryByList(item.id)">{{item.name}}</span>
-				</template>
-            </div>
+
             <a-row :gutter="[26,26]">
-                <template v-for="item in videos">
+                <template v-for="item in lists" v-if="item.article">
                     <a-col :xs="24" :sm="12" :md="6">
                         <list-font
-                                :id="item.id"
-                                :cover="item.cover"
-                                :title="item.title"
-                                :price="item.price"
+                                :id="item.article.id"
+                                :cover="item.article.cover"
+                                :title="item.article.category"
+                                :price="item.article.price"
                                 :oldprice="item.old_price"
                         ></list-font>
                     </a-col>
@@ -64,45 +58,26 @@ export default {
                     return this.$message.error(response.message);
                 }
                 this.lists = response.data;
-                this.getlist(this.lists.map(function (item) {
-                    return item.id;
-                }));
+                this.getlist(this.$route.params.id);
             });
         },
 	},
     mounted(){
-        axios.post('category/index',{
-            guard: 'video',
-            pageSize: 30,
-            merge: 1,
-            parent_id: this.$route.params.id
-        }).then((response) => {
-            if(!response.status){
-                return this.$message.error(response.message);
-            }
-            this.lists = response.data;
-            this.getlist(this.lists.map(function (item) {
-                return item.id;
-            }));
-        });
+        this.getlist(this.$route.params.id)
     },
     methods: {
-        categoryByList(id){
-            this.Gindex = id;
-            this.getlist(id ? [id] : this.lists.map(function (item) {
-                return item.id;
-            }));
-		},
-        getlist(categoryids = []){
-            axios.post('article/index',{
+        getlist(pid){
+            axios.post('category/index',{
                 guard: 'video',
                 pageSize: 30,
-				categorys: categoryids
+                merge: 1,
+                parent_id: pid,
+                article: 1,
             }).then((response) => {
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
-                this.videos = response.data;
+                this.lists = response.data;
             });
         }
     }

@@ -28,7 +28,6 @@ export default {
           default: ''
       },
       price:{
-          type: String,
           required: false,
           default: '0.00'
       },
