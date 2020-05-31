@@ -30,7 +30,7 @@
                                     <span class="">课程类型：{{item.cate_name}}</span>
                                 </div>
                                 <div class="personal-positionA but-xx but1 xueXi" @click="$router.push('/ClassDetails/'+item.good_info.id)">立即学习</div>
-                                <div v-if="item.cate_zip" class="personal-positionA but-xx but2"><a :href="item.cate_zip">学习资料</a></div>
+                                <div v-if="item.cate_zip" class="personal-positionA but-xx but2"><a style="color: #00cd8a;" :href="item.cate_zip">学习资料</a></div>
                             </a-col>
                         </a-row>
                     </div>
