@@ -49,7 +49,7 @@
             <div class="pay">￥<span>{{detail.price}}</span></div>
 
             <div style="overflow: hidden">
-                <template v-if="$store.state.app.DEVICE == 'mobile'">
+                <template v-if="$store.state.app.DEVICE == 'mobile' && isWeiXin()">
                     <div class="payBut2" @click="userbuy2">微信支付</div>
                 </template>
                 <template v-else>
@@ -140,6 +140,14 @@
             zhifucancel(){
                 clearInterval(this.timer);
             },
+            isWeiXin () {
+                var ua = window.navigator.userAgent.toLowerCase();
+                if (ua.indexOf('micromessenger') > -1) {
+                    return true; // 是微信端
+                } else {
+                    return false;
+                }
+            },
             userbuy2(){
                 axios.post('order/make2',{
                     type: 1,
@@ -220,8 +228,7 @@
         margin-top: 10px;
     }
     .payBut{
-        width: 200px;
-        right: 0;
+        right: 15px;
         bottom: 0;
         color:#f31111;
      }

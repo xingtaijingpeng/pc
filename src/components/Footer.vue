@@ -24,7 +24,7 @@
                         <p>首页</p>
                     </a>
                 </li>
-                <li @click="$router.push('/healthy/7')" :class="choose == 2 ? 'active' : ''">
+                <li @click="$router.push('/healthy/34')" :class="choose == 2 ? 'active' : ''">
                     <a>
                         <img class="footImg1" src="/static/foot2.png" >
                         <img class="footImg2" src="/static/foot2_1.png" >
