@@ -11,6 +11,7 @@
                 <!--<span @click="jump('/newsDetails/30')">退款声明</span>-->
             </div>
             <div class="rwm"><img src="/static/images/wechat_code.png" width="100" alt=""></div>
+			<div>京ICP备20013953号-1 北京图博教育科技有限公司  版权所有</div>
         </div>
     </div>
     <div v-else>
