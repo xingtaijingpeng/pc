@@ -43,6 +43,9 @@
                                 <a-menu-item key="1">
                                     <a @click="tocenter">个人中心</a>
                                 </a-menu-item>
+                                <a-menu-item key="1">
+                                    <a @click="tututu">退出登录</a>
+                                </a-menu-item>
                             </a-menu>
                         </a-dropdown>
                     </a-col>
@@ -104,6 +107,11 @@
             });
 		},
 		methods: {
+            tututu(){
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.reload();
+            },
             aaadd(id){
                 window.location.href='/index.html#/healthy/'+id
 			},
