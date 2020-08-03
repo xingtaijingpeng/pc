@@ -24,7 +24,7 @@
                             <h1>{{item.good_info.title}}</h1>
                             <div class="font">订单号：{{item.serial}}</div>
                             <div style="margin-top: 20px">
-                                <span class="">支付价格：<b class="red">￥{{item.price}}</b></span>
+                                <span class="">支付价格：<b class="red">￥{{item.price}}</b> {{item.is_fenqi==1?'( 分期 )':''}}</span>
                                 <span class="time">下单时间：{{item.created_at}}</span>
                             </div>
                             <div class="personal-positionA but-xx but1 but-blue" @click="alipay(item.id)">支付宝支付</div>
