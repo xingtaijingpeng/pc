@@ -27,9 +27,15 @@
                                 <span class="">支付价格：<b class="red">￥{{item.price}}</b> {{item.is_fenqi==1?'( 分期 )':''}}</span>
                                 <span class="time">下单时间：{{item.created_at}}</span>
                             </div>
-                            <div class="personal-positionA but-xx but1 but-blue" @click="alipay(item.id)">支付宝支付</div>
-                            <div class="personal-positionA but-xx but2 but-blue" @click="wxpay(item.id)">微信支付</div>
-							<a-popconfirm
+                            <template v-if="$store.state.app.DEVICE == 'mobile' && isWeiXin()">
+                                <div class="personal-positionA but-xx but2 but-blue" @click="wxpay2(item.id)">微信支付</div>
+
+                            </template>
+                            <template v-else>
+                                <div class="personal-positionA but-xx but1 but-blue" @click="alipay(item.id)">支付宝支付</div>
+                                <div class="personal-positionA but-xx but2 but-blue" @click="wxpay(item.id)">微信支付</div>
+                            </template>
+                            <a-popconfirm
 									title="确定删除该订单吗?"
 									cancelText="取消"
 									okText="确定"
@@ -70,6 +76,7 @@
     import { Empty } from 'ant-design-vue';
 	import Aaaa from '@/components/Aaaa'
 	import VueQr from 'vue-qr';
+    import wx from 'weixin-js-sdk'
 
 
     export default {
@@ -97,6 +104,14 @@
         methods: {
             zhifucancel(){
                 clearInterval(this.timer);
+            },
+            isWeiXin () {
+                var ua = window.navigator.userAgent.toLowerCase();
+                if (ua.indexOf('micromessenger') > -1) {
+                    return true; // 是微信端
+                } else {
+                    return false;
+                }
             },
             onDelete(id){
                 axios.post('order/delete',{
@@ -130,6 +145,31 @@
                     window.location.href = response.data.url;
                 });
 			},
+            wxpay2(orderid){
+                axios.post('order/repay2',{
+                    orderid: orderid,
+                    openid: localStorage.getItem('openid'),
+                    type: 1
+                }).then((response) => {
+                    let data = response.data.config;
+                    //调取微信支付
+                    WeixinJSBridge.invoke(
+                        'getBrandWCPayRequest', {
+                            appId:data.appId,
+                            timeStamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                            nonceStr: data.nonceStr, // 支付签名随机串，不长于 32
+                            package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                            signType: data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                            paySign: data.paySign, // 支付签名
+                        },
+                        function(res){
+                            if(res.err_msg == "get_brand_wcpay_request:ok" ){
+                                window.history.go(-1);
+                            }
+                        }
+                    );
+                });
+            },
             wxpay(orderid){
                 let _this = this;
                 axios.post('order/repay',{
